@@ -1,5 +1,5 @@
 # rent-my-rez
-The Django REST API and api + plotting scripts
+The front page of Vancouver housing.
 
 ## Installation
 Create a virtual environment in the root project folder by running
