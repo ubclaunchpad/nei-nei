@@ -63,3 +63,6 @@ target/
 
 # Mac stuff
 *.DS_Store
+
+# Virtual Environment
+venv/
