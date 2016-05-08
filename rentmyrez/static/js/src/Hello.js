@@ -46,12 +46,14 @@ export default class Hello extends Component {
 			backgroundColor: 'white'
 		};
 	}
+
 	render () {
 		// An example of ES6 destructuring.
 		// This is equivalent to:
 		// const age = this.props.age;
 		// const name = this.props.name;
 		// const onClick = this.props.onClick;
+		// So much saved time! ES6 is totally awesome!
 		const {age, name, onClick} = this.props;
 
 		const {backgroundColor} = this.state;
@@ -75,7 +77,11 @@ export default class Hello extends Component {
 			<div style={colorStyle}>
 				<div onClick={onClick}>
 					<h1>Hello, your name is {name}</h1>
-					{/* You can directly add renderable variables into the JSX */}
+					{/*
+						You can directly add renderable variables into the JSX using
+						{variableName}. If the variable happens to be `null`, nothing
+						will be rendered!
+					*/}
 					{ageStatement}
 				</div>
 				{/* You can also evaluate functions, and render the result */}
@@ -88,10 +94,12 @@ export default class Hello extends Component {
 		const colors = ['red', 'blue', 'orange', 'purple'];
 		// If you aren't familiar with the map function, it just maps the values from
 		// one array onto another, new array, applying some transform along the way.
+		// In this case, the input array contains strings and the output array contains
+		// renderable React components.
 		// It is commonly used to render lists of React components. But if you do this,
 		// you must include a `key` prop so that React can keep track of which one is which.
 		return colors.map((color) => {
-			// Here we use a React component rather than a boring old <div>.
+			// Here we use a real live React component rather than a boring old <div>.
 			// All the button does is call its `onClick` prop with its `color`
 			// prop as the argument whenever it is clicked. This is a common design
 			// pattern in React.
