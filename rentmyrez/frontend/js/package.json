@@ -4,11 +4,14 @@
   "description": "Static files for the rent-my-rez application.",
   "main": "bundle.js",
   "scripts": {
-    "test": "echo \"Should have written tests\""
+    "test": "echo \"Should have written tests\"",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-eslint": "^6.0.4",
     "immutable": "^3.8.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
