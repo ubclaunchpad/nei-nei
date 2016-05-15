@@ -66,3 +66,9 @@ target/
 
 # Virtual Environment
 venv/
+
+# Compiled Javascript/CSS
+**/dist/
+
+# NPM stuff
+**/node_modules/
