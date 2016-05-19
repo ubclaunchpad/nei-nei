@@ -9,6 +9,7 @@ module.exports = {
 		"react"
 	],
 	"rules": {
+		"block-spacing": ["error", "never"],
 		"comma-dangle": ["error", "never"],
 		"indent": ["error", "tab"],
 		"new-cap": 0,
