@@ -2,9 +2,9 @@ import {connect} from 'react-redux';
 import Search from './../components/Search';
 import {updateText} from './../actions/creators';
 
-const mapStateToProps = state => ({text: state.text});
+const mapStateToProps = (state) => ({text: state.get('text')});
 
-const mapDispatchToProps = dispatch => ({update: t => dispatch(updateText(t))});
+const mapDispatchToProps = (dispatch) => ({update: e => dispatch(updateText(e.target.value))});
 
 const SearchContainer = connect(
 	mapStateToProps,
