@@ -11,3 +11,7 @@ class House(models.Model):
     rent = models.IntegerField()
     posted = models.DateField()
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    def __unicode__(self):
+        to_string = ', '.join([str(self.latitude), str(self.longitude)])
+        return to_string
