@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from houseing_heatmap import House
+
+admin.site.register(House)
