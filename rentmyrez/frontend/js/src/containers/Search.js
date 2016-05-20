@@ -4,7 +4,9 @@ import {updateText} from './../actions/creators';
 
 const mapStateToProps = (state) => ({text: state.get('text')});
 
-const mapDispatchToProps = (dispatch) => ({update: e => dispatch(updateText(e.target.value))});
+const mapDispatchToProps = (dispatch) => (
+	{update: event => dispatch(updateText(event.target.value))}
+);
 
 const SearchContainer = connect(
 	mapStateToProps,
