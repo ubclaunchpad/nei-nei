@@ -11,6 +11,3 @@ class House(models.Model):
     rent = models.IntegerField()
     posted = models.DateField()
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
-    def __unicode__(self):
-        return self.uuid

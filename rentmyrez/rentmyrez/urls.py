@@ -18,6 +18,7 @@ from django.conf.urls import patterns, url, include
 from listings.views import ListingViewSet
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
+from housing_heatmap import views
 
 router = DefaultRouter()
 router.register(r'listings', ListingViewSet)
@@ -26,4 +27,6 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api-token-auth/', views.obtain_auth_token)
+    url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^', include('housing_heatmap.urls')),
+]

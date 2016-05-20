@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from houseing_heatmap import House
+from housing_heatmap.models import House
 
 admin.site.register(House)
