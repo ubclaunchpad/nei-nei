@@ -1,3 +1,4 @@
-import {UPDATE_TEXT} from './types';
+import {LISTINGS_ADD} from './types';
 
-export const updateText = (text) => ({text, type: UPDATE_TEXT});
+// listings {Array<Object>}
+export const addListings = (listings) => ({listings, type: LISTINGS_ADD});

@@ -1,6 +1,6 @@
+import Map from './../containers/Map';
 import React from 'react';
-import Search from './../containers/Search';
 
-const App = () => <Search />;
+const App = () => <Map />;
 
 export default App;

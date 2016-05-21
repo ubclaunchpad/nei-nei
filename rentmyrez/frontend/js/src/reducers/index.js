@@ -1,12 +1,14 @@
 import Immutable from 'immutable';
-import {UPDATE_TEXT} from './../actions/types';
+import {LISTINGS_ADD} from './../actions/types';
 
-const initialState = Immutable.fromJS({text: ''});
+const initialState = Immutable.fromJS({
+	listings: []
+});
 
 export default function App (state = initialState, action) {
 	switch (action.type) {
-		case UPDATE_TEXT:
-			return state.set('text', action.text);
+		case LISTINGS_ADD:
+			return state.set('listings', state.get('listings').push(...action.listings));
 		default:
 			return initialState;
 	}
