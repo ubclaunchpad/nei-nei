@@ -10,6 +10,6 @@ function getPostings (cb) {
 	request
 		.get('/api/postings')
 		.end(function (err, res) {
-			cb(res);
+			cb(err, res);
 		});
 }
