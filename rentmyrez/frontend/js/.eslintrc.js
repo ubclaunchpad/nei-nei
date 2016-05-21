@@ -9,8 +9,9 @@ module.exports = {
 		"react"
 	],
 	"rules": {
+		"block-spacing": ["error", "never"],
 		"comma-dangle": ["error", "never"],
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", {SwitchCase: 1}],
 		"new-cap": 0,
 		"no-underscore-dangle": 0,
 		"object-curly-spacing": 0,
@@ -18,6 +19,7 @@ module.exports = {
 		"react/jsx-indent": ["error", "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
 		"react/sort-comp": 0,
+		"sort-imports": ["error", {ignoreCase: true}],
 		"space-before-function-paren": 0
 	}
 };
