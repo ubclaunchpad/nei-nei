@@ -3,8 +3,8 @@ var map;
 function initMap() {
 	var mapDiv = document.getElementById('map');
 	map = new google.maps.Map(mapDiv, {
-		center: {lat: 44.540, lng: -78.546},
-		zoom: 8,
+		center: {lat: 49.2827, lng: -123.1207},
+		zoom: 3,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
@@ -37,7 +37,22 @@ function getCircle(magnitude) {
 }
 
 window.eqfeed_callback = function (results) {
-  map.data.addGeoJson(results);
+	var heatmapData = [];
+	for (var i = 0; i < results.features.length; i++) {
+		var coords = results.features[i].geometry.coordinates;
+		var latLng = new google.maps.LatLng(coords[1], coords[0]);
+		var magnitude = results.features[i].properties.mag;
+      var weightedLoc = {
+        location: latLng,
+        weight: Math.pow(2, magnitude)
+      };
+		heatmapData.push(latLng);
+	}
+	var heatmap = new google.maps.visualization.HeatmapLayer({
+		data: heatmapData,
+		dissipating: false,
+		map: map
+	});
 }
 
 function getPostings (cb) {
