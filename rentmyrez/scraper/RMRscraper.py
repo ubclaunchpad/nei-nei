@@ -2,57 +2,95 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
+from selenium import webdriver
+import pymysql
+import time
 import re
 
-# Create initial url to scrape and a BS object from that url
-html = urlopen("https://...")
-bsObj = BeautifulSoup(html)
+# PyMySQL connects scraper to MySQL database
+conn = pymysql.connect(host='localhost',
+                       user='root',
+                       password='XXXX', # use your local db's pw
+                       db='mysql')      # keep this
 
-# Steps into each link on a page
-#   When each link has be searched, move on to next page
-#   Stop searching when post time > 7 days old
+curr = conn.cursor()
+curr.execute("USE RMRscraper")
 
+# Generate SQL queries
+# Note: add imgPath once a filing system for images of rentals has been defined
+def store(extURL, listAddr, price, numBeds):
+    curr.execute("INSERT INTO listings (extURL, listAddr, price, numBeds) VALUES (\"%s\", \"%s\", \"%s\", \"%s\")", (extURL, listAddr, price, numBeds))
+    curr.connection.commit()
+    # curr.execute("ALTER IGNORE TABLE listings ADD UNIQUE (extURL)", (extURL))
+    # curr.connection.commit()
 
-# Searches each page link for UBC residences (unnecessary if looking in a broader scope)
-#   If residence is listed on UBC campus as one of:
-#       Marine Drive, Thunderbird, Ponderosa Commons, Fraser Hall
-#   find:
-#       pricing information, number of rooms in residence (can be null), type of room (studio/single), GPS (can be null), furnished flag, picture (can be null), availability
-#   else go to next link on page
+# Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
+pjs = webdriver.PhantomJS()
+# pjs.get("https://www.padmapper.com/?viewType=LIST&lat=49.222899&lng=-123.038579&zoom=10&minRent=100&maxRent=5000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false")
+pjs.get("file:///home/estro/GitHub/rent-my-rez/rentmyrez/scraper/sample.html")
+pageSource = pjs.page_source
 
+# Create a BS object from driver's page source
+bsObj = BeautifulSoup(pageSource)
 
-# Find posting date
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> div class="postinginfos" -> p class="postinginfo" -> time
-#   Form: YEAR-MONTH-DAY H:MM(pm|am)
+# Get immediate child of listing-preview that contains URL to actual posting
+#   Tag: a href="URL"
+def getExtURL(post):
+    extURL = post.find("a")
+    extURL = extURL['href']
+    return extURL
 
+# Get listing pic
+#   Tag: div class="listing-image" data-original="PIC URL"
+# def getListImg(post):
+#     listImg = post.find("div", {"class":"listing-image"})
+#     listImg = listImg['data-original']
+#     #print("URL found:", listImg)
+#     return listImg
 
-# Find pricing information
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> h2 class="postingtitle" -> span class="postingtitletext" -> span class="price"
-#   Form: \$\d+ ex. $1350
+# Get listing address
+#   Tag: div class="listing-address"
+#   Ex. Kitchener St, Vancouver, BC, V5K 3C8
+def getListAddr(post):
+    listAddr = post.find("div", {"class":"listing-address"}).get_text()
+    #print("Listing Address found:", listAddr)
+    return listAddr
 
+# Get price per month
+#   Tag: immediate div child of div class="listing-properties"
+#   Ex. $706
+def getPrice(post):
+    price = post.find("div", {"class":"listing-properties"}).find("div").get_text()
+    price = int(re.sub('[\$\,]', '', price))
+    #print("Listing Address found:", price)
+    return price
 
-# Find number of rooms, baths in residence
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> h2 class="postingtitle" -> span class="postingtitletext" -> span class="housing"
-#   Form: \/\s(\d){0,2}(br)?\s-\s(\d+ft)*
-#   Alt tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> div class="mapAndAttrs" -> p class="attrgroup" (2nd one) -> span -> b BR b Ba-> br -> span -> b \d+
+# Get number of beds
+#   Tag: div class="listing-num-bedrooms"
+#   Ex. 1 Bed (Can be studio)
+def getNumBeds(post):
+    numBeds = post.find("div", {"class":"listing-num-bedrooms"}).get_text()
+    studio = re.compile("[Studio]*?")
+    if (studio.match(numBeds)): # studios are 1 br
+        numBeds = 1
+    else:
+        numBeds = int(re.sub('[Beds]', '', numBeds.strip()))
+    #print("Listing Address found:", numBeds)
+    return numBeds
 
+posts = 0
+# Get a posting preview div on page
+#   Tag: div class="listing-preview"
+for post in bsObj.findAll("div", {"class":"listing-preview"}):
+    if (post.get_text() == ''): break # scraper has hit the last div so end
+    try:
+        store(getExtURL(post), getListAddr(post), getPrice(post), getNumBeds(post))
+        posts += 1
+    except TypeError:
+        pass
 
+print("Finished storing " + str(posts) + " listings")
 
-# Find type of room
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> h2 class="postingtitle" -> span class="postingtitletext" -> span class="housing" -> span id="titletextonly"
-
-
-# Find GPS/Google maps
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> div class="mapAndAttrs" -> div class="mapbox" -> (div id="map" data-latitude="\d{1,3}\.\d+" data-longitude="\d{1,3}\.\d+") || (p class="mapaddress" -> small -> a href="https://maps.google.com/[\w\d\%\+\-\=]+")
-
-
-# Find furnishing information (smoking, pets etc.)
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> div class="mapAndAttrs" -> p class="attrgroup" (2nd one) -> span -> br -> span ...
-
-
-# Find picture(s)
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> figure class="iw multiimage" -> div class="gallery" -> div class="swipe" -> div class="swipe-wrap" -> div class="slide first visible" -> img src="URL we want"
-
-
-# Find availability
-#   Tag order: body -> section id="pagecontainer" -> section class="body" -> section class="userbody" -> div class="mapAndAttrs" -> p class="attrgroup" (1st one) -> span class="housing_movein_now property_date" date="20\d{2}-\d\d-\d\d"
+pjs.close()
+curr.close()
+conn.close()
