@@ -1,0 +1,20 @@
+CREATE DATABASE RMRscraper
+
+USE RMRscraper
+
+CREATE TABLE listings (listingID BIGINT(10) NOT NULL AUTO_INCREMENT,
+                       extURL VARCHAR(500) NOT NULL,
+                       imgPath VARCHAR(100),
+                       listAddr VARCHAR(200) NOT NULL,
+                       price INTEGER NOT NULL,
+                       numBeds INTEGER,
+                       created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       PRIMARY KEY (listingID));
+
+ALTER TABLE listings CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE listings CHANGE extURL extURL VARCHAR(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE listings CHANGE imgPath imgPath VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+ALTER TABLE listings CHANGE listAddr listAddr VARCHAR(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
