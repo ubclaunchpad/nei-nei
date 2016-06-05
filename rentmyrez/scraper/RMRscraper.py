@@ -1,5 +1,5 @@
 from urllib.request import urlopen
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -11,7 +11,7 @@ import logging
 # PyMySQL connects scraper to MySQL database
 connection = pymysql.connect(host='localhost',
                        user='root',
-                       password='XXXX', # use your local db's pw
+                       password='&L4u*cHp4d', # use your local db's pw
                        db='mysql')      # keep this
 
 cursor = connection.cursor()
@@ -24,7 +24,9 @@ def storePrelim(extURL, listAddr, price, numBeds):
     if not (standard.match(extURL)): extURL = NULL
     cursor.execute("INSERT INTO listings (extURL, listAddr, price, numBeds) VALUES (\"%s\", \"%s\", %s, %s)", (extURL, listAddr, price, numBeds))
     cursor.connection.commit()
-    # cursor.execute("ALTER IGNORE TABLE listings ADD UNIQUE (extURL)", (extURL))
+
+    #TODO: only add new postings if link is not present in the table
+    # cursor.execute("ALTER IGNORE TABLE listings ADD UNIQUE extURL", extURL)
     # cursor.connection.commit()
 
 def storeLatLon(lat, lon, lid):
@@ -38,9 +40,12 @@ def getURLs():
 
 # Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
 pjs = webdriver.PhantomJS()
-# pjs.get("https://www.padmapper.com/?viewType=LIST&lat=49.222899&lng=-123.038579&zoom=10&minRent=100&maxRent=5000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false")
-pjs.get("file:///home/estro/GitHub/rent-my-rez/rentmyrez/scraper/sample.html")
+pjs.get("https://www.webpage.com")
 pageSource = pjs.page_source
+
+# Scrolling function
+# TODO: use PhantomJS' scrollTop property to load all dynamic content
+
 
 # Create a BS object from driver's page source
 bsObj = BeautifulSoup(pageSource)
@@ -52,7 +57,7 @@ def getExtURL(post):
     extURL = extURL['href']
     return extURL
 
-# Get listing pic
+# TODO: Get listing pic
 #   Tag: div class="listing-image" data-original="PIC URL"
 # def getListImg(post):
 #     listImg = post.find("div", {"class":"listing-image"})
@@ -109,30 +114,37 @@ print("Finished storing " + str(posts) + " listings.")
 # DB will be updated on each link entry
 numLinks = 0
 listToCrawl = getURLs()
-print("Finding latitudes and longitudes for " + len(listToCrawl) + " listings.")
-for link[1] in listToCrawl: # link[1] gets the url from returned tuples
+print("Finding latitudes and longitudes for " + str(len(listToCrawl)) + " listings.")
+for pair in listToCrawl: # pair[1] gets the url from returned tuples
     airbnb = re.compile("http\:\/\/[(www)?\.airbnb\.com\/rooms\/[\d\w\?\-\=]*")
-    # Load link into PhantomJS
-    html = urlopen(str(link))
-    bsObj = BeautifulSoup(html)
-    # If the link leads to an AirBnB page
-    if (airbnb.match(link)):
-        latLonTag = "airbedandbreakfast"
-    # Otherwise the link is a padmapper page
-    else:
-        latLonTag = "place"
-    # Find latitude and longitude for a post
-    # Each can be found in page metadata (super easy yay)
-    lat = bsObj.find("meta", {"property":latLonTag+":location:latitude"})['content'].get_text()
-    lon = bsObj.find("meta", {"property":latLonTag+":location:longitude"})['content'].get_text()
+    # Load pair into PhantomJS
+    lid  = pair[0]
+    link = str(pair[1])
+    print(link)
     try:
-        storeLatLon(lat, lon, link[0])
-        numLinks += 1
-    except: # if an exception is raised, record traceback
-        logging.basicConfig(filename="store_latlon.log", level=logging.DEBUG)
-        logging.exception('storeLatLon()', exc_info=True)
+        html = urlopen(link)
+        bsObj = BeautifulSoup(html)
+        # If the pair leads to an AirBnB page
+        if (airbnb.match(link)):
+            latLonTag = "airbedandbreakfast"
+        # Otherwise the pair is a padmapper page
+        else:
+            latLonTag = "place"
+        # Find latitude and longitude for a post
+        # Each can be found in page metadata (super easy yay)
+        lat = bsObj.find("meta", {"property":latLonTag+":location:latitude"})['content']
+        lon = bsObj.find("meta", {"property":latLonTag+":location:longitude"})['content']
+        try:
+            storeLatLon(lat, lon, lid)
+            numLinks += 1
+        except: # if an exception is raised, record traceback
+            logging.basicConfig(filename="store_latlon.log", level=logging.DEBUG)
+            logging.exception('storeLatLon()', exc_info=True)
+            pass
+    except URLError:
         pass
 
+print("Finished finding latitudes and longitudes for " + str(numLinks) + " listings.")
 pjs.close()
 cursor.close()
 connection.close()
