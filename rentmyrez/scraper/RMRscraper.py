@@ -6,23 +6,35 @@ from selenium import webdriver
 import pymysql
 import time
 import re
+import logging
 
 # PyMySQL connects scraper to MySQL database
-conn = pymysql.connect(host='localhost',
+connection = pymysql.connect(host='localhost',
                        user='root',
                        password='XXXX', # use your local db's pw
                        db='mysql')      # keep this
 
-curr = conn.cursor()
-curr.execute("USE RMRscraper")
+cursor = connection.cursor()
+cursor.execute("USE RMRscraper")
 
 # Generate SQL queries
 # Note: add imgPath once a filing system for images of rentals has been defined
-def store(extURL, listAddr, price, numBeds):
-    curr.execute("INSERT INTO listings (extURL, listAddr, price, numBeds) VALUES (\"%s\", \"%s\", \"%s\", \"%s\")", (extURL, listAddr, price, numBeds))
-    curr.connection.commit()
-    # curr.execute("ALTER IGNORE TABLE listings ADD UNIQUE (extURL)", (extURL))
-    # curr.connection.commit()
+def storePrelim(extURL, listAddr, price, numBeds):
+    standard = re.compile("http\:\/\/[(www)?\.[(padmapper\.com\/listings\/[\d\w\.\-\=]*) || (airbnb\.com\/rooms\/[\d\w\?\-\=]*)")
+    if not (standard.match(extURL)): extURL = NULL
+    cursor.execute("INSERT INTO listings (extURL, listAddr, price, numBeds) VALUES (\"%s\", \"%s\", %s, %s)", (extURL, listAddr, price, numBeds))
+    cursor.connection.commit()
+    # cursor.execute("ALTER IGNORE TABLE listings ADD UNIQUE (extURL)", (extURL))
+    # cursor.connection.commit()
+
+def storeLatLon(lat, lon, lid):
+    cursor.execute("UPDATE listings SET latitude=%(lat)s, longitude=%(lon)s WHERE listingID = %(lid)s", {'lat':lat, 'lon':lon, 'lid':lid})
+    cursor.connection.commit()
+
+def getURLs():
+    cursor.execute("SELECT listingID, extURL FROM listings WHERE extURL IS NOT NULL")
+    links = cursor.fetchall()
+    return links
 
 # Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
 pjs = webdriver.PhantomJS()
@@ -78,19 +90,49 @@ def getNumBeds(post):
     #print("Listing Address found:", numBeds)
     return numBeds
 
-posts = 0
 # Get a posting preview div on page
 #   Tag: div class="listing-preview"
+posts = 0
 for post in bsObj.findAll("div", {"class":"listing-preview"}):
     if (post.get_text() == ''): break # scraper has hit the last div so end
     try:
-        store(getExtURL(post), getListAddr(post), getPrice(post), getNumBeds(post))
+        storePrelim(getExtURL(post), getListAddr(post), getPrice(post), getNumBeds(post))
         posts += 1
-    except TypeError:
+    except:
+        logging.basicConfig(filename="store_prelim.log", level=logging.DEBUG)
+        logging.exception('storePrelim()', exc_info=True)
         pass
 
-print("Finished storing " + str(posts) + " listings")
+print("Finished storing " + str(posts) + " listings.")
+
+# Now to step into each link for latitudes and longitudes
+# DB will be updated on each link entry
+numLinks = 0
+listToCrawl = getURLs()
+print("Finding latitudes and longitudes for " + len(listToCrawl) + " listings.")
+for link[1] in listToCrawl: # link[1] gets the url from returned tuples
+    airbnb = re.compile("http\:\/\/[(www)?\.airbnb\.com\/rooms\/[\d\w\?\-\=]*")
+    # Load link into PhantomJS
+    html = urlopen(str(link))
+    bsObj = BeautifulSoup(html)
+    # If the link leads to an AirBnB page
+    if (airbnb.match(link)):
+        latLonTag = "airbedandbreakfast"
+    # Otherwise the link is a padmapper page
+    else:
+        latLonTag = "place"
+    # Find latitude and longitude for a post
+    # Each can be found in page metadata (super easy yay)
+    lat = bsObj.find("meta", {"property":latLonTag+":location:latitude"})['content'].get_text()
+    lon = bsObj.find("meta", {"property":latLonTag+":location:longitude"})['content'].get_text()
+    try:
+        storeLatLon(lat, lon, link[0])
+        numLinks += 1
+    except: # if an exception is raised, record traceback
+        logging.basicConfig(filename="store_latlon.log", level=logging.DEBUG)
+        logging.exception('storeLatLon()', exc_info=True)
+        pass
 
 pjs.close()
-curr.close()
-conn.close()
+cursor.close()
+connection.close()
