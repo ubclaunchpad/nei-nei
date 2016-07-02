@@ -1,6 +1,6 @@
-from urllib.request import urlopen
-from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
+from urllib2 import urlopen
+from urllib2 import HTTPError, URLError
+import urlparse
 from bs4 import BeautifulSoup
 import time
 import re

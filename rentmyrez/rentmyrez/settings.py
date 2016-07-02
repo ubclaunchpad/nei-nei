@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rmr_db',
-        'USER': 'admin',
-        'PASSWORD': 'steveiscool',
+        'USER': 'root',
+        'PASSWORD': 'simon',
         'HOST': 'localhost',
         'PORT': '',
     }
