@@ -19,26 +19,31 @@ className = 'listings-container'
 scrollName = 'may-scroll generic-list-container list-container'
 execute = "var lastTopPos = document.getElementsByClassName('"+className+"')[1].lastElementChild.offsetTop; " + "document.getElementsByClassName('"+scrollName+"')[0].scrollTop = lastTopPos;"
 
+# Loop to load as many postings as possible
 finalNumPosts = 0
 def checkIfMorePosts(browserObject, script, posts):
-
+    # Render page as page_source and BS objects
     currSource = browserObject.page_source
     currBSObj  = BeautifulSoup(currSource)
 
     i = 0
+    # Count all postings on current page
     for post in currBSObj.findAll("div", {"class":"listing-preview"}):
         i += 1
     print(str(i))
+    # If the number of postings hasn't increased by the second iteration, return
     if i == posts or i > 2000:
         finalNumPosts = i
         return 1
 
+    # Otherwise execute scrolling JavaScript again and recurse
     browserObject.execute_script(script)
     checkIfMorePosts(browserObject, script, i)
 
 
 checkIfMorePosts(pjs, execute, 0)
 
+# Final page_source and BS objects after all scrolling complete
 finalSource = pjs.page_source
 finalBSObj  = BeautifulSoup(finalSource)
 
@@ -58,6 +63,7 @@ postings = []
 if __name__ == '__main__':
     rmr.getPostsFromPage(finalBSObj, postings)
 
+# Output file, temporary
 with open('output.json', 'w') as fout:
     json.dump(postings, fout)
 
