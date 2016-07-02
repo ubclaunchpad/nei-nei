@@ -1,420 +1,593 @@
-<body class="search-page">
-<div class="app-banner app-banner-ios">
-<table>
-<tbody><tr>
-<td class="app-banner-close">
-<span class="app-banner-close-button">×</span>
-</td>
-<td class="app-banner-left">
-<div class="app-logo-holder" style="background-image:url(/static/images/pm_frog_icon_transparent_96x96.png)"></div>
-</td>
-<td class="app-banner-middle">
-<div class="app-name">PadMapper</div>
-<div class="app-description"></div>
-<div class="app-call-to-action">FREE - On the App Store</div>
-</td>
-<td class="app-banner-right">
+<!DOCTYPE html>
+<!-- saved from url=(0151)https://www.padmapper.com/?viewType=LIST&lat=49.247611&lng=-123.139878&zoom=12&minRent=100&maxRent=10000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:black;text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}</style><link type="text/css" rel="stylesheet" href="./sample_files/css"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400;text-decoration:none}.gm-style img{max-width:none}</style>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><script src="https://js-agent.newrelic.com/nr-952.min.js"></script><script async="" src="./sample_files/la.min.js"></script><script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script><script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAcOWVJAAQMJXVVbBQ=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,-1!==o.indexOf("dev")&&(s.dev=!0),-1!==o.indexOf("nr_dev")&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,o){try{d?d-=1:i("err",[o||new UncaughtException(t,e,n)])}catch(s){try{i("ierr",[s,(new Date).getTime(),!0])}catch(c){}}return"function"==typeof f?f.apply(this,a(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t){i("err",[t,(new Date).getTime()])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=window.onerror,u=!1,d=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),u=!0)}s.on("fn-start",function(t,e,n){u&&(d+=1)}),s.on("fn-err",function(t,e,n){u&&(this.thrown=!0,o(n))}),s.on("fn-end",function(){u&&!this.thrown&&d>0&&(d-=1)}),s.on("internal-error",function(t){i("ierr",[t,(new Date).getTime(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState";t("loader").features.stn=!0,t(6);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=Date.now())}),o.on(w,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,Date.now()])}),a.on(m,function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),a.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),this.bstType])}),s.on(m,function(){this.bstStart=Date.now()}),s.on(w,function(t,e){i(v,[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=Date.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,!1),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(17)(a),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){if(t[1]){var n=t[1];if("function"==typeof n){var r=c(n,"nr@wrapped",function(){return s(n,"fn-",null,n.name||"anonymous")});this.wrapped=t[1]=r}else"function"==typeof n.handleEvent&&s.inPlace(n,["handleEvent"],"fn-")}}),a.on(d+"-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{}],6:[function(t,e,n){var r=t("ee").get("history"),o=t(17)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,e,n){var r=t("ee").get("raf"),o=t(17)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration="number"==typeof t[1]?t[1]:0,t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(17)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,w,"fn-",s)}function i(t){v.push(t),h&&(g=-g,b.data=g)}function a(){for(var t=0;t<v.length;t++)r([],v[t]);v.length&&(v=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t(17)(u),l=NREUM.o,p=l.XHR,h=l.MO,m="readystatechange",w=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],v=[];e.exports=u;var y=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(m,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(p,y),y.prototype=p.prototype,d.inPlace(y.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var g=1,b=document.createTextNode(g);new h(a).observe(b,{characterData:!0})}else f.on("fn-end",function(t){t[0]&&t[0].type===m||a()})},{}],10:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;d>r;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var a=t.getResponseHeader("X-NewRelic-App-Data");a&&(e.cat=a.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,p&&(p>34||10>p)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var a=0;d>a;a++)e.addEventListener(u[a],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{}],11:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],12:[function(t,e,n){function r(t,e){return function(){o(t,[(new Date).getTime()].concat(a(arguments)),null,e)}}var o=t("handle"),i=t(15),a=t(16);"undefined"==typeof window.newrelic&&(newrelic=NREUM);var s=["setPageViewName","setCustomAttribute","finished","addToTrace","inlineHit"],c=["addPageAction"],f="api-";i(s,function(t,e){newrelic[e]=r(f+e,"api")}),i(c,function(t,e){newrelic[e]=r(f+e)}),e.exports=newrelic,newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),o("err",[t,(new Date).getTime()])}},{}],13:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],14:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],15:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],16:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],17:[function(t,e,n){function r(t){return!(t&&"function"==typeof t&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t){function e(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(u){d([u,"",[r,a,o],s])}f(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(l){throw f(e+"err",[r,a,l],s),l}finally{f(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,u(t,nrWrapper),nrWrapper)}function n(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function f(e,n,r){if(!c){c=!0;try{t.emit(e,n,r)}catch(o){d([o,e,n,r])}c=!1}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){d([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function d(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),e.inPlace=n,e.flag=a,e}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,a,i):i()}function n(n,r,o){t&&t(n,r,o);for(var i=e(o),a=l(n),s=a.length,c=0;s>c;c++)a[c].apply(i,r);var u=f[w[n]];return u&&u.push([v,n,r,i]),i}function d(t,e){m[t]=l(t).concat(e)}function l(t){return m[t]||[]}function p(t){return u[t]=u[t]||o(n)}function h(t,e){c(t,function(t,n){e=e||"feature",w[n]=e,e in f||(f[e]=[])})}var m={},w={},v={on:d,emit:n,get:p,listeners:l,context:e,buffer:h};return v}function i(){return new r}var a="nr@context",s=t("gos"),c=t(15),f={},u={},d=e.exports=o();d.backlog=f},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!g++){var t=y.info=NREUM.info,e=u.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){c(w,function(e,n){t[e]||(t[e]=n)});var n="https"===m.split(":")[0]||t.sslForHttp;y.proto=n?"https://":"http://",s("mark",["onload",a()],null,"api");var r=u.createElement("script");r.src=y.proto+t.agent,e.parentNode.insertBefore(r,e)}}}function o(){"complete"===u.readyState&&i()}function i(){s("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var s=t("handle"),c=t(15),f=window,u=f.document,d="addEventListener",l="attachEvent",p=f.XMLHttpRequest,h=p&&p.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:p,REQ:f.Request,EV:f.Event,PR:f.Promise,MO:f.MutationObserver},t(12);var m=""+location,w={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-952.min.js"},v=p&&h&&h[d]&&!/CriOS/.test(navigator.userAgent),y=e.exports={offset:a(),origin:m,features:{},xhrWrappable:v};u[d]?(u[d]("DOMContentLoaded",i,!1),f[d]("load",r,!1)):(u[l]("onreadystatechange",o),f[l]("onload",r)),s("mark",["firstbyte",a()],null,"api");var g=0},{}]},{},["loader",2,10,4,3]);</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","queueTime":0,"licenseKey":"9872c1b3ba","agent":"","transactionName":"NgcEN0oAV0MABxBcCg9NIBZWAk1ZDgpLUxcODBIGVgUXQwQFFlYNWxEDAkoCUQ==","applicationID":"9099492","errorBeacon":"bam.nr-data.net","applicationTime":139}</script>
+    <meta name="csrf-token" content="1467151575##088d99b03266f9e88b69831ac4f572b248b5e361">
+    <meta name="referrer" content="unsafe-url">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <link rel="shortcut icon" type="image/png" href="https://www.padmapper.com/static/images/pm_frog_icon_transparent_32x32.png">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="/static/js/respond.js"></script>
+    <![endif]-->
+
+    <!-- Track this pageview in google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-6234140-3', 'auto');
+
+
+
+      ga('send', 'pageview');
+    </script>
+
+    <!-- Bootstrap core css -->
+    <link href="./sample_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./sample_files/bootstrap-toggle.min.css" rel="stylesheet">
+
+    <!-- Page-specific css -->
+    <link href="./sample_files/styles.css" rel="stylesheet">
+
+
+    <!-- SEO and social goodies -->
+
+
+
+
+
+  <meta name="description" content="Find the perfect rental on PadMapper, with one million apartments for rent, condos, houses, and sublets from many different websites. Bedroom, bathroom, and rent filters make it easy to narrow down thousands of apartments to find your perfect home.">
+  <meta property="og:url" content="https://www.padmapper.com/">
+
+  <meta property="og:title" content="PadMapper - Making Apartment Hunting Suck Less">
+  <meta property="og:description" content="More apartments across the US and Canada than you can shake a stick at!">
+  <meta property="og:type" content="place">
+  <meta property="place:location:latitude" content="40.78">
+  <meta property="place:location:longitude" content="-73.95">
+  <meta property="place:street_address" content="">
+  <meta property="place:locality" content="">
+  <meta property="place:region" content="">
+  <meta property="place:postal_code" content="">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:site" content="@padmapper">
+  <meta property="twitter:title" content="PadMapper - Making Apartment Hunting Suck Less">
+  <meta property="twitter:description" content="More apartments across the US and Canada than you can shake a stick at!">
+
+    <meta property="og:image" content="https://www.padmapper.com/static/images/padlord_fb.jpg">
+    <meta property="twitter:image" content="https://www.padmapper.com/static/images/pm_frog_icon_large_transparent.png">
+
+
+    <!-- Page title -->
+    <title>Apartments for Rent - Apartment Finder from Hundreds of Sources | Padmapper</title>
+  <style>@-webkit-keyframes popeiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor {50% {-webkit-transform:scale(1.2);}100% {-webkit-transform:scale(1);}}@keyframes popeiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor {50% {-webkit-transform:scale(1.2);transform:scale(1.2);}100% {-webkit-transform:scale(1);transform:scale(1);}}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:solid 2px #fff !important;box-sizing:content-box !important;color:#fff !important;display:block !important;height:auto !important;margin:0 !important;opacity:0.9 !important;padding:7px 10px !important;position:fixed !important;visibility:visible !important;width:auto !important;z-index:2147483647 !important;-webkit-border-radius:5px !important;-webkit-box-shadow:0px 0px 20px #000 !important;-webkit-box-sizing:content-box !important;}.eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor-blocked{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;color:#AAA !important;display:inline !important;text-decoration:line-through !important;}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor br{display:block !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor span{background:transparent !important;padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor div{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;border:0 !important;margin:0 !important;padding:0 !important;width:auto !important;letter-spacing:normal !important;font:13px Arial,Helvetica !important;text-align:left !important;text-shadow:none !important;text-transform:none !important;word-spacing:normal !important;}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor a{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;font-weight:normal !important;background:none !important;text-decoration:underline !important;color:#fff !important;}a#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor-gear{padding:0;margin:0;font:13px Arial,Helvetica;text-transform:none;font-size: 100%;vertical-align:baseline;line-height:normal;color:#fff;position:static;text-decoration:none !important;position:absolute !important;display:none !important;font-size:20px !important;width:20px !important;height:20px !important;line-height:20px !important;text-align:center !important;background-color:rgba(255,255,255,.8) !important;background-image:url(chrome-extension://mlomiejdfkolichcflejclcbmpeaniij/data/images/gear.svg) !important;background-size:16px 16px !important;background-position:center center !important;background-repeat:no-repeat !important;text-decoration:none !important;}a#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor-gear:hover{-webkit-animation-name:popeiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor !important;animation-name:popeiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor !important;-webkit-animation-duration:0.3s !important;animation-duration:0.3s !important;}#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor:hover #eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor-gear{text-decoration:none !important;display:inline-block !important;}@media print{#eiyjhgwtsdaormhwijicvphkmivbwsimjxladbugfrhvfbpousor{display:none !important;}}</style><script type="text/javascript" charset="UTF-8" src="./sample_files/common.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/map.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/overlay.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/util.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/onion.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/stats.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/controls.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/marker.js"></script><script type="text/javascript" charset="UTF-8" src="./sample_files/geocoder.js"></script></head>
+
+  <body class="search-page">
+
+    <div class="app-banner app-banner-ios">
+  <table>
+    <tbody><tr>
+      <td class="app-banner-close">
+        <span class="app-banner-close-button">×</span>
+      </td>
+      <td class="app-banner-left">
+        <div class="app-logo-holder" style="background-image:url(/static/images/pm_frog_icon_transparent_96x96.png)"></div>
+      </td>
+      <td class="app-banner-middle">
+        <div class="app-name">PadMapper</div>
+        <div class="app-description"></div>
+        <div class="app-call-to-action">FREE - On the App Store</div>
+      </td>
+      <td class="app-banner-right">
         VIEW
       </td>
-</tr>
-</tbody></table>
+    </tr>
+  </tbody></table>
 </div>
-<div class="app-banner app-banner-android">
-<table>
-<tbody><tr>
-<td class="app-banner-close">
-<span class="app-banner-close-button">×</span>
-</td>
-<td class="app-banner-left">
-<div class="app-logo-holder" style="background-image:url(/static/images/pm_frog_icon_transparent_96x96.png)"></div>
-</td>
-<td class="app-banner-middle">
-<div class="app-name">PadMapper</div>
-<div class="app-description"></div>
-<div class="app-call-to-action">FREE - On the Play Store</div>
-</td>
-<td class="app-banner-right">
+
+    <div class="app-banner app-banner-android">
+  <table>
+    <tbody><tr>
+      <td class="app-banner-close">
+        <span class="app-banner-close-button">×</span>
+      </td>
+      <td class="app-banner-left">
+        <div class="app-logo-holder" style="background-image:url(/static/images/pm_frog_icon_transparent_96x96.png)"></div>
+      </td>
+      <td class="app-banner-middle">
+        <div class="app-name">PadMapper</div>
+        <div class="app-description"></div>
+        <div class="app-call-to-action">FREE - On the Play Store</div>
+      </td>
+      <td class="app-banner-right">
         VIEW
       </td>
-</tr>
-</tbody></table>
+    </tr>
+  </tbody></table>
 </div>
-<nav class="navbar navbar-default navbar-fixed-top">
-<div class="container-fluid header">
-<div class="header-left">
-<a href="/" onclick="PadMapper.util.Analytics.trackEvent('Map', 'Logo')">
-<img class="padmapper-button visible-xs" src="/static/images/pm_frog.svg"/>
-<img class="padmapper-button padmapper-button-large hidden-xs" src="/static/images/pm_frog_and_text.svg"/>
-</a>
-</div>
-<div class="header-right">
-<a class="btn btn-primary view-button" href="/?viewType=LOGIN" id="login-button">Sign In</a>
-</div>
-<div class="header-middle">
-<div class="hop-to-container">
-<table>
-<tbody><tr>
-<td class="magnifying-glass-container">
-<div class="magnifying-glass" style="background-image:url(/static/images/magnifying_glass%402x.png)"></div>
-</td>
-<td>
-<form action="/">
-<input id="hop-to" name="addressString" placeholder="Where to?" type="search"/>
-</form>
-</td>
-</tr>
-</tbody></table>
-</div>
-</div>
-</div>
-<div class="halo-container opaque">
-<div class="halo">
-<a class="btn btn-default sidebar-button filter-view-button" href="/?maxBR=10&amp;minRent=100&amp;zoom=10&amp;minBA=1&amp;dogs=false&amp;sidebarViewType=FILTER&amp;cats=false&amp;maxRent=5000&amp;lat=49.222899&amp;lng=-123.038579&amp;viewType=LIST&amp;minBR=0" style="float:right">Filters</a>
-<a class="btn btn-default post-a-pad-button" href="http://www.padlister.com/listings/new" onclick="PadMapper.util.Analytics.trackEvent('View', 'PostPad')" style="float:right; margin-right:4px" target="_blank">Post a Pad</a>
-<a class="btn btn-link view-button map-view-button" href="/?maxBR=10&amp;minRent=100&amp;zoom=10&amp;minBA=1&amp;dogs=false&amp;cats=false&amp;maxRent=5000&amp;lat=49.222899&amp;lng=-123.038579&amp;viewType=MAP&amp;minBR=0">Map</a>
-<a class="btn btn-link view-button list-view-button selected" href="/?maxBR=10&amp;minRent=100&amp;zoom=10&amp;minBA=1&amp;dogs=false&amp;cats=false&amp;maxRent=5000&amp;lat=49.222899&amp;lng=-123.038579&amp;viewType=LIST&amp;minBR=0">List</a>
-<a class="btn btn-link view-button favorites-view-button" href="/?maxBR=10&amp;minRent=100&amp;zoom=10&amp;minBA=1&amp;dogs=false&amp;cats=false&amp;maxRent=5000&amp;lat=49.222899&amp;lng=-123.038579&amp;viewType=FAVORITES&amp;minBR=0">Favorites</a>
-</div>
-</div>
-</nav>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid header">
+        <div class="header-left">
+          <a href="https://www.padmapper.com/" onclick="PadMapper.util.Analytics.trackEvent(&#39;Map&#39;, &#39;Logo&#39;)">
+            <img class="padmapper-button visible-xs" src="./sample_files/pm_frog.svg">
+            <img class="padmapper-button padmapper-button-large hidden-xs" src="./sample_files/pm_frog_and_text.svg">
+          </a>
+        </div>
+        <div class="header-right">
+          <a href="https://www.padmapper.com/?viewType=LOGIN" id="login-button" class="btn btn-primary view-button">Sign In</a>
+        </div>
+        <div class="header-middle">
+          <div class="hop-to-container">
+            <table>
+              <tbody><tr>
+                <td class="magnifying-glass-container">
+                  <div class="magnifying-glass" style="background-image:url(/static/images/magnifying_glass%402x.png)"></div>
+                </td>
+                <td>
+                  <form action="https://www.padmapper.com/">
+                    <input id="hop-to" name="addressString" placeholder="Where to?" type="search">
+                  </form>
+                </td>
+              </tr>
+            </tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <div class="halo-container opaque">
+        <div class="halo">
+          <a href="https://www.padmapper.com/?sidebarViewType=FILTER" class="btn btn-default sidebar-button filter-view-button btn-success" style="float:right">Filters</a>
+          <a href="https://www.zumper.com/pro/home#!/listings/new" target="_blank" class="btn btn-default post-a-pad-button" style="float:right; margin-right:4px" onclick="PadMapper.util.Analytics.trackEvent(&#39;View&#39;, &#39;PostPad&#39;)">Post a Pad</a>
+          <a href="https://www.padmapper.com/?viewType=MAP" class="btn btn-link view-button map-view-button">Map</a>
+          <a href="https://www.padmapper.com/?viewType=LIST" class="btn btn-link view-button list-view-button selected">List</a>
+          <a href="https://www.padmapper.com/?viewType=FAVORITES" class="btn btn-link view-button favorites-view-button">Favorites</a>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-fluid container-whole-page">
-<div class="jsok row" style="display: block;">
-<div style="display:table; position:relative; height:100%; width:100%">
-<div style="display:table-row">
-<div class="content-col">
-<div style="position:relative; height:100%; width:100%">
-<div class="map-container" id="map-container" style="position:absolute; top:0; bottom:0; left:0; right:0; overflow-y:auto">
-<div class="may-scroll login-form-container" style="display: none;"><div class="row">
-<div class="auth-form login-form col-xs-12" style="display: block;">
-<form>
-<h2>Sign in to save your favorite listings and create email alerts</h2>
-<div class="login-message-console"></div>
-<div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"/></div>
-<div class="form-group-password form-group"><input class="form-control login-password" placeholder="Password" type="password"/></div>
-<button class="login-button btn btn-primary">Sign In</button>
-</form>
-<div class="button-divider"><span>OR</span></div>
-<button class="signup-button btn btn-success">Sign Up</button>
-<button class="forgot-password-button btn btn-link">Forgot your password?</button>
+  <div class="jsok row" style="display: block;">
+    <div style="display:table; position:relative; height:100%; width:100%">
+      <div style="display:table-row">
+        <div class="content-col">
+          <div style="position:relative; height:100%; width:100%">
+            <div id="map-container" class="map-container" style="position:absolute; top:0; bottom:0; left:0; right:0; overflow-y:auto">
+              <div class="may-scroll login-form-container" style="display:none"><div class="row">
+  <div class="auth-form login-form col-xs-12" style="display: block;">
+    <form>
+      <h2>Sign in to save your favorite listings and create email alerts</h2>
+      <div class="login-message-console"></div>
+
+      <div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"></div>
+      <div class="form-group-password form-group"><input class="form-control login-password" type="password" placeholder="Password"></div>
+
+      <button class="login-button btn btn-primary">Sign In</button>
+    </form>
+
+    <div class="button-divider"><span>OR</span></div>
+    <button class="signup-button btn btn-success">Sign Up</button>
+    <button class="forgot-password-button btn btn-link">Forgot your password?</button>
+  </div>
+
+  <div class="auth-form signup-form col-xs-12" style="display: none;">
+    <form>
+      <h2>Create an account</h2>
+      <div class="login-message-console"></div>
+
+      <div class="form-group-name form-group"><input class="form-control login-name" placeholder="Name"></div>
+      <div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"></div>
+      <div class="form-group-password form-group"><input class="form-control login-password" type="password" placeholder="Password"></div>
+      <div class="form-group-password-confirmation form-group"><input class="form-control login-password-confirmation" type="password" placeholder="Confirm Password"></div>
+
+      <button class="signup-button btn btn-success">Sign Up</button>
+    </form>
+    <button class="login-button btn btn-link">Back to log in</button>
+  </div>
+
+  <div class="auth-form reset-password-form col-xs-12" style="display: none;">
+    <form>
+      <h2>Reset your password</h2>
+      <div class="login-message-console"></div>
+
+      <div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"></div>
+
+      <button class="reset-password-button btn btn-primary">Reset Password</button>
+      <button class="login-button btn btn-link">Back to log in</button>
+    </form>
+  </div>
+
+  <div class="auth-form logout-form col-xs-12" style="display: none;">
+    <h2 class="logged-in-user-name">Not logged in</h2>
+    <div class="logged-in-user-pic" style="background-image: url(&quot;/static/images/no_avatar.png&quot;);"></div>
+    <button class="logout-button btn btn-primary">Logout</button>
+
+    <div style="border-top:1px solid #eee; padding-top:2px; margin-top:30px">
+      <form>
+        <h3>Change your password</h3>
+        <div class="login-message-console"></div>
+        <div class="form-group-password form-group"><input type="password" class="form-control login-password" placeholder="New Password"></div>
+        <div class="form-group-password-confirmation form-group"><input type="password" class="form-control login-password-confirmation" placeholder="Confirm New Password"></div>
+        <button class="btn btn-primary">Change Password</button>
+      </form>
+    </div>
+  </div>
 </div>
-<div class="auth-form signup-form col-xs-12" style="display: none;">
-<form>
-<h2>Create an account</h2>
-<div class="login-message-console"></div>
-<div class="form-group-name form-group"><input class="form-control login-name" placeholder="Name"/></div>
-<div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"/></div>
-<div class="form-group-password form-group"><input class="form-control login-password" placeholder="Password" type="password"/></div>
-<div class="form-group-password-confirmation form-group"><input class="form-control login-password-confirmation" placeholder="Confirm Password" type="password"/></div>
-<button class="signup-button btn btn-success">Sign Up</button>
-</form>
-<button class="login-button btn btn-link">Back to log in</button>
 </div>
-<div class="auth-form reset-password-form col-xs-12" style="display: none;">
-<form>
-<h2>Reset your password</h2>
-<div class="login-message-console"></div>
-<div class="form-group-email form-group"><input class="form-control login-email" placeholder="Email"/></div>
-<button class="reset-password-button btn btn-primary">Reset Password</button>
-<button class="login-button btn btn-link">Back to log in</button>
-</form>
-</div>
-<div class="auth-form logout-form col-xs-12" style="display: none;">
-<h2 class="logged-in-user-name">Not logged in</h2>
-<div class="logged-in-user-pic" style="background-image: url(https://www.padmapper.com/static/images/no_avatar.png);"></div>
-<button class="logout-button btn btn-primary">Logout</button>
-<div style="border-top:1px solid #eee; padding-top:2px; margin-top:30px">
-<form>
-<h3>Change your password</h3>
-<div class="login-message-console"></div>
-<div class="form-group-password form-group"><input class="form-control login-password" placeholder="New Password" type="password"/></div>
-<div class="form-group-password-confirmation form-group"><input class="form-control login-password-confirmation" placeholder="Confirm New Password" type="password"/></div>
-<button class="btn btn-primary">Change Password</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-<div class="may-scroll generic-list-container favorites-container" style="display: none;"><div class="options-container"><select><option value="relevance">Relevance</option><option value="price-low-to-high">Price (Low to High)</option><option value="price-high-to-low">Price (High to Low)</option></select><span>Sort by </span><div style="clear: both;"></div></div><div class="listings-container"><div class="listings-loading-placeholder">Loading favorites...</div></div><div class="paginator-container"></div></div>
-<div class="may-scroll generic-list-container list-container" style=""><div class="options-container"><select><option value="relevance">Relevance</option><option value="price-low-to-high">Price (Low to High)</option><option value="price-high-to-low">Price (High to Low)</option></select><span>Sort by </span><div style="clear: both;"></div></div><div class="listings-container"><div class="listing-preview listing-preview-250199575"><a href="https://www.padmapper.com/listings/7858097.-2-bedroom-2-bathroom-apartment-at-980-seymour-st-vancouver-bc-v6b-1b4"><div class="listing-image-container"><div class="listing-image" data-original="/static/images/nopics@2x.png" style="display: block; background-image: url(https://www.padmapper.com/static/images/nopics@2x.png);"></div></div><div class="listing-features"><div class="listing-address">980 Seymour St, Vancouver, BC V6B 1B4</div><div class="listing-properties"><div>$2,785</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 30 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-248442898"><a href="https://www.airbnb.com/rooms/5385927?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/101179883/f2c5c981_original.jpg?aki_policy=large" style="display: block; background-image: url(https://a1.muscache.com/im/pictures/101179883/f2c5c981_original.jpg?aki_policy=large);"></div></div><div class="listing-features"><div class="listing-address">W 27th Ave, Vancouver, BC V6L 1W8</div><div class="listing-properties"><div>$4,247</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated yesterday</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249389085"><a href="https://www.airbnb.com/rooms/6761085?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/24ad21bd-bae4-482f-8c4c-6b5e549707e8.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">137a St, Surrey, BC V3V 5W7</div><div class="listing-properties"><div>$720</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249389139"><a href="https://www.airbnb.com/rooms/7899143?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a0.muscache.com/im/pictures/100629768/93262595_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">103 Ave, Surrey, BC V3T 1R9</div><div class="listing-properties"><div>$743</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249389742"><a href="https://www.airbnb.com/rooms/7653120?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/97187534/c83f30e7_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Sienna Ct, Coquitlam, BC V3E 3N7</div><div class="listing-properties"><div>$879</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249389771"><a href="https://www.airbnb.com/rooms/1628690?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/23492566/28190c6f_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Charter Hill Pl, Coquitlam, BC V3E 1R8</div><div class="listing-properties"><div>$1,034</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249389803"><a href="https://www.airbnb.com/rooms/279755?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/2853281/f3ef636e_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Delta Ave, Burnaby, BC V5B 3E6</div><div class="listing-properties"><div>$864</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390203"><a href="https://www.airbnb.com/rooms/153404?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/92165564/239360b7_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Pacific Blvd, Vancouver, BC V6Z 2Z2</div><div class="listing-properties"><div>$4,007</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390207"><a href="https://www.airbnb.com/rooms/3309584?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/41986767/2cc055f6_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Homer St, Vancouver, BC V6B 2X5</div><div class="listing-properties"><div>$4,782</div><div class="has-image listing-num-bedrooms">Studio</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390235"><a href="https://www.airbnb.com/rooms/771366?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a0.muscache.com/im/pictures/10770578/51e4fc75_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Richards St, Vancouver, BC V6B 0C2</div><div class="listing-properties"><div>$4,908</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390239"><a href="https://www.airbnb.com/rooms/1233101?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/18862380/f42bd00c_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">W 6th Ave, Vancouver, BC V6J 1R7</div><div class="listing-properties"><div>$3,148</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390240"><a href="https://www.airbnb.com/rooms/1961440?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/27073701/1b827ab1_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Richards St, Vancouver, BC V6B 3G7</div><div class="listing-properties"><div>$3,307</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390363"><a href="https://www.airbnb.com/rooms/8035346?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/102619937/a83a8dcb_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Pinetree Way, Coquitlam, BC V3E</div><div class="listing-properties"><div>$1,852</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249390386"><a href="https://www.airbnb.com/rooms/10393476?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/887e7899-af57-4096-8666-96229aad7dd8.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">102a Ave, Surrey, BC V3T 0J5</div><div class="listing-properties"><div>$1,896</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249515937"><a href="https://www.airbnb.com/rooms/7636756?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a0.muscache.com/im/pictures/96955974/862857ba_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Duthie Ave, Burnaby, BC V5A 2P5</div><div class="listing-properties"><div>$814</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249515943"><a href="https://www.airbnb.com/rooms/10576268?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/80f32cda-1dfd-4742-8693-3d83da7044bc.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Foster Ave, Coquitlam, BC V3J 2L9</div><div class="listing-properties"><div>$1,134</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249585277"><a href="https://www.airbnb.com/rooms/6421331?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/89223865/200d356f_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Skeena St, Vancouver, BC V5K 4P1</div><div class="listing-properties"><div>$4,908</div><div class="has-image listing-num-bedrooms">2 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249585407"><a href="https://www.airbnb.com/rooms/2554279?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a0.muscache.com/im/pictures/39521490/30784b94_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">141b St, Surrey, BC V3V 7W5</div><div class="listing-properties"><div>$1,993</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249585411"><a href="https://www.airbnb.com/rooms/7144873?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a1.muscache.com/im/pictures/107216593/79101099_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">154a St, Surrey, BC V3R 2V7</div><div class="listing-properties"><div>$1,395</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-249585424"><a href="https://www.airbnb.com/rooms/1136534?checkin=2016-06-01&amp;checkout=2016-06-30&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/17098190/70cf8d3f_original.jpg?aki_policy=large"></div></div><div class="listing-features"><div class="listing-address">Ranelagh Ave, Burnaby, BC V5B 3N3</div><div class="listing-properties"><div>$1,170</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div></div><div class="paginator-container"></div></div>
-<div class="map-canvas-container in-background">
-<div class="map-canvas" style="position: relative; background-color: rgb(229, 227, 223); overflow: hidden;"><div class="map-header-container"><div class="map-header"></div></div><div class="map-footer-container"><div class="map-footer"><div class="listing-preview" style="display: none;"></div></div></div><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; -webkit-transform-origin: 0px 0px; -webkit-transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; position: absolute; left: -62px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: -62px; top: 182px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 194px; top: -74px;"></div><div style="width: 256px; height: 256px; position: absolute; left: 194px; top: 182px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -62px; top: -74px;"><canvas draggable="false" height="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;" width="256"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -62px; top: 182px;"><canvas draggable="false" height="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;" width="256"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 194px; top: -74px;"><canvas draggable="false" height="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;" width="256"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 194px; top: 182px;"><canvas draggable="false" height="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;" width="256"></canvas></div></div></div></div><div style="position: absolute; z-index: 0; left: 0px; top: 0px;"><div style="overflow: hidden;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="position: absolute; left: -62px; top: -74px; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img alt="" draggable="false" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i161!3i350!4i256!2m3!1e0!2sm!3i351019249!3m14!2sen-CA!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjJ8cC52Om9mZg!4e0&amp;token=96729" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div><div style="position: absolute; left: -62px; top: 182px; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img alt="" draggable="false" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i161!3i351!4i256!2m3!1e0!2sm!3i351019249!3m14!2sen-CA!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjJ8cC52Om9mZg!4e0&amp;token=89136" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div><div style="position: absolute; left: 194px; top: 182px; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img alt="" draggable="false" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i162!3i351!4i256!2m3!1e0!2sm!3i351019249!3m14!2sen-CA!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjJ8cC52Om9mZg!4e0&amp;token=70850" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div><div style="position: absolute; left: 194px; top: -74px; transition: opacity 200ms ease-out; -webkit-transition: opacity 200ms ease-out;"><img alt="" draggable="false" src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i10!2i162!3i350!4i256!2m3!1e0!2sm!3i351019249!3m14!2sen-CA!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjJ8cC52Om9mZg!4e0&amp;token=78443" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div></div></div></div><div class="gm-style-pbc" style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%; transition: 0.3s; -webkit-transition: 0.3s; opacity: 0; display: none;"><p class="gm-style-pbt">Use two fingers to move the map</p></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; -webkit-transform-origin: 0px 0px; -webkit-transform: matrix(1, 0, 0, 1, 0, 0);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a href="https://maps.google.com/maps?ll=49.222899,-123.038579&amp;z=10&amp;t=m&amp;hl=en-CA&amp;gl=US&amp;mapclient=apiv3" style="position: static; overflow: visible; float: none; display: inline;" target="_blank" title="Click to see this area on Google Maps"><div style="width: 66px; height: 26px; cursor: pointer;"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/google_white5.png" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"/></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 50px; top: 15px;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000;"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div><img draggable="false" src="https://maps.gstatic.com/mapfiles/transparent.png" style="width: 37px; height: 37px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; position: absolute; right: 0px; top: 0px; z-index: 10001; cursor: pointer;"/></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 72px; bottom: 0px; width: 121px;"><div class="gm-style-cc" draggable="false" style="-webkit-user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; -webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-CA_US/help/terms_maps.html" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);" target="_blank">Terms of Use</a></div></div><div style="width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 45px; right: 0px;"><img class="gm-fullscreen-control" draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/sv5.png" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 112px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"/></div><div class="dropdown" style="z-index: 0; position: absolute; left: 0px; top: 0px;"><div aria-expanded="true" aria-haspopup="true" class="map-button toggle-overlays-button" data-toggle="dropdown" id="dropdownMenuOverlay" style="margin-left: 5px; background-image: url(https://www.padmapper.com/static/images/stack_icon@2x.png);"></div><ul aria-labelledby="dropdownMenuOverlay" class="dropdown-menu" style="left: 5px;"><li><a class="overlay-public-transportation"><input type="checkbox"/><span>Public Transportation</span></a></li></ul></div><div class="map-button current-location-button" style="background-image: url(https://www.padmapper.com/static/images/location_icon@2x.png); z-index: 0; position: absolute; right: 0px; top: 0px;"></div><div class="map-button reset-listings-button" style="background-image: url(https://www.padmapper.com/static/images/refresh_icon@2x.png); z-index: 0; position: absolute; right: 45px; top: 0px;"></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" controlheight="55" controlwidth="28" draggable="false" style="margin: 10px; -webkit-user-select: none; position: absolute; bottom: 69px; right: 28px;"><div class="gmnoprint" controlheight="55" controlwidth="28" style="position: absolute; left: 0px; top: 0px;"><div draggable="false" style="-webkit-user-select: none; -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; cursor: pointer; width: 28px; height: 55px; background-color: rgb(255, 255, 255);"><div style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;" title="Zoom in"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"/></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; top: 0px; background-color: rgb(230, 230, 230);"></div><div style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;" title="Zoom out"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" style="position: absolute; left: 0px; top: -15px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"/></div></div></div></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" controlheight="0" controlwidth="0" draggable="false" style="margin: 10px; -webkit-user-select: none; position: absolute; display: none; bottom: 26px; left: 0px;"><div class="gmnoprint" controlheight="0" controlwidth="28" style="display: none; position: absolute;"><div style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; background-color: rgb(255, 255, 255); display: none;" title="Rotate map 90 degrees"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img draggable="false" src="https://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"/></div></div></div></div></div>
-</div>
-</div>
-</div>
-</div>
-<div class="sidebar-col invisible-sidebar-col" id="filter-container">
-<div style="position:relative; height:100%; width:100%">
-<div style="position:absolute; top:0; bottom:0; left:0; right:0; overflow-y:auto">
+              <div class="may-scroll generic-list-container favorites-container" style="display:none"><div class="options-container"><select><option value="relevance">Relevance</option><option value="price-low-to-high">Price (Low to High)</option><option value="price-high-to-low">Price (High to Low)</option></select><span>Sort by </span><div style="clear: both;"></div></div><div class="listings-container"><div class="listings-loading-placeholder">Loading favorites...</div></div><div class="paginator-container"></div></div>
+              <div class="may-scroll generic-list-container list-container" style=""><div class="options-container"><select><option value="relevance">Relevance</option><option value="price-low-to-high">Price (Low to High)</option><option value="price-high-to-low">Price (High to Low)</option></select><span>Sort by </span><div style="clear: both;"></div></div><div class="listings-container"><div class="listing-preview listing-preview-253285964"><a href="https://www.airbnb.com/rooms/10371166?checkin=2016-07-01&amp;checkout=2016-07-31&amp;af=3483444" rel="nofollow"><div class="listing-image-container"><div class="listing-image" data-original="https://a2.muscache.com/im/pictures/cb27cb01-229f-421d-a43f-a879e26a0a21.jpg?aki_policy=large" style="display: block; background-image: url(&quot;https://a2.muscache.com/im/pictures/cb27cb01-229f-421d-a43f-a879e26a0a21.jpg?aki_policy=large&quot;);"></div></div><div class="listing-features"><div class="listing-address">Beatty St, Vancouver, BC V6Z</div><div class="listing-properties"><div>$9,626</div><div class="has-image listing-num-bedrooms">1 Bed</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253424294"><a href="https://www.padmapper.com/listings/16509378.-2-bedroom-2-bathroom-condo-at-121-10th-st-new-westminster-bc-v3m-3x7"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/107821196/med_large.jpeg?1464929807" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/107821196/med_large.jpeg?1464929807&quot;);"></div></div><div class="listing-features"><div class="listing-address">121 10th St, New Westminster, BC V3M 3X7</div><div class="listing-properties"><div>$2,190</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252274766"><a href="https://www.padmapper.com/listings/15942955.-1-bedroom-1-bathroom-apartment-at-4769-hazel-st-burnaby-bc-v5h-4t3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/100707855/med_large.jpeg?1462152601" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/100707855/med_large.jpeg?1462152601&quot;);"></div></div><div class="listing-features"><div class="listing-address">4769 Hazel St, Burnaby, BC V5H 4T3</div><div class="listing-properties"><div>$1,475</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 4 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252278470"><a href="https://www.padmapper.com/listings/12394323.-2-bedroom-1-bathroom-apartment-at-1122-gilford-st-vancouver-bc-v6g-2p5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/65929878/med_large.jpg?1444300776"></div></div><div class="listing-features"><div class="listing-address">1122 Gilford St, Vancouver, BC V6G 2P5</div><div class="listing-properties"><div>$2,600</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 2 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252500396"><a href="https://www.padmapper.com/listings/16452131.-2-bedroom-2-bathroom-condo-at-289-drake-street-2-br-1300ft2-renters-dream-furnished-waterfront-yaletown-vancouver-bc-v6b-5z5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/106993379/med_large.jpeg?1464410694" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/106993379/med_large.jpeg?1464410694&quot;);"></div></div><div class="listing-features"><div class="listing-address">289 Drake Street - 2 Br 1300ft2 - Renters dream Furnished Waterfront Yaletown, Vancouver, BC V6B 5Z5</div><div class="listing-properties"><div>$4,700</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 29 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252593966"><a href="https://www.padmapper.com/listings/16067224.-2-bedroom-2-bathroom-apartment-at-820-6th-ave-new-westminster-bc-v3m-3s2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/102054742/med_large.jpeg?1462457334" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/102054742/med_large.jpeg?1462457334&quot;);"></div></div><div class="listing-features"><div class="listing-address">820 6th Ave, New Westminster, BC V3M 3S2</div><div class="listing-properties"><div>$1,550</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 8 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252632450"><a href="https://www.padmapper.com/listings/16499279.-0-bedroom-0-bathroom-apartment-at-75-w-1st-ave-vancouver-bc-v5y-0c4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/107681554/med_large.jpeg?1464872469" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/107681554/med_large.jpeg?1464872469&quot;);"></div></div><div class="listing-features"><div class="listing-address">75 W 1st Ave, Vancouver, BC V5Y 0C4</div><div class="listing-properties"><div>$3,175</div><div class="has-image listing-num-bedrooms">Studio</div></div><span class="listing-age">Updated 26 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252780683"><a href="https://www.padmapper.com/listings/16609989.-1-bedroom-1-bathroom-apartment-at-4421-albert-st-burnaby-bc-v5c-2g3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109007861/med_large.jpeg?1465207111" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109007861/med_large.jpeg?1465207111&quot;);"></div></div><div class="listing-features"><div class="listing-address">4421 Albert St, Burnaby, BC V5C 2G3</div><div class="listing-properties"><div>$995</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252780686"><a href="https://www.padmapper.com/listings/16609992.-1-bedroom-1-bathroom-apartment-at-4288-grange-st-burnaby-bc-v5h-1p2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109007893/med_large.jpeg?1465207118" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109007893/med_large.jpeg?1465207118&quot;);"></div></div><div class="listing-features"><div class="listing-address">4288 Grange St, Burnaby, BC V5H 1P2</div><div class="listing-properties"><div>$1,320</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252780687"><a href="https://www.padmapper.com/listings/16609993.-2-bedroom-1-5-bathroom-apartment-at-4288-grange-st-burnaby-bc-v5h-1p2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109007888/med_large.jpeg?1465207118" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109007888/med_large.jpeg?1465207118&quot;);"></div></div><div class="listing-features"><div class="listing-address">4288 Grange St, Burnaby, BC V5H 1P2</div><div class="listing-properties"><div>$1,610</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 8 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781379"><a href="https://www.padmapper.com/listings/16610685.-1-bedroom-1-bathroom-apartment-at-4750-arbutus-st-vancouver-bc-v6j-4a4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013586/med_large.jpeg?1465208421" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109013586/med_large.jpeg?1465208421&quot;);"></div></div><div class="listing-features"><div class="listing-address">4750 Arbutus St, Vancouver, BC V6J 4A4</div><div class="listing-properties"><div>$1,820</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781380"><a href="https://www.padmapper.com/listings/16610686.-2-bedroom-1-bathroom-apartment-at-4750-arbutus-st-vancouver-bc-v6j-4a4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013609/med_large.jpeg?1465208425" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109013609/med_large.jpeg?1465208425&quot;);"></div></div><div class="listing-features"><div class="listing-address">4750 Arbutus St, Vancouver, BC V6J 4A4</div><div class="listing-properties"><div>$2,300</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781394"><a href="https://www.padmapper.com/listings/16610700.-1-bedroom-1-bathroom-apartment-at-6355-kingsway-burnaby-bc-v5e-1c9"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013777/med_large.jpeg?1465208463" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109013777/med_large.jpeg?1465208463&quot;);"></div></div><div class="listing-features"><div class="listing-address">6355 Kingsway, Burnaby, BC V5E 1C9</div><div class="listing-properties"><div>$1,785</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 21 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781397"><a href="https://www.padmapper.com/listings/16610703.-1-bedroom-1-bathroom-apartment-at-8351-bennett-rd-richmond-bc-v6y-1n4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013786/med_large.jpeg?1465208465" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109013786/med_large.jpeg?1465208465&quot;);"></div></div><div class="listing-features"><div class="listing-address">8351 Bennett Rd, Richmond, BC V6Y 1N4</div><div class="listing-properties"><div>$1,820</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781398"><a href="https://www.padmapper.com/listings/16610704.-2-bedroom-1-bathroom-apartment-at-8351-bennett-rd-richmond-bc-v6y-1n4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013810/med_large.jpeg?1465208469" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109013810/med_large.jpeg?1465208469&quot;);"></div></div><div class="listing-features"><div class="listing-address">8351 Bennett Rd, Richmond, BC V6Y 1N4</div><div class="listing-properties"><div>$2,300</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781414"><a href="https://www.padmapper.com/listings/16610720.-2-bedroom-1-bathroom-apartment-at-5614-balsam-st-vancouver-bc-v6m-4b7"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109014043/med_large.jpeg?1465208520" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109014043/med_large.jpeg?1465208520&quot;);"></div></div><div class="listing-features"><div class="listing-address">5614 Balsam St, Vancouver, BC V6M 4B7</div><div class="listing-properties"><div>$2,100</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781441"><a href="https://www.padmapper.com/listings/16610747.-1-bedroom-1-bathroom-apartment-at-321-10th-st-new-westminster-bc-v3m-3y2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109014385/med_large.jpeg?1465208600" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109014385/med_large.jpeg?1465208600&quot;);"></div></div><div class="listing-features"><div class="listing-address">321 10th St, New Westminster, BC V3M 3Y2</div><div class="listing-properties"><div>$1,100</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 14 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252781466"><a href="https://www.padmapper.com/listings/16610772.-4-bedroom-1-bathroom-apartment-at-1200-emery-pl-north-vancouver-bc-v7j"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109014570/med_large.jpeg?1465208640" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109014570/med_large.jpeg?1465208640&quot;);"></div></div><div class="listing-features"><div class="listing-address">1200 Emery Pl, North Vancouver, BC V7J</div><div class="listing-properties"><div>$2,050</div><div class="has-image listing-num-bedrooms">4 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 14 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782254"><a href="https://www.padmapper.com/listings/16611560.-1-bedroom-1-bathroom-apartment-at-2326-eton-st-vancouver-bc-v5l-1e1"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022195/med_large.jpeg?1465210462" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022195/med_large.jpeg?1465210462&quot;);"></div></div><div class="listing-features"><div class="listing-address">2326 Eton St, Vancouver, BC V5L 1E1</div><div class="listing-properties"><div>$1,175</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 14 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782255"><a href="https://www.padmapper.com/listings/16611561.-0-bedroom-1-bathroom-apartment-at-2326-eton-st-vancouver-bc-v5l-1e1"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022196/med_large.jpeg?1465210462" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022196/med_large.jpeg?1465210462&quot;);"></div></div><div class="listing-features"><div class="listing-address">2326 Eton St, Vancouver, BC V5L 1E1</div><div class="listing-properties"><div>$1,000</div><div class="has-image listing-num-bedrooms">Studio</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782257"><a href="https://www.padmapper.com/listings/16611563.-1-bedroom-1-bathroom-apartment-at-12051-bath-rd-richmond-bc-v6v-2b5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022211/med_large.jpeg?1465210463" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022211/med_large.jpeg?1465210463&quot;);"></div></div><div class="listing-features"><div class="listing-address">12051 Bath Rd, Richmond, BC V6V 2B5</div><div class="listing-properties"><div>$1,050</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782259"><a href="https://www.padmapper.com/listings/16611565.-2-bedroom-1-bathroom-apartment-at-7351-halifax-st-burnaby-bc-v5a-4h2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022213/med_large.jpeg?1465210466" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022213/med_large.jpeg?1465210466&quot;);"></div></div><div class="listing-features"><div class="listing-address">7351 Halifax St, Burnaby, BC V5A 4H2</div><div class="listing-properties"><div>$1,395</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782269"><a href="https://www.padmapper.com/listings/16611575.-1-bedroom-1-bathroom-apartment-at-8200-colonial-dr-richmond-bc-v7c-5b6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022284/med_large.jpeg?1465210484" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022284/med_large.jpeg?1465210484&quot;);"></div></div><div class="listing-features"><div class="listing-address">8200 Colonial Dr, Richmond, BC V7C 5B6</div><div class="listing-properties"><div>$900</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782272"><a href="https://www.padmapper.com/listings/16611578.-2-bedroom-1-5-bathroom-apartment-at-9350-122-st-surrey-bc-v3v-4l6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022291/med_large.jpeg?1465210485" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022291/med_large.jpeg?1465210485&quot;);"></div></div><div class="listing-features"><div class="listing-address">9350 122 St, Surrey, BC V3V 4L6</div><div class="listing-properties"><div>$1,395</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782273"><a href="https://www.padmapper.com/listings/16611579.-3-bedroom-1-5-bathroom-apartment-at-12180-82-ave-surrey-bc-v3w-3e3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022292/med_large.jpeg?1465210485" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022292/med_large.jpeg?1465210485&quot;);"></div></div><div class="listing-features"><div class="listing-address">12180 82 Ave, Surrey, BC V3W 3E3</div><div class="listing-properties"><div>$1,420</div><div class="has-image listing-num-bedrooms">3 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782275"><a href="https://www.padmapper.com/listings/16611581.-0-bedroom-1-bathroom-apartment-at-3615-victoria-dr-vancouver-bc-v5n-0c3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022316/med_large.jpeg?1465210490" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022316/med_large.jpeg?1465210490&quot;);"></div></div><div class="listing-features"><div class="listing-address">3615 Victoria Dr, Vancouver, BC V5N 0C3</div><div class="listing-properties"><div>$1,350</div><div class="has-image listing-num-bedrooms">Studio</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782280"><a href="https://www.padmapper.com/listings/16611586.-1-bedroom-1-bathroom-apartment-at-2290-marine-dr-west-vancouver-bc-v7v-1k4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022347/med_large.jpeg?1465210499" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022347/med_large.jpeg?1465210499&quot;);"></div></div><div class="listing-features"><div class="listing-address">2290 Marine Dr, West Vancouver, BC V7V 1K4</div><div class="listing-properties"><div>$1,500</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 8 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782286"><a href="https://www.padmapper.com/listings/16611592.-1-bedroom-1-bathroom-apartment-at-1371-w-13th-ave-vancouver-bc-v6h-1n7"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022391/med_large.jpeg?1465210507" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022391/med_large.jpeg?1465210507&quot;);"></div></div><div class="listing-features"><div class="listing-address">1371 W 13th Ave, Vancouver, BC V6H 1N7</div><div class="listing-properties"><div>$1,895</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252782408"><a href="https://www.padmapper.com/listings/16611714.-2-bedroom-2-bathroom-apartment-at-1840-victoria-diversion-vancouver-bc-v5n"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109023420/med_large.jpeg?1465210759" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109023420/med_large.jpeg?1465210759&quot;);"></div></div><div class="listing-features"><div class="listing-address">1840 Victoria Diversion, Vancouver, BC V5N</div><div class="listing-properties"><div>$2,450</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252803710"><a href="https://www.padmapper.com/listings/16067226.-1-bedroom-1-bathroom-apartment-at-820-6th-ave-new-westminster-bc-v3m-3s2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/102054762/med_large.jpeg?1462457338" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/102054762/med_large.jpeg?1462457338&quot;);"></div></div><div class="listing-features"><div class="listing-address">820 6th Ave, New Westminster, BC V3M 3S2</div><div class="listing-properties"><div>$1,380</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 22 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252815749"><a href="https://www.padmapper.com/listings/16611590.-1-bedroom-1-bathroom-apartment-at-1265-beach-ave-vancouver-bc-v6e-1v3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022369/med_large.jpeg?1465210505" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109022369/med_large.jpeg?1465210505&quot;);"></div></div><div class="listing-features"><div class="listing-address">1265 Beach Ave, Vancouver, BC V6E 1V3</div><div class="listing-properties"><div>$1,495</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 4 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252816116"><a href="https://www.padmapper.com/listings/16628307.-3-bedroom-3-bathroom-apartment-at-1211-melville-st-vancouver-bc-v6e-0a6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109289718/med_large.jpeg?1465273499" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109289718/med_large.jpeg?1465273499&quot;);"></div></div><div class="listing-features"><div class="listing-address">1211 Melville St, Vancouver, BC V6E 0A6</div><div class="listing-properties"><div>$4,300</div><div class="has-image listing-num-bedrooms">3 Bed</div><div class="has-image listing-num-bathrooms">3 Bath</div></div><span class="listing-age">Updated 20 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252816507"><a href="https://www.padmapper.com/listings/16628697.-2-bedroom-2-bathroom-house-at-6327-chester-street-vancouver-bc-v5w-3c4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109292519/med_large.jpeg?1465274425" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109292519/med_large.jpeg?1465274425&quot;);"></div></div><div class="listing-features"><div class="listing-address">6327 Chester Street, Vancouver, BC V5W 3C4</div><div class="listing-properties"><div>$1,700</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 18 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252816581"><a href="https://www.padmapper.com/listings/16628771.-2-bedroom-1-bathroom-house-at-341-hospital-street-new-westminster-bc-v3l-3l5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109292995/med_large.jpeg?1465274561" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109292995/med_large.jpeg?1465274561&quot;);"></div></div><div class="listing-features"><div class="listing-address">341 Hospital Street, New Westminster, BC V3L 3L5</div><div class="listing-properties"><div>$1,950</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 12 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252817050"><a href="https://www.padmapper.com/listings/16629142.-2-bedroom-1-bathroom-condo-at-2355-w-broadway-vancouver-bc-v6k-2e6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109307343/med_large.jpeg?1465278263" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109307343/med_large.jpeg?1465278263&quot;);"></div></div><div class="listing-features"><div class="listing-address">2355 W Broadway, Vancouver, BC V6K 2E6</div><div class="listing-properties"><div>$3,000</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 8 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252818249"><a href="https://www.padmapper.com/listings/16630106.-5-bedroom-4-bathroom-house-at-imperial-street-burnaby-bc-v5e-1p3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109325448/med_large.jpeg?1465282367" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109325448/med_large.jpeg?1465282367&quot;);"></div></div><div class="listing-features"><div class="listing-address">Imperial Street, Burnaby, BC V5E 1P3</div><div class="listing-properties"><div>$3,500</div><div class="has-image listing-num-bedrooms">5 Bed</div><div class="has-image listing-num-bathrooms">4 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252850993"><a href="https://www.padmapper.com/listings/16609994.-0-bedroom-1-bathroom-apartment-at-4288-grange-st-burnaby-bc-v5h-1p2"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109007903/med_large.jpeg?1465207119" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109007903/med_large.jpeg?1465207119&quot;);"></div></div><div class="listing-features"><div class="listing-address">4288 Grange St, Burnaby, BC V5H 1P2</div><div class="listing-properties"><div>$1,120</div><div class="has-image listing-num-bedrooms">Studio</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252891052"><a href="https://www.padmapper.com/listings/16684948.-2-bedroom-2-bathroom-condo-at-6068-no-3-road-richmond-bc-v6y-4m8"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109953521/med_large.jpeg?1465452980" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109953521/med_large.jpeg?1465452980&quot;);"></div></div><div class="listing-features"><div class="listing-address">6068 no. 3 road, Richmond, BC V6Y 4M8</div><div class="listing-properties"><div>$1,990</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252918757"><a href="https://www.padmapper.com/listings/16611595.-2-bedroom-1-bathroom-apartment-at-8680-laurel-st-vancouver-bc-v6p-3v5"><div class="listing-image-container"><div class="listing-image" data-original="/static/images/nopics@2x.png" style="display: block; background-image: url(&quot;/static/images/nopics@2x.png&quot;);"></div></div><div class="listing-features"><div class="listing-address">8680 Laurel St, Vancouver, BC V6P 3V5</div><div class="listing-properties"><div>$1,200</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 18 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252949237"><a href="https://www.padmapper.com/listings/16611577.-2-bedroom-1-bathroom-apartment-at-8031-colonial-dr-richmond-bc-v7c-5b7"><div class="listing-image-container"><div class="listing-image" data-original="/static/images/nopics@2x.png" style="display: block; background-image: url(&quot;/static/images/nopics@2x.png&quot;);"></div></div><div class="listing-features"><div class="listing-address">8031 Colonial Dr, Richmond, BC V7C 5B7</div><div class="listing-properties"><div>$1,100</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 17 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252952915"><a href="https://www.padmapper.com/listings/16679946.-1-bedroom-1-bathroom-apartment-at-431-pacific-st-vancouver-bc-v6z"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109875397/med_large.jpeg?1465433132" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/109875397/med_large.jpeg?1465433132&quot;);"></div></div><div class="listing-features"><div class="listing-address">431 Pacific St, Vancouver, BC V6Z</div><div class="listing-properties"><div>$3,000</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 17 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252953533"><a href="https://www.padmapper.com/listings/16724417.-3-bedroom-2-5-bathroom-house-at-4th-ave-west-4th-avenue-vancouver-bc-v6r-1r1"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110512658/med_large.jpeg?1465632378" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/110512658/med_large.jpeg?1465632378&quot;);"></div></div><div class="listing-features"><div class="listing-address">4TH Ave West 4th Avenue, Vancouver, BC V6R 1R1</div><div class="listing-properties"><div>$5,000</div><div class="has-image listing-num-bedrooms">3 Bed</div><div class="has-image listing-num-bathrooms">3 Bath</div></div><span class="listing-age">Updated 9 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252986831"><a href="https://www.padmapper.com/listings/16750257.-2-bedroom-2-bathroom-apartment-at-larkin-dr-vancouver-bc-v6t-0a7"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110938802/med_large.jpeg?1465721829" style="display: block; background-image: url(&quot;https://s3.amazonaws.com/pl-pics/datas/110938802/med_large.jpeg?1465721829&quot;);"></div></div><div class="listing-features"><div class="listing-address">Larkin Dr, Vancouver, BC V6T 0A7</div><div class="listing-properties"><div>$3,500</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252986832"><a href="https://www.padmapper.com/listings/16750258.-2-bedroom-2-bathroom-apartment-at-918-cooperage-way-vancouver-bc-v6b"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110938858/med_large.jpeg?1465721841"></div></div><div class="listing-features"><div class="listing-address">918 Cooperage Way, Vancouver, BC V6B</div><div class="listing-properties"><div>$3,350</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 16 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252986835"><a href="https://www.padmapper.com/listings/16750261.-6-bedroom-3-5-bathroom-house-at-cassiar-st-vancouver-bc-v5m-4j4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110938932/med_large.jpeg?1465721868"></div></div><div class="listing-features"><div class="listing-address">Cassiar St, Vancouver, BC V5M 4J4</div><div class="listing-properties"><div>$3,980</div><div class="has-image listing-num-bedrooms">6 Bed</div><div class="has-image listing-num-bathrooms">4 Bath</div></div><span class="listing-age">Updated 16 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-252986836"><a href="https://www.padmapper.com/listings/16750262.-2-bedroom-2-bathroom-condo-at-1560-homer-mews-vancouver-bc-v6z-0a5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110938954/med_large.jpeg?1465721874"></div></div><div class="listing-features"><div class="listing-address">1560 Homer Mews, Vancouver, BC V6Z 0A5</div><div class="listing-properties"><div>$6,000</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 16 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253025483"><a href="https://www.padmapper.com/listings/16702605.-1-bedroom-1-bathroom-apartment-at-1189-howe-st-vancouver-bc-v6z-2x4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/110139763/med_large.jpeg?1465514530"></div></div><div class="listing-features"><div class="listing-address">1189 Howe St, Vancouver, BC V6Z 2X4</div><div class="listing-properties"><div>$2,200</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated today</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253028469"><a href="https://www.padmapper.com/listings/16610696.-2-bedroom-1-bathroom-apartment-at-2240-triumph-st-vancouver-bc-v5l-1l3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109013761/med_large.jpeg?1465208459"></div></div><div class="listing-features"><div class="listing-address">2240 Triumph St, Vancouver, BC V5L 1L3</div><div class="listing-properties"><div>$1,350</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253028507"><a href="https://www.padmapper.com/listings/16611587.-2-bedroom-2-bathroom-apartment-at-2290-marine-dr-west-vancouver-bc-v7v-1k4"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109022358/med_large.jpeg?1465210500"></div></div><div class="listing-features"><div class="listing-address">2290 Marine Dr, West Vancouver, BC V7V 1K4</div><div class="listing-properties"><div>$1,900</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 14 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253071172"><a href="https://www.padmapper.com/listings/16804496.-1-bedroom-1-bathroom-apartment-at-1249-granville-st-vancouver-bc-v6z-1m5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/111961799/med_large.jpeg?1466007638"></div></div><div class="listing-features"><div class="listing-address">1249 Granville St, Vancouver, BC V6Z 1M5</div><div class="listing-properties"><div>$1,820</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 12 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253122720"><a href="https://www.padmapper.com/listings/16832764.-6-bedroom-5-bathroom-apartment-at-2161-ottawa-ave-west-vancouver-bc-v7v-2s5"><div class="listing-image-container"><div class="listing-image" data-original="/static/images/nopics@2x.png"></div></div><div class="listing-features"><div class="listing-address">2161 Ottawa Ave, West Vancouver, BC V7V 2S5</div><div class="listing-properties"><div>$6,500</div><div class="has-image listing-num-bedrooms">6 Bed</div><div class="has-image listing-num-bathrooms">5 Bath</div></div><span class="listing-age">Updated 12 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253122721"><a href="https://www.padmapper.com/listings/16832765.-4-bedroom-3-bathroom-apartment-at-1111-esplanade-ave-west-vancouver-bc-v7t-1g3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/113008142/med_large.jpeg?1466306331"></div></div><div class="listing-features"><div class="listing-address">1111 Esplanade Ave, West Vancouver, BC V7T 1G3</div><div class="listing-properties"><div>$3,850</div><div class="has-image listing-num-bedrooms">4 Bed</div><div class="has-image listing-num-bathrooms">3 Bath</div></div><span class="listing-age">Updated 9 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253154295"><a href="https://www.padmapper.com/listings/16609990.-2-bedroom-1-bathroom-apartment-at-4421-albert-st-burnaby-bc-v5c-2g3"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/109007875/med_large.jpeg?1465207114"></div></div><div class="listing-features"><div class="listing-address">4421 Albert St, Burnaby, BC V5C 2G3</div><div class="listing-properties"><div>$1,260</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253172318"><a href="https://www.padmapper.com/listings/16774523.-3-bedroom-2-bathroom-apartment-at-1901-glenaire-dr-north-vancouver-bc-v7p-1x9"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/111488846/med_large.jpeg?1465844638"></div></div><div class="listing-features"><div class="listing-address">1901 Glenaire Dr, North Vancouver, BC V7P 1X9</div><div class="listing-properties"><div>$3,250</div><div class="has-image listing-num-bedrooms">3 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 11 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253197846"><a href="https://www.padmapper.com/listings/15942564.-1-bedroom-1-bathroom-apartment-at-420-tempe-crescent-north-vancouver-bc-v7n-1e6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/100704179/med_large.jpeg?1462151463"></div></div><div class="listing-features"><div class="listing-address">420 Tempe Crescent, North Vancouver, BC V7N 1E6</div><div class="listing-properties"><div>$5,000</div><div class="has-image listing-num-bedrooms">1 Bed</div><div class="has-image listing-num-bathrooms">1 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253204482"><a href="https://www.padmapper.com/listings/16884081.-2-bedroom-2-bathroom-condo-at-1111-alberni-street-vancouver-bc-v6e-0a8"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/112810580/med_large.jpeg?1466247015"></div></div><div class="listing-features"><div class="listing-address">1111 Alberni Street, Vancouver, BC V6E 0A8</div><div class="listing-properties"><div>$6,250</div><div class="has-image listing-num-bedrooms">2 Bed</div><div class="has-image listing-num-bathrooms">2 Bath</div></div><span class="listing-age">Updated 10 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253206879"><a href="https://www.padmapper.com/listings/16885586.-3-bedroom-4-bathroom-house-at-w-14th-ave-vancouver-bc-v6j-2k1"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/112830454/med_large.jpeg?1466253100"></div></div><div class="listing-features"><div class="listing-address">W 14th Ave, Vancouver, BC V6J 2K1</div><div class="listing-properties"><div>$6,500</div><div class="has-image listing-num-bedrooms">3 Bed</div><div class="has-image listing-num-bathrooms">4 Bath</div></div><span class="listing-age">Updated 10 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253207618"><a href="https://www.padmapper.com/listings/16885956.-6-bedroom-4-bathroom-house-at-marguerite-street-vancouver-bc-v6j-4e8"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/112836865/med_large.jpeg?1466254990"></div></div><div class="listing-features"><div class="listing-address">Marguerite Street, Vancouver, BC V6J 4E8</div><div class="listing-properties"><div>$6,500</div><div class="has-image listing-num-bedrooms">6 Bed</div><div class="has-image listing-num-bathrooms">4 Bath</div></div><span class="listing-age">Updated 10 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253207972"><a href="https://www.padmapper.com/listings/16886295.-6-bedroom-4-bathroom-house-at-cunningham-drive-richmond-bc-v6x-3n5"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/112839625/med_large.png?1466255926"></div></div><div class="listing-features"><div class="listing-address">Cunningham Drive, Richmond, BC V6X 3N5</div><div class="listing-properties"><div>$4,800</div><div class="has-image listing-num-bedrooms">6 Bed</div><div class="has-image listing-num-bathrooms">4 Bath</div></div><span class="listing-age">Updated 7 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div><div class="listing-preview listing-preview-253210830"><a href="https://www.padmapper.com/listings/16888196.-4-bedroom-3-bathroom-house-at-w-22nd-ave-vancouver-bc-v6l-1m6"><div class="listing-image-container"><div class="listing-image" data-original="https://s3.amazonaws.com/pl-pics/datas/112893944/med_large.jpeg?1466271581"></div></div><div class="listing-features"><div class="listing-address">W 22nd Ave, Vancouver, BC V6L 1M6</div><div class="listing-properties"><div>$6,300</div><div class="has-image listing-num-bedrooms">4 Bed</div><div class="has-image listing-num-bathrooms">3 Bath</div></div><span class="listing-age">Updated 5 days ago</span></div><div class="listing-favorite" style="display: none;"></div></a></div></div><div class="paginator-container"></div></div>
+              <div class="map-canvas-container in-background">
+                <div class="map-canvas" style="position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"><div class="map-header-container"><div class="map-header"></div></div><div class="map-footer-container"><div class="map-footer"><div class="listing-preview" style="display: none;"></div></div></div><div class="gm-style" style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0;"><div style="position: absolute; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%; z-index: 0; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;"><div style="position: absolute; left: 0px; top: 0px; z-index: 1; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 671, 264);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 385px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 129px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 641px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 385px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 641px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 129px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 897px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -127px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 897px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -127px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -383px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -383px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -639px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -639px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 129px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 385px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -127px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 641px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -383px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -639px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: 897px; top: -426px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -895px; top: 86px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -895px; top: -170px;"></div><div style="width: 256px; height: 256px; transform: translateZ(0px); position: absolute; left: -895px; top: -426px;"></div></div></div></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 385px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 129px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 641px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 385px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 641px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 129px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 897px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -127px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 897px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -127px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -383px; top: 86px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -383px; top: -170px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -639px; top: 86px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -639px; top: -170px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 129px; top: -426px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 385px; top: -426px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -127px; top: -426px;"><canvas draggable="false" height="256" width="256" style="-webkit-user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 641px; top: -426px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -383px; top: -426px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -639px; top: -426px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: 897px; top: -426px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -895px; top: 86px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -895px; top: -170px;"></div><div style="width: 256px; height: 256px; overflow: hidden; transform: translateZ(0px); position: absolute; left: -895px; top: -426px;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;"><div style="transform: translateZ(0px); position: absolute; left: 385px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 129px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(1)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 641px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(2)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 385px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(3)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 641px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(4)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 129px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(5)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 897px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(6)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -127px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(7)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 897px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(8)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -127px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(9)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -383px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(10)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -383px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(11)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -639px; top: 86px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(12)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -639px; top: -170px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(13)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 129px; top: -426px;"><img src="./sample_files/vt(14)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 385px; top: -426px;"><img src="./sample_files/vt(15)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -127px; top: -426px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(16)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 641px; top: -426px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(17)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -383px; top: -426px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(18)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -639px; top: -426px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(19)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: 897px; top: -426px; transition: opacity 200ms ease-out;"><img src="./sample_files/vt(20)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -895px; top: 86px;"><img src="./sample_files/vt(21)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -895px; top: -170px;"><img src="./sample_files/vt(22)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="transform: translateZ(0px); position: absolute; left: -895px; top: -426px;"><img src="./sample_files/vt(23)" draggable="false" alt="" style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 2; width: 100%; height: 100%; transition-duration: 0.3s; opacity: 0; display: none;" class="gm-style-pbc"><p class="gm-style-pbt">Use two fingers to move the map</p></div><div style="position: absolute; left: 0px; top: 0px; z-index: 3; width: 100%; height: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 4; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 671, 264);"><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div><div style="transform: translateZ(0px); position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=49.303497,-123.139878&amp;z=12&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img src="./sample_files/google_white5.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 636px; top: 101px; background-color: white;"><div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div><div style="font-size: 13px;">Map data ©2016 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="./sample_files/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 166px; bottom: 0px; width: 121px;"><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer; display: none;">Map Data</a><span>Map data ©2016 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2016 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; -webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 95px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div></div><div style="width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 45px; right: 0px;"><img src="./sample_files/sv5.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 112px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;"></div><div class="dropdown" style="z-index: 0; position: absolute; left: 0px; top: 0px;"><div class="map-button toggle-overlays-button" id="dropdownMenuOverlay" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="margin-left: 5px; background-image: url(&quot;/static/images/stack_icon@2x.png&quot;);"></div><ul class="dropdown-menu" aria-labelledby="dropdownMenuOverlay" style="left: 5px;"><li><a class="overlay-public-transportation"><input type="checkbox"><span>Public Transportation</span></a></li></ul></div><div class="map-button current-location-button" style="z-index: 0; position: absolute; right: 0px; top: 0px; background-image: url(&quot;/static/images/location_icon@2x.png&quot;);"></div><div class="map-button reset-listings-button" style="z-index: 0; position: absolute; right: 45px; top: 0px; background-image: url(&quot;/static/images/refresh_icon@2x.png&quot;);"></div><div draggable="false" class="gm-style-cc" style="-webkit-user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="width: auto; height: 100%; margin-left: 1px; background-color: rgb(245, 245, 245);"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@49.3034968,-123.139878,12z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="55" style="margin: 10px; -webkit-user-select: none; position: absolute; bottom: 69px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 0px;"><div draggable="false" style="-webkit-user-select: none; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; width: 28px; height: 55px; background-color: rgb(255, 255, 255);"><div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="./sample_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; top: 0px; background-color: rgb(230, 230, 230);"></div><div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="./sample_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; cursor: pointer; display: none; background-color: rgb(255, 255, 255);"><img src="./sample_files/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="./sample_files/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="filter-container" class="sidebar-col opened-when-large-sidebar-col">
+          <div style="position:relative; height:100%; width:100%">
+            <div style="position:absolute; top:0; bottom:0; left:0; right:0; overflow-y:auto">
+
+
+
+
+
 <div class="may-scroll sidebar-content filter">
-<div class="row">
-<div class="email-alert-section filter-section col-xs-12">
-<h2><span><span class="email-alert-title">Email Alert</span><span class="email-alert-collapse-caret caret"></span></span></h2>
-<div class="email-alert-container">
-<div class="alerts-section alerts-checking-auth-state" style="display: none;">
-<div class="alert-no-alerts-message">Checking if you are logged in...</div>
-</div>
-<div class="alerts-section alerts-sign-in" style="display: block;">
-<div class="alert-no-alerts-message">Sign in to save an email alert!</div>
-<button class="btn btn-primary alert-sign-in">Sign In</button>
-</div>
-<div class="alerts-section no-alerts" style="display: none;">
-<div class="alert-no-alerts-message">No alerts defined yet!</div>
-<button class="btn btn-default alert-add">Set Alert Here</button>
-</div>
-<div class="alerts-section fetching-alerts" style="display: none;">
-<div class="alert-no-alerts-message">Fetching alerts...</div>
-</div>
-<div class="alerts-section added-alert" style="display: none;">
-<div class="alert-controls">
-<a class="alert-remove"><span class="glyphicon glyphicon-trash"></span></a>
-</div>
-<div class="alert-name"></div>
-<div class="alert-frequency">
-<form>
-<label><input class="radio alert-frequency-daily" name="alert-frequency" type="radio" value="daily"/>Daily Emails</label>
-<label><input class="radio alert-frequency-hourly" name="alert-frequency" type="radio" value="hourly"/>Hourly Emails</label>
-</form>
-</div>
-<div class="alert-filters"></div>
-<button class="btn btn-default alert-reset">Reset Alert Here</button>
-<button class="btn btn-default alert-update">Update Alert</button>
-</div>
-</div>
-</div>
-</div>
-<form>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Rent</h2>
-<div class="row row-less-padding">
-<div class="col-xs-6">
-<h3>Min</h3>
-<input class="price-min" pattern="\d*" step="50" type="number" value="0"/>
-</div>
-<div class="col-xs-6">
-<h3>Max</h3>
-<input class="price-max" pattern="\d*" step="50" type="number" value="10000"/>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Bedrooms</h2>
-<div class="row row-less-padding">
-<div class="col-xs-6">
-<h3>Min</h3>
-<select class="num-bedrooms-min">
-<option selected="" value="0">Studio</option>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-</select>
-</div>
-<div class="col-xs-6">
-<h3>Max</h3>
-<select class="num-bedrooms-max">
-<option value="0">Studio</option>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option selected="">10</option>
-</select>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Bathrooms</h2>
-<div class="row row-less-padding">
-<div class="col-xs-6">
-<h3>Min</h3>
-<select class="num-full-bathrooms-min">
-<option selected="">1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Max Age of Listing</h2>
-<div class="row row-less-padding">
-<div class="col-xs-6">
-<h3>Days</h3>
-<select class="max-age">
-<option selected="" value="7">7+</option>
-<option>6</option>
-<option>5</option>
-<option>4</option>
-<option>3</option>
-<option>2</option>
-<option>1</option>
-</select>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Rent per Bedroom</h2>
-<div class="row row-less-padding">
-<div class="col-xs-6">
-<h3>Max</h3>
-<input class="price-per-br-max" pattern="\d*" step="50" type="number" value="10000"/>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Keywords</h2>
-<div class="row row-less-padding">
-<div class="col-xs-12">
-<input class="keywords" placeholder="Search Listings" type="search"/>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Pets</h2>
-<div class="row row-less-padding">
-<div class="col-xs-12 filter-pets">
-<div class="filter-switch">
-<label class="switch-label" for="require-cats-486131">Cats</label>
-<div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input class="require-cats" data-size="small" data-style="toggle-right" data-toggle="toggle" id="require-cats-486131" type="checkbox" value="Cats"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="require-dogs-329146">Dogs</label>
-<div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input class="require-dogs" data-size="small" data-style="toggle-right" data-toggle="toggle" id="require-dogs-329146" type="checkbox" value="Dogs"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Broker Fee</h2>
-<div class="row row-less-padding">
-<div class="col-xs-12">
-<div class="filter-switch">
-<label class="switch-label" for="require-no-fee-323971">Only No-Fee</label>
-<div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input class="require-no-fee" data-size="small" data-style="toggle-right" data-toggle="toggle" id="require-no-fee-323971" type="checkbox" value="Only No-Fee"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Types</h2>
-<div class="row row-less-padding">
-<div class="col-xs-12 filter-apartment-types">
-<div class="filter-switch">
-<label class="switch-label" for="type-full-lease-703992">Full Leases</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="type-full-lease" data-size="small" data-style="toggle-right" data-toggle="toggle" id="type-full-lease-703992" type="checkbox" value="FULL_LEASE"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="type-sublet-483961">Sublets</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="type-sublet" data-size="small" data-style="toggle-right" data-toggle="toggle" id="type-sublet-483961" type="checkbox" value="SUBLET"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="type-room-657969">Rooms</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="type-room" data-size="small" data-style="toggle-right" data-toggle="toggle" id="type-room-657969" type="checkbox" value="ROOM"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row filter-row">
-<div class="filter-section col-xs-12">
-<h2>Sources</h2>
-<div class="row row-less-padding" style="margin-bottom:-15px">
-<div class="col-xs-12 filter-sources">
-<div class="filter-switch">
-<label class="switch-label" for="source-padlister-391351">PadLister</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-padlister" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-padlister-391351" type="checkbox" value="PADLISTER"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="source-apartmentsearch-463775">Apartment Search</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-apartmentsearch" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-apartmentsearch-463775" type="checkbox" value="APARTMENT_SEARCH"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="source-airbnb-519939">Airbnb</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-airbnb" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-airbnb-519939" type="checkbox" value="AIRBNB"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="source-forrent-336770">ForRent</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-forrent" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-forrent-336770" type="checkbox" value="FOR_RENT"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="source-homesuite-324825">HomeSuite</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-homesuite" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-homesuite-324825" type="checkbox" value="HOMESUITE"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-<div class="filter-switch">
-<label class="switch-label" for="source-others-522319">Others</label>
-<div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input checked="" class="source-others" data-size="small" data-style="toggle-right" data-toggle="toggle" id="source-others-522319" type="checkbox" value="OTHERS"/><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
-<div style="clear:both"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="filter-section col-xs-12">
-<button class="btn btn-success back-to-map-button" type="submit">Apply Filters</button>
-<button class="btn btn-default reset-filter reset-filter-button" type="reset">Reset</button>
-</div>
-</div>
-</form>
-<div class="row filter-footer">
-<a href="//www.padmapper.com/about.php" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'About')">About</a> ·
-    <a href="http://blog.padmapper.com/" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'Blog')">Blog</a> ·
-    <a href="https://itunes.apple.com/us/app/padmapper-apartment-search/id306301965?mt=8" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'iPhone')">iPhone</a> ·
-    <a href="https://play.google.com/store/apps/details?id=com.padmapper&amp;hl=en" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'Android')">Android</a>
-</div>
-<div class="row filter-footer">
-<a href="//www.padmapper.com/legal/privacy.php" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'Privacy')">Privacy</a> ·
-    <a href="//www.padmapper.com/legal/tos.php" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'TOS')">TOS</a> ·
-    <a href="mailto:hello@padmapper.com" onclick="PadMapper.util.Analytics.trackEvent('Filter', 'FooterLinkClick', 'Contact')">Contact Us</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  <div class="row">
+    <div class="email-alert-section filter-section col-xs-12">
+      <h2><span><span class="email-alert-title">Email Alert</span><span class="email-alert-collapse-caret caret"></span></span></h2>
+      <div class="email-alert-container">
+        <div class="alerts-section alerts-checking-auth-state" style="display: none;">
+          <div class="alert-no-alerts-message">Checking if you are logged in...</div>
+        </div>
+
+        <div class="alerts-section alerts-sign-in" style="display: block;">
+          <div class="alert-no-alerts-message">Sign in to save an email alert!</div>
+          <button class="btn btn-primary alert-sign-in">Sign In</button>
+        </div>
+
+        <div class="alerts-section no-alerts" style="display:none">
+          <div class="alert-no-alerts-message">No alerts defined yet!</div>
+          <button class="btn btn-default alert-add">Set Alert Here</button>
+        </div>
+
+        <div class="alerts-section fetching-alerts" style="display:none">
+          <div class="alert-no-alerts-message">Fetching alerts...</div>
+        </div>
+
+        <div class="alerts-section added-alert" style="display:none">
+          <div class="alert-controls">
+            <a class="alert-remove"><span class="glyphicon glyphicon-trash"></span></a>
+          </div>
+          <div class="alert-name"></div>
+          <div class="alert-frequency">
+            <form>
+              <label><input type="radio" name="alert-frequency" class="radio alert-frequency-daily" value="daily">Daily Emails</label>
+              <label><input type="radio" name="alert-frequency" class="radio alert-frequency-hourly" value="hourly">Hourly Emails</label>
+            </form>
+          </div>
+          <div class="alert-filters"></div>
+
+          <button class="btn btn-default alert-reset">Reset Alert Here</button>
+          <button class="btn btn-default alert-update">Update Alert</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Rent</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-6">
+            <h3>Min</h3>
+            <input type="number" step="50" pattern="\d*" class="price-min" value="0">
+          </div>
+
+          <div class="col-xs-6">
+            <h3>Max</h3>
+            <input type="number" step="50" pattern="\d*" class="price-max" value="10000">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Bedrooms</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-6">
+            <h3>Min</h3>
+            <select class="num-bedrooms-min">
+              <option value="0" selected="">Studio</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+
+          <div class="col-xs-6">
+            <h3>Max</h3>
+            <select class="num-bedrooms-max">
+              <option value="0">Studio</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option selected="">10</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Bathrooms</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-6">
+            <h3>Min</h3>
+            <select class="num-full-bathrooms-min">
+              <option selected="">1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Max Age of Listing</h2>
+        <div class="row row-less-padding">
+          <div class="col-xs-6">
+            <h3>Days</h3>
+            <select class="max-age">
+              <option value="7" selected="">7+</option>
+              <option>6</option>
+              <option>5</option>
+              <option>4</option>
+              <option>3</option>
+              <option>2</option>
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Rent per Bedroom</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-6">
+            <h3>Max</h3>
+            <input type="number" step="50" pattern="\d*" class="price-per-br-max" value="10000">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Keywords</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-12">
+            <input placeholder="Search Listings" type="search" class="keywords">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Pets</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-12 filter-pets">
+
+
+  <div class="filter-switch">
+    <label for="require-cats-56992" class="switch-label">Cats</label>
+    <div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="require-cats-56992" class="require-cats" value="Cats" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="require-dogs-309307" class="switch-label">Dogs</label>
+    <div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="require-dogs-309307" class="require-dogs" value="Dogs" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Broker Fee</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-12">
+
+
+  <div class="filter-switch">
+    <label for="require-no-fee-606875" class="switch-label">Only No-Fee</label>
+    <div class="toggle btn btn-default off btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="require-no-fee-606875" class="require-no-fee" value="Only No-Fee" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Types</h2>
+
+        <div class="row row-less-padding">
+          <div class="col-xs-12 filter-apartment-types">
+
+
+  <div class="filter-switch">
+    <label for="type-full-lease-490420" class="switch-label">Full Leases</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="type-full-lease-490420" class="type-full-lease" value="FULL_LEASE" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="type-sublet-203920" class="switch-label">Sublets</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="type-sublet-203920" class="type-sublet" value="SUBLET" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="type-room-783519" class="switch-label">Rooms</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="type-room-783519" class="type-room" value="ROOM" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row filter-row">
+      <div class="filter-section col-xs-12">
+        <h2>Sources</h2>
+
+        <div class="row row-less-padding" style="margin-bottom:-15px">
+          <div class="col-xs-12 filter-sources">
+
+
+  <div class="filter-switch">
+    <label for="source-padlister-362899" class="switch-label">PadLister</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-padlister-362899" class="source-padlister" value="PADLISTER" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="source-apartmentsearch-487304" class="switch-label">Apartment Search</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-apartmentsearch-487304" class="source-apartmentsearch" value="APARTMENT_SEARCH" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="source-airbnb-655618" class="switch-label">Airbnb</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-airbnb-655618" class="source-airbnb" value="AIRBNB" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="source-forrent-268336" class="switch-label">ForRent</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-forrent-268336" class="source-forrent" value="FOR_RENT" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="source-homesuite-719903" class="switch-label">HomeSuite</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-homesuite-719903" class="source-homesuite" value="HOMESUITE" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+
+
+  <div class="filter-switch">
+    <label for="source-others-669450" class="switch-label">Others</label>
+    <div class="toggle btn btn-primary btn-sm toggle-right" data-toggle="toggle" style="width: 0px; height: 0px;"><input type="checkbox" id="source-others-669450" class="source-others" value="OTHERS" checked="" data-toggle="toggle" data-style="toggle-right" data-size="small"><div class="toggle-group"><label class="btn btn-primary btn-sm toggle-on">On</label><label class="btn btn-default btn-sm active toggle-off">Off</label><span class="toggle-handle btn btn-default btn-sm"></span></div></div>
+    <div style="clear:both"></div>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="filter-section col-xs-12">
+        <button type="submit" class="btn btn-success back-to-map-button">Apply Filters</button>
+        <button type="reset" class="btn btn-default reset-filter reset-filter-button">Reset</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="row filter-footer">
+    <a href="https://www.padmapper.com/about.php" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;About&#39;)">About</a> ·
+    <a href="http://blog.padmapper.com/" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;Blog&#39;)">Blog</a> ·
+    <a href="https://itunes.apple.com/us/app/padmapper-apartment-search/id306301965?mt=8" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;iPhone&#39;)">iPhone</a> ·
+    <a href="https://play.google.com/store/apps/details?id=com.padmapper&amp;hl=en" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;Android&#39;)">Android</a>
+  </div>
+  <div class="row filter-footer">
+    <a href="https://www.padmapper.com/legal/privacy.php" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;Privacy&#39;)">Privacy</a> ·
+    <a href="https://www.padmapper.com/legal/tos.php" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;TOS&#39;)">TOS</a> ·
+    <a href="mailto:hello@padmapper.com" onclick="PadMapper.util.Analytics.trackEvent(&#39;Filter&#39;, &#39;FooterLinkClick&#39;, &#39;Contact&#39;)">Contact Us</a>
+  </div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 <noscript class="noscript">
   &lt;div style="height:100%; overflow-y:scroll"&gt;
     &lt;h1&gt;Find apartments for rent and sublets in the US and Canada&lt;/h1&gt;
@@ -564,21 +737,29 @@
     &lt;/div&gt;
   &lt;/div&gt;
 </noscript>
+
 </div>
-<!-- Core JavaScript libraries and helpers -->
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/jquery.placeholder.min.js"></script>
-<script src="/static/js/jquery.browser.min.js"></script>
-<script src="/static/js/jquery.lazyload.min.js"></script>
-<script src="/static/js/jquery.color.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/bootstrap-toggle.min.js"></script>
-<script src="/static/js/accounting.min.js"></script>
-<script src="/static/js/promise-7.0.1.min.js"></script>
-<script src="/static/js/uri.min.js"></script>
-<script src="/static/js/js.cookie.min.js"></script>
-<!-- Set up javascript for the header -->
-<script>
+
+
+
+
+
+
+    <!-- Core JavaScript libraries and helpers -->
+    <script src="./sample_files/jquery.min.js"></script>
+    <script src="./sample_files/jquery.placeholder.min.js"></script>
+    <script src="./sample_files/jquery.browser.min.js"></script>
+    <script src="./sample_files/jquery.lazyload.min.js"></script>
+    <script src="./sample_files/jquery.color.min.js"></script>
+    <script src="./sample_files/bootstrap.min.js"></script>
+    <script src="./sample_files/bootstrap-toggle.min.js"></script>
+    <script src="./sample_files/accounting.min.js"></script>
+    <script src="./sample_files/promise-7.0.1.min.js"></script>
+    <script src="./sample_files/uri.min.js"></script>
+    <script src="./sample_files/js.cookie.min.js"></script>
+
+    <!-- Set up javascript for the header -->
+    <script>
       $(function() {
         // hook up the magnifying glass which is on every page
         $(".magnifying-glass").bind("click touchend", function(e) {
@@ -592,8 +773,9 @@
         $("input, textarea").placeholder();
       });
     </script>
-<!-- Set up Facebook and Twitter -->
-<script>
+
+    <!-- Set up Facebook and Twitter -->
+    <script>
       window.fbAsyncInit = function() {
         FB.init({
           appId: '102483043177475',
@@ -609,10 +791,14 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-<!-- PadMapper -->
-<script src="/static/js/search.js"></script>
-<script>
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+  <!-- PadMapper -->
+  <script src="./sample_files/search.js"></script>
+
+  <script>
     $(function() {
       // show jsok content (requires javascript to be available)
       $(".jsok").show();
@@ -646,7 +832,7 @@
                   flagListingUrl: "/flagAsBad.php"};
 
       // set the map to the best location we've got
-      var bestInitialLocation = {"location": {"lat": 49.222899, "lng": -123.038579}, "zoom": 10};
+      var bestInitialLocation = {"location": {"lat": 40.78, "lng": -73.95}, "zoom": 12};
       bestInitialLocation.formattedAddress = null;
 
       var leadFormConfig = {"defaultValues": {"bodyText": null, "name": null, "moveInDate": null, "email": null, "phone": null, "bestTimes": null}};
@@ -655,9 +841,9 @@
       // use server-provided filters or restore the saved filters state, if there is any
       var overrides = {
           boundingBox: null,
-          priceRange: [100, 5000],
-          numBedroomsRange: [0, 10],
-          minFullBathrooms: 1,
+          priceRange: [null, null],
+          numBedroomsRange: [null, null],
+          minFullBathrooms: null,
           requireCats: false,
           requireDogs: false
       };
@@ -667,7 +853,7 @@
       PadMapper.searchStateManager = new PadMapper.util.SearchStateManager(false);
 
       // start up the map, and select the desired initial listing
-      var initialViewType = PadMapper.ui.VIEW_TYPES["LIST"];
+      var initialViewType = PadMapper.ui.VIEW_TYPES["MAP"];
       var initialViewOptions = {"LOGIN": {}, "LIST": {}};
       var enabledControls = [PadMapper.ui.MAP_CONTROLS.CURRENT_LOCATION, PadMapper.ui.MAP_CONTROLS.RESET_LISTINGS, PadMapper.ui.MAP_CONTROLS.OVERLAYS, PadMapper.ui.MAP_CONTROLS.SCROLL_WHEEL_ZOOM];
       PadMapper.initialize($(".halo"), $("#map-container"), $(".filter"), maxListings, urls, listingFilter, initialViewType, initialViewOptions, enabledControls)
@@ -864,8 +1050,9 @@
       });
     });
   </script>
-<!-- Third-party scripts -->
-<script type="text/javascript">
+
+  <!-- Third-party scripts -->
+  <script type="text/javascript">
     (function(l,i,s,t,h,u,b){l['ListHubAnalyticsObject']=h;l[h]=l[h]||function(){
       (l[h].q=l[h].q||[]).push(arguments)},l[h].d=1*new Date();u=i.createElement(s),
       b=i.getElementsByTagName(s)[0];u.async=1;u.src=t;b.parentNode.insertBefore(u,b)
@@ -873,4 +1060,8 @@
 
     lh("init", {provider: "M-3003", test: false});
   </script>
-<script async="" defer="" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAmAsfEb4ai1hYGNQgcckJyMSHjONiyerk&amp;libraries=geometry&amp;callback=PadMapper.listingMap._onMapLoaded"></script><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe allowfullscreen="true" allowtransparency="true" aria-hidden="true" frameborder="0" id="fb_xdm_frame_https" name="fb_xdm_frame_https" scrolling="no" src="https://staticxx.facebook.com/connect/xd_arbiter.php?version=42#channel=f1397b8844&amp;origin=https%3A%2F%2Fwww.padmapper.com" style="border: none;" tabindex="-1" title="Facebook Cross Domain Communication Frame"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><iframe allowfullscreen="true" allowtransparency="true" frameborder="0" id="rufous-sandbox" scrolling="no" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"></iframe></body>
+
+
+
+
+<script async="" defer="" src="./sample_files/js"></script></body></html>
