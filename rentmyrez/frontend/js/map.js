@@ -3,8 +3,9 @@ var map;
 function initMap() {
 	var mapDiv = document.getElementById('map');
 	map = new google.maps.Map(mapDiv, {
-		center: {lat: 49.2414, lng: -123.1135},
-		zoom: 12,
+		center: {//lat: 49.2414, lng: -123.1135},
+		lat: -25.2744, lng: 133.7751},
+		zoom: 4, //12,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
@@ -22,7 +23,23 @@ function initMap() {
 			icon: getCircle(magnitude)
 		};
 	});
-}
+
+	map.data.setStyle({
+		icon: '//example.com/path/to/image.png',
+		fillColor: 'green',
+		strokeWeight: 10,
+	});
+
+map.data.loadGeoJson('https://storage.googleapis.com/maps-devrel/google.json');}
+
+map.data.addListener('click', function(event) {
+   map.data.overrideStyle(event.feature, {fillColor: 'red'});
+});
+
+map.data.addListener('mouseover', function(event) {
+	document.getElementById('info-box').textContent =
+		event.feature.getProperty('letter');
+});
 
 function getCircle(magnitude) {
   var circle = {
