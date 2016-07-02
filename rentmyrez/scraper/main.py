@@ -10,38 +10,25 @@ import time
 
 # Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
 pjs = webdriver.PhantomJS()
-pjs.get("https://www.padmapper.com/?viewType=LIST&lat=49.255230&lng=-123.075677&zoom=12&minRent=100&maxRent=10000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false")
+pjs.get("https://www.padmapper.com/?viewType=LIST&lat=49.273800&lng=-123.161000&zoom=12&minRent=100&maxRent=5000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false")
 # Wait until div's of the class 'listing-address' are present before grabbing source
 WebDriverWait(pjs, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'listing-address')))
 # Scrolling
 # Load all dynamic content using scrolling DOM actions
-className = 'listings-container'
-scrollName = 'may-scroll generic-list-container list-container'
-execute = "var lastTopPos = document.getElementsByClassName('"+className+"')[1].lastElementChild.offsetTop; " + "document.getElementsByClassName('"+scrollName+"')[0].scrollTop = lastTopPos;"
-
+element = pjs.find_element_by_class_name("list-container")
+scroll_height = pjs.execute_script('return document.getElementsByClassName("list-container")[0].scrollHeight')
+scroll_height_prev = 0
 # Loop to load as many postings as possible
-finalNumPosts = 0
-def checkIfMorePosts(browserObject, script, posts):
-    # Render page as page_source and BS objects
-    currSource = browserObject.page_source
-    currBSObj  = BeautifulSoup(currSource)
-
-    i = 0
-    # Count all postings on current page
-    for post in currBSObj.findAll("div", {"class":"listing-preview"}):
-        i += 1
-    print(str(i))
-    # If the number of postings hasn't increased by the second iteration, return
-    if i == posts or i > 2000:
-        finalNumPosts = i
-        return 1
-
-    # Otherwise execute scrolling JavaScript again and recurse
-    browserObject.execute_script(script)
-    checkIfMorePosts(browserObject, script, i)
-
-
-checkIfMorePosts(pjs, execute, 0)
+while(scroll_height != scroll_height_prev):
+    finalNumPosts = 0
+    pageSource = pjs.page_source
+    bsObj = BeautifulSoup(pageSource, "html.parser")
+    for post in bsObj.findAll("div", {"class": "listing-preview"}):
+        finalNumPosts += 1
+    pjs.execute_script('document.getElementsByClassName("list-container")[0].scrollTop = document.getElementsByClassName("list-container")[0].scrollHeight')
+    scroll_height_prev = scroll_height
+    scroll_height = pjs.execute_script('return document.getElementsByClassName("list-container")[0].scrollHeight')
+    print("Scroll height is " + str(scroll_height))
 
 # Final page_source and BS objects after all scrolling complete
 finalSource = pjs.page_source
