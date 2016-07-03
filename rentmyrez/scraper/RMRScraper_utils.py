@@ -47,6 +47,12 @@ def getNumBeds(post):
         numBeds = int(re.sub('[Beds]', '', numBeds.strip()))
     return numBeds
 
+def getSquareFootage():
+    pass
+
+def getPostingDate():
+    pass
+
 # Now to step into each link for latitudes and longitudes
 def getLatLonFromLink(URL, args):
     lat, lon = None, None
@@ -67,7 +73,7 @@ def getLatLonFromLink(URL, args):
         logging.basicConfig(filename="get_latlon.log", level=logging.DEBUG)
         logging.exception('getLatLonFromLink()', exc_info=True)
     finally:
-        return lat, lon
+        return float(lat), float(lon)
 
 # Store general posting data
 # Note: add imgPath once a schema addition for images of rentals has been defined

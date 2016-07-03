@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l$0+*y!k@s%&5xve(g@p!8&38&a_p-fqc5+ymr3qpt5j!djuo_'
+SECRET_KEY = 'n!bf@@%gvo6c1hky98dga-%89csru3wa6n2a#d60#m06@2px04'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'housing_heatmap',
-    'rest_framework',
+    'rest_framework'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -78,12 +78,8 @@ WSGI_APPLICATION = 'rentmyrez.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rmr_db',
-        'USER': 'root',
-        'PASSWORD': 'simon',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -105,11 +101,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-REST_FRAMEWORK = {
-        'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-        'PAGE_SIZE': 10
-}
 
 
 # Internationalization
