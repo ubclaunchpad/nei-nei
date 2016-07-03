@@ -83,10 +83,11 @@ def saveToDb(postings):
 
 if __name__ == '__main__':
     rmr.getPostsFromPage(finalBSObj, postings)
-    saveToDb(postings)
+    # saveToDb(postings)
 
 # Output file, temporary
 with open('output.json', 'w') as fout:
     json.dump(postings, fout)
 
 pjs.close()
+h = House(latitude=34.333,longitude=484.3434,num_bedrooms=33,rent=44,posting_url='efjieof',address='efjief')
