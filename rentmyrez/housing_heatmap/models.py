@@ -7,7 +7,7 @@ class House(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     num_bedrooms = models.IntegerField()
-    square_footage = models.IntegerField(default=0)
+    square_footage = models.IntegerField(default=0, null=True, blank=True)
     posting_url = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     rent = models.IntegerField()
