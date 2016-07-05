@@ -1,4 +1,5 @@
 var map;
+var heatmap;
 
 function initMap() {
 	var mapDiv = document.getElementById('map');
@@ -48,7 +49,7 @@ window.eqfeed_callback = function (results) {
       };
 		heatmapData.push(latLng);
 	}
-	var heatmap = new google.maps.visualization.HeatmapLayer({
+	heatmap = new google.maps.visualization.HeatmapLayer({
 		data: heatmapData,
 		dissipating: false,
 		map: map
@@ -61,4 +62,8 @@ function getPostings (cb) {
 		.end(function (err, res) {
 			cb(err, res);
 		});
+}
+
+function toggleHeatmap() {
+	heatmap.setMap(heatmap.getMap() ? null : map);
 }
