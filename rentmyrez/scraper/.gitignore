@@ -1,4 +1,5 @@
 sqlp.txt
+*output.json
 *test.py
 *.sql
 *.log
