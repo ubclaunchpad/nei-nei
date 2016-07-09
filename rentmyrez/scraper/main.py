@@ -63,7 +63,7 @@ postings = []
 def saveToDb(postings):
     import os, sys
     import django
-    proj_path = '/Users/simon/Documents/workspace/rent-my-rez/rentmyrez'
+    proj_path = '../../rentmyrez'
     sys.path.append(proj_path)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rentmyrez.settings')
     django.setup()
