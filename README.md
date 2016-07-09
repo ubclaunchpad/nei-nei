@@ -1,5 +1,5 @@
 # rent-my-rez
-The front page of Vancouver housing.
+The front page of Vancouver housing!
 
 ## Installation
 Create a virtual environment in the root project folder by running
@@ -222,3 +222,10 @@ Generating plots...
 
 Exiting.
 ```
+
+##Front-End
+This project is meant to display a map of Vancouver and the statistics of housing in each neighbourhood. To view the front end, run a local server on your computer:
+```
+python -m SimpleHTTPServer 8080
+```
+And navigate to http://localhost:8080/rentmyrez/frontend/index.html
