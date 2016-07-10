@@ -20,7 +20,11 @@ The `listings/` directory contains a `config.json` file which contains settings 
 ```
 python manage.py createsuperuser
 ```
-Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. Next, run the following command from the shell, replacing `<username>` and `<password>` with the appropriate values:
+Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. At this point, you will need to migrate the database again by running 
+```
+python manage.py migrate
+```
+Next, run the following command from the shell, replacing `<username>` and `<password>` with the appropriate values:
 ```
 curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<username>\", \"password\": \"<password>\"}" http://localhost:8000/api-token-auth/
 ```
