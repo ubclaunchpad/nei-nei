@@ -1,6 +1,7 @@
 Django==1.9.7
 djangorestframework==3.3.3
+gevent==1.1.1
+greenlet==0.4.10
+grequests==0.3.0
 requests==2.10.0
-Twisted==16.3.0
 wheel==0.24.0
-zope.interface==4.2.0
