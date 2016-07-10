@@ -11,6 +11,12 @@ __pycache__/
 env/
 build/
 develop-eggs/
+*.egg-info
+*.pot
+*.py[co]
+__pycache__
+db.sqlite3
+MANIFEST
 dist/
 downloads/
 eggs/
