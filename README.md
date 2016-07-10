@@ -15,6 +15,20 @@ To run the Django server, run the following command and head to http://127.0.0.1
 ```
 python manage.py runserver
 ```
+## Configuration
+The `listings/` directory contains a `config.json` file which contains settings used by the `pull_listings.py` and `populate_api.py`. Before you can run these scripts, you will need to edit the `rest_api` section of the file. First, create a Django admin user with:
+```
+python manage.py createsuperuser
+```
+Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. Next, run the following command from the shell, replacing `<username>` and `<password>` with the appropriate values:
+```
+curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<username>\", \"password\": \"<pass>\"}" http://localhost:8000/api-token-auth/
+```
+You should get a response similar to the following:
+```
+{"token":"b8347a8b4708e22ae835ef73a56ba4a16b6d2b5c"}
+```
+Finally, replace the `token` field in the `rest_api` section of the config file with you newly generated token.
 ## Populating the API
 You will notice that at this point, the API is empty since it has not yet been populated. To populate the API, navigate to the `listings/` folder under the project root and run the scripts using the following command:
 ```
