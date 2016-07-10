@@ -16,7 +16,7 @@ To run the Django server, run the following command and head to http://127.0.0.1
 python manage.py runserver
 ```
 ## Configuration
-The `listings/` directory contains a `config.json` file which contains settings used by the `pull_listings.py` and `populate_api.py`. Before you can run these scripts, you will need to edit the `rest_api` section of the file. First, create a Django admin user with:
+The `listings/` directory contains a `config.json` file which contains settings used by `pull_listings.py` and `populate_api.py`. Before you can run these scripts, you will need to edit the `rest_api` section of the file. First, create a Django admin user with:
 ```
 python manage.py createsuperuser
 ```
