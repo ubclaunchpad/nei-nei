@@ -2,6 +2,7 @@
 *.pot
 *.py[co]
 __pycache__
+db.sqlite3
 MANIFEST
 dist/
 docs/_build/
