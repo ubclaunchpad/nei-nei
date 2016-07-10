@@ -1,35 +1,15 @@
-from urllib.request import urlopen
-from urllib.request import Request
-from urllib.error import HTTPError, URLError
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
 from bs4 import BeautifulSoup
 import time
 import re
 import logging
 
-# Custom header to access AirBnB
-header = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
-       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
-       'Accept-Encoding': 'none',
-       'Accept-Language': 'en-US,en;q=0.8',
-       'Connection': 'keep-alive'}
 
 # Get immediate child of listing-preview that contains URL to actual posting
 #   Tag: a href="URL"
 def getExtURL(post):
     extURL = post.find("a")['href']
     return extURL
-
-# TODO: Get listing pic
-#   Tag: div class="listing-image" data-original="PIC URL"
-# def getListImg(post):
-#     listImg = post.find("div", {"class":"listing-image"})
-#     listImg = listImg['data-original']
-#     #print("URL found:", listImg)
-#     return listImg
 
 # Get listing address
 #   Tag: div class="listing-address"
@@ -85,15 +65,15 @@ def getLatLonFromLink(webDriver, URL, *args):
         lat = bsObj.find("meta", {"property":latLonTag+":location:latitude"})['content']
         lon = bsObj.find("meta", {"property":latLonTag+":location:longitude"})['content']
 
-    except URLError:
+    except:
         logging.basicConfig(filename="get_latlon.log", level=logging.DEBUG)
         logging.exception('getLatLonFromLink()', exc_info=True)
     finally:
-        return float(lat), float(lon)
+        return lat, lon
 
-# Store general posting data
-# Note: add imgPath once a schema addition for images of rentals has been defined
+# Store general posting data in a list of dictionaries
 def addPosting(webDriver, postingList, extURL, listAddr, price, numBeds):
+    # Tag testing
     airbnb = re.compile(r"https\:\/\/(www\.)?airbnb\.com\/rooms\/[\w\?\&\-\=]*")
     lat, lon = getLatLonFromLink(webDriver, extURL, airbnb)
 
@@ -101,27 +81,28 @@ def addPosting(webDriver, postingList, extURL, listAddr, price, numBeds):
         raise TypeError
 
     post = {
-        "extURL":       extURL,
-        "listAddr":     listAddr,
-        "price":        price,
-        "numBeds":      numBeds,
-        "latitude":     lat,
-        "longitude":    lon
+        "extURL":       str(extURL),
+        "listAddr":     str(listAddr),
+        #"postingDate":  str(postingDate), # TODO
+        "price":        int(price),
+        "numBeds":      int(numBeds),
+        #"sqrFootage":   int(sqrFootage),  # TODO
+        "latitude":     float(lat),
+        "longitude":    float(lon)
     }
     postingList.append(post)
     # print ("Added a posting from URL: " + str(extURL))
 
 # Get a posting preview div on page
 #   Tag: div class="listing-preview"
-def getPostsFromPage(bsObject, postingList):
-    driver = webdriver.PhantomJS()
+def getPostsFromPage(webDriver, bsObject, postingList):
     successPosts   = 0
     latLonFailures = 0
     totalFailures  = 0
     for post in bsObject.findAll("div", {"class":"listing-preview"}):
         if (post.get_text() == ''): break # scraper has hit the last div so end
         try:
-            addPosting(driver, postingList, getExtURL(post), getListAddr(post), getPrice(post), getNumBeds(post))
+            addPosting(webDriver, postingList, getExtURL(post), getListAddr(post), getPrice(post), getNumBeds(post))
             successPosts += 1
         except TypeError:
             latLonFailures += 1
@@ -133,7 +114,6 @@ def getPostsFromPage(bsObject, postingList):
             logging.basicConfig(filename="get_posts.log", level=logging.DEBUG)
             logging.exception('getPostsFromPage(): addPosting(): complete failure to create post', exc_info=True)
             pass
-    driver.quit()
 
     print("Finished storing " + str(successPosts) + " listings.")
     print("Failed to get latitude or longitude " + str(latLonFailures) + " times.")

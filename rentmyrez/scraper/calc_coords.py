@@ -1,4 +1,4 @@
-import globalmaptiles as gmapt
+import global_map_tiles as gmapt
 import math
 
 def mapSectors(sector_list, lat, lon, zoom):
@@ -68,8 +68,9 @@ def mapSectors(sector_list, lat, lon, zoom):
                     "longitude":    m2ly
                 }
                 sector_list.append(sector_pos)
+    print("Done creating sector coordinates.")
 
-    with open('./sector_list.txt', 'w') as fout:
-        for sector in sector_list:
-            fout.write(str(sector['latitude'])+","+str(sector['longitude'])+"\n")
-    return sector_list
+    # Write sectors to file:
+    # with open('./sector_list.txt', 'w') as fout:
+    #     for sector in sector_list:
+    #         fout.write(str(sector['latitude'])+","+str(sector['longitude'])+"\n")

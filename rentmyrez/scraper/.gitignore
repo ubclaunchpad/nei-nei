@@ -1,4 +1,5 @@
 sqlp.txt
+*.png
 *output.json
 *test.py
 *.sql
