@@ -9,10 +9,10 @@
   },
   "search_criteria": {
     "shouldStoreSettings": false,
-    "northLat": 49.50824151023941,
-    "southLat": 48.86739766510225,
-    "eastLong": -122.333928625,
-    "westLong": -123.65503458203125,
+    "northLat": 49.740707115045225,
+    "southLat": 48.64405446874574,
+    "eastLong": -121.572267157959,
+    "westLong": -124.670411689209,
     "zoom": 10,
     "minRent": 100,
     "maxRent": 10000,
@@ -20,7 +20,7 @@
     "minBR": 0,
     "maxBR": 10,
     "minBA": 1,
-    "maxAge": 7,
+    "maxAge": 30,
     "noFee": false,
     "cats": false,
     "dogs": false,
@@ -46,7 +46,7 @@
     "favsOnly": false,
     "onlyHQ": true,
     "showHidden": false,
-    "limit": 3000,
+    "limit": 5000,
     "am": false
   }
 }
