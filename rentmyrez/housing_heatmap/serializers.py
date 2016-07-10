@@ -5,4 +5,4 @@ class HouseSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = House
         fields = ('latitude', 'longitude', 'num_bedrooms', 'square_footage',
-                  'rent', 'posted', 'id')
+                  'rent', 'posting_url', 'address', 'posted', 'id')

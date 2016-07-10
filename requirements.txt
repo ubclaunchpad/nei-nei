@@ -3,3 +3,6 @@
 Django >= 1.9.6
 Pillow >= 3.2.0
 djangorestframework == 3.3.3
+selenium==2.53.6
+beautifulsoup4==4.4.1
+bs4==0.0.1

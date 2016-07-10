@@ -9,8 +9,16 @@ from selenium.webdriver.support import expected_conditions as EC
 import json
 import time
 
-# display = Display(visible=0, size=(1024,768))
-# display.start()
+# Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
+pjs = webdriver.PhantomJS()
+pjs.get("https://www.padmapper.com/?viewType=LIST&lat=49.255230&lng=-123.075677&zoom=12&minRent=100&maxRent=10000&minBR=0&maxBR=10&minBA=1&cats=false&dogs=false")
+# Wait until div's of the class 'listing-address' are present before grabbing source
+WebDriverWait(pjs, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'listing-address')))
+# Scrolling
+# Load all dynamic content using scrolling DOM actions
+className = 'listings-container'
+scrollName = 'may-scroll generic-list-container list-container'
+execute = "var lastTopPos = document.getElementsByClassName('"+className+"')[1].lastElementChild.offsetTop; " + "document.getElementsByClassName('"+scrollName+"')[0].scrollTop = lastTopPos;"
 
 # Selenium and PhantomJS needed to execute JavaScript and render AJAX-enabled dynamic pages
 driver = webdriver.PhantomJS()
@@ -72,6 +80,27 @@ def scrapeSector(sector):
     with open('output.json', 'a') as fout:
         json.dump(postings, fout)
 
+def saveToDb(postings):
+    import os, sys
+    import django
+    proj_path = '../../rentmyrez'
+    sys.path.append(proj_path)
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rentmyrez.settings')
+    django.setup()
+    from housing_heatmap.models import House
+    for posting in postings:
+        # check if posting url already exists in db.
+        h = House(latitude=posting['latitude'],
+                  longitude=posting['longitude'],
+                  num_bedrooms=posting['numBeds'],
+                  #square_footage=posting['squareFootage'],
+                  #posted=posting['postingDate']
+                  rent=posting['price'],
+                  posting_url=posting['extURL'],
+                  address=posting['listAddr'])
+        h.save()
+    # {"listAddr": "366 W 15th Ave, Vancouver, BC V5Y 1Y2", "numBeds": 1, "extURL": "https://www.padmapper.com/listings/16997061.-1-bedroom-1-bathroom-apartment-at-366-w-15th-ave-vancouver-bc-v5y-1y2", "longitude": "-123.113", "latitude": "49.2575", "price": 1700}
+
 if __name__ == '__main__':
     lat = 49.251756
     lon = -123.053441
@@ -79,6 +108,10 @@ if __name__ == '__main__':
     sectors = calculateSectorURLs(lat, lon, zoom)
     for sector in sectors:
         scrapeSector(sector)
+
+# Output file, temporary
+with open('output.json', 'w') as fout:
+    json.dump(postings, fout)
 
 driver.quit()
 # display.close()
