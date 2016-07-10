@@ -7,7 +7,7 @@ listings = json.load(infile)
 rest_api = json.load(open('config.json'))['rest_api']
 
 def exception_handler(request, exception):
-    print exception
+    print str(exception)
 
 headers = {'Accept': 'application/json',
            'Authorization': 'Token {token}'.format(token=rest_api['token']),

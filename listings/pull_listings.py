@@ -1,25 +1,17 @@
 import requests
+import grequests
 import json
-import functools
 import sys
 
 def getListingData(url, ids):
-    def getListingSubsetData(chunk):
-        req = requests.Request('POST', url, params={'getBuilding': True}, data={'ids': ','.join(chunk)}, headers={'accept': 'application/json'})
-        prepared = req.prepare()
-        s = requests.Session()
-        response = s.send(prepared)
-        return response.json()
-
     limit = 300
-    return functools.reduce(lambda x, y: x + getListingSubsetData(y), [ids[i:i+limit] for i in range(0, len(ids), limit)], [])
+    chunks = [ids[i:i+limit] for i in range(0, len(ids), limit)]
+    reqs = (grequests.post(url, headers={'accept': 'application/json'}, data={'ids': ','.join(chunk)}, params={'getBuilding': True}) for chunk in chunks)
+    return reduce(lambda x, y: x + y.json(), grequests.imap(reqs), [])
 
 def getListingIds(url, payload):
-    req = requests.Request('GET', url, params={k: json.dumps(v) for k, v in payload.items()}, headers={'accept': 'application/json'})
-    prepared = req.prepare()
-    s = requests.Session()
-    response = s.send(prepared)
-    return list(map(lambda x: x['id'], response.json()))
+    req = requests.get(url, params={k: json.dumps(v) for k, v in payload.items()}, headers={'accept': 'application/json'})
+    return map(lambda x: x['id'], req.json())
 
 
 if __name__ == '__main__':
