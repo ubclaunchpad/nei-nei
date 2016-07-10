@@ -38,6 +38,8 @@ You will notice that at this point, the API is empty since it has not yet been p
 ```
 python pull_listings.py | python populate_api.py
 ```
+After this command runs, if you visit [http://localhost:8000/listings/?limit=100](http://localhost:8000/listings/?limit=100), you should see some new listings.
+
 If you want to save the listings data to a file instead, you can run this command:
 ```
 python pull_listings.py output.json
