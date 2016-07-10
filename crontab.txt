@@ -1,0 +1,1 @@
+30 9 * * * cd /Users/simon/workspace/rent-my-rez/listings && python pull_listings.py | python populate_api.py
