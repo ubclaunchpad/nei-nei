@@ -22,7 +22,7 @@ python manage.py createsuperuser
 ```
 Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. Next, run the following command from the shell, replacing `<username>` and `<password>` with the appropriate values:
 ```
-curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<username>\", \"password\": \"<pass>\"}" http://localhost:8000/api-token-auth/
+curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<username>\", \"password\": \"<password>\"}" http://localhost:8000/api-token-auth/
 ```
 You should get a response similar to the following:
 ```
