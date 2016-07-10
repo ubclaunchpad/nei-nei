@@ -72,3 +72,9 @@ venv/
 
 # NPM stuff
 **/node_modules/
+
+# Database related (at the moment, ignore migrations)
+rentmyrez/housing_heatmap/migrations
+rentmyrez/rentmyrez/settings.py
+rentmyrez/scraper/output.json
+*.sqlite3
