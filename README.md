@@ -1,5 +1,5 @@
 # rent-my-rez
-The Django REST API
+The Django REST API and API population scripts
 
 ## Installation
 To install dependencies, run:
@@ -28,7 +28,7 @@ You should get a response similar to the following:
 ```
 {"token":"b8347a8b4708e22ae835ef73a56ba4a16b6d2b5c"}
 ```
-Finally, replace the `token` field in the `rest_api` section of the config file with you newly generated token.
+Finally, replace the `token` field in the `rest_api` section of the config file with your newly generated token.
 ## Populating the API
 You will notice that at this point, the API is empty since it has not yet been populated. To populate the API, navigate to the `listings/` folder under the project root and run the scripts using the following command:
 ```
