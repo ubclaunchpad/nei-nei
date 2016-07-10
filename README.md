@@ -15,7 +15,7 @@ To run the Django server, run the following command and head to http://127.0.0.1
 ```
 python manage.py runserver
 ```
-## Populating API
+## Populating the API
 You will notice that at this point, the API is empty since it has not yet been populated. To populate the API, navigate to the `listings/` folder under the project root and run the scripts using the following command:
 ```
 python pull_listings.py | python populate_api.py
