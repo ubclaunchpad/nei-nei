@@ -36,6 +36,7 @@ __pycache__/
 env/
 build/
 develop-eggs/
+db.sqlite3
 dist/
 downloads/
 eggs/

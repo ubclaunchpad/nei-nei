@@ -1,6 +1,11 @@
-"""rentmyrez URL Configuration
+from listings.views import ListingViewSet
+from django.conf.urls import patterns, url, include
+from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
+from housing_heatmap import views
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+"""The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
 Examples:
 Function views
@@ -29,4 +34,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^', include('housing_heatmap.urls')),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-token-auth/', views.obtain_auth_token)
 ]
