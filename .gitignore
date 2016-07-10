@@ -25,6 +25,7 @@ scripts/plotting/.plotly/.credentials
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.py[co]
 *$py.class
 
 # C extensions
@@ -78,6 +79,7 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+docs/locale/
 
 # PyBuilder
 target/
@@ -96,3 +98,8 @@ venv/
 
 # NPM stuff
 **/node_modules/
+
+MANIFEST
+tests/coverage_html/
+tests/.coverage
+tests/report/
