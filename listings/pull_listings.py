@@ -5,8 +5,8 @@ import sys
 
 def getListingData(url, ids):
     limit = 300
-    chunks = [ids[i:i+limit] for i in range(0, len(ids), limit)]
-    reqs = (grequests.post(url, headers={'accept': 'application/json'}, data={'ids': ','.join(chunk)}, params={'getBuilding': True}) for chunk in chunks)
+    batches = [ids[i:i+limit] for i in range(0, len(ids), limit)]
+    reqs = (grequests.post(url, headers={'accept': 'application/json'}, data={'ids': ','.join(batch)}, params={'getBuilding': True}) for batch in batches)
     return reduce(lambda x, y: x + y.json(), grequests.imap(reqs), [])
 
 def getListingIds(url, payload):
