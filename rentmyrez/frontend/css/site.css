@@ -1,6 +1,11 @@
 #map {
-  width: 500px;
-  height: 400px;
-  margin: 0;
+  width: 1000px;
+  height: 500px;
+  margin-left: auto;
+  margin-right:auto;
   padding: 0;
+}
+
+.toggle-panel button{
+	
 }

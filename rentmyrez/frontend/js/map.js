@@ -1,5 +1,6 @@
 var map;
 var heatmap;
+var mapJSONData;
 
 function initMap() {
 	var mapDiv = document.getElementById('map');
@@ -10,45 +11,62 @@ function initMap() {
 	});
 
 	// Create a <script> tag and set the USGS URL as the source.
-	var script = document.createElement('script');
+	//var script = document.createElement('script');
 
-	script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
-	document.getElementsByTagName('head')[0].appendChild(script);
+	//script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
+	
+	//script.src = 'js/output.json';
+	//document.getElementsByTagName('head')[0].appendChild(script);
+	console.log(123);
 
-	map.data.setStyle(function(feature) {
-		console.log('feature', feature);
-		var magnitude = feature.getProperty('mag');
-		console.log('magnitude', magnitude);
-		return {
-			icon: getCircle(magnitude)
-		};
+	loadJSON(function(response){
+		//console.log("response: " + response);
+		mapJSONData = JSON.parse(response);
+		//console.log("actual json: " + mapJSONData);
+		addData(mapJSONData);
+
 	});
+
+	
 }
 
-function getCircle(magnitude) {
-  var circle = {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'red',
-    fillOpacity: .2,
-    scale: Math.pow(2, magnitude) / 2,
-    strokeColor: 'white',
-    strokeWeight: .5
-  };
-  return circle;
-}
+	function addData(results) {
+	// results = arrayOfJSONObjects...
 
-window.eqfeed_callback = function (results) {
+
+//window.eqfeed_callback = function (results) {
+	// var heatmapData = [];
+	// for (var i = 0; i < results.features.length; i++) {
+	// 	var coords = results.features[i].geometry.coordinates;
+	// 	var latLng = new google.maps.LatLng(coords[1], coords[0]);
+	// 	var magnitude = results.features[i].properties.mag;
+ //      var weightedLoc = {
+ //        location: latLng,
+ //        weight: Math.pow(4, magnitude)
+ //      };
+	// 	heatmapData.push(weightedLoc);
+	// }
 	var heatmapData = [];
-	for (var i = 0; i < results.features.length; i++) {
-		var coords = results.features[i].geometry.coordinates;
-		var latLng = new google.maps.LatLng(coords[1], coords[0]);
-		var magnitude = results.features[i].properties.mag;
-      var weightedLoc = {
-        location: latLng,
-        weight: Math.pow(2, magnitude)
-      };
-		heatmapData.push(latLng);
+	
+	for (var i = 0; i < results.length; i++) {
+
+		var coords = results[i];
+		var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
+		var pricingScale = coords.price / coords.numBeds;
+	
+		if (coords == null || coords.latitude == null || coords.longitude == null ||
+			coords.price == null || coords.numBeds == null) {
+
+			// do nothing basically
+		} else {
+			var weightedLoc = {
+				location: latLng,
+				weight: pricingScale/100000
+			}
+			heatmapData.push(weightedLoc);
+		}
 	}
+
 	heatmap = new google.maps.visualization.HeatmapLayer({
 		data: heatmapData,
 		dissipating: false,
@@ -56,14 +74,34 @@ window.eqfeed_callback = function (results) {
 	});
 }
 
-function getPostings (cb) {
-	request
-		.get('/api/postings')
-		.end(function (err, res) {
-			cb(err, res);
-		});
+// function getPostings (cb) {
+// 	request
+// 		.get('/api/postings')
+// 		.end(function (err, res) {
+// 			cb(err, res);
+// 		});
+// }
+
+function loadJSON(callback) {
+	// check it out for more information
+	// https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+
+	// this function allows you use a pure JSON file instead of using a js file 
+
+	var xobj = new XMLHttpRequest();
+	xobj.overrideMimeType("application/json");
+	// load json file here
+	xobj.open('GET', 'js/output.json', true);
+	xobj.onreadystatechange = function() {
+		if (xobj.readyState == 4 && xobj.status == "200") {
+			callback(xobj.responseText);
+		}
+	};
+	xobj.send(null);
 }
 
 function toggleHeatmap() {
 	heatmap.setMap(heatmap.getMap() ? null : map);
 }
+
+
