@@ -28,6 +28,21 @@ function NeighbourhoodsAPI (map) {
 		// on the map here, or if that should be done in a different method.
 
 		this.neighbourhoods = polygons;
+		// window.alert("neighbourhoods" + this.neighbourhoods[0].polygon[0].lat);
+		var polygon;
+		polygons.forEach(function (hood) {
+			// Construct the polygon
+			polygon = new google.maps.Polygon({
+				paths: hood.polygon,
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2,
+				fillColor: '#FF0000',
+				fillOpacity: 0.35
+			});
+			polygon.setMap(map);
+		});
+
 	}
 
 	/**
