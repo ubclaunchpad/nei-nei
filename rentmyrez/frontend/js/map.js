@@ -35,6 +35,9 @@ function initMap() {
 
 		testNeighbourhood.setMap(map);
 	});
+
+	var api = new NeighbourhoodsAPI(map);
+ 	api.init(fixed_neighbourhoods_data);
 }
 
 function getPostings (cb) {

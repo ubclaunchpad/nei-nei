@@ -26,6 +26,8 @@ function NeighbourhoodsAPI (map) {
 		// like `neighbourhoods` so that it can be used later. Decide
 		// whether its reasonable to actually display the neighbourhoods
 		// on the map here, or if that should be done in a different method.
+
+		this.neighbourhoods = polygons;
 	}
 
 	/**
@@ -33,6 +35,9 @@ function NeighbourhoodsAPI (map) {
 	 */
 	this.displayAll = function () {
 		// Set all neighbourhood overlays to be visible on the map.
+		if (this.visible == false) {
+			this.visible = true;
+		}
 	}
 
 	/**
@@ -40,6 +45,7 @@ function NeighbourhoodsAPI (map) {
 	 */
 	this.hideAll = function () {
 		// Set all neighbourhood overlays to be invisible on the map.
+		this.visible = false;
 	}
 
 	/**
