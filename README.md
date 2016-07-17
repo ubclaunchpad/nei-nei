@@ -1,9 +1,5 @@
 # rent-my-rez
-<<<<<<< HEAD
 The front-page of Vancouver housing!
-=======
-The Django REST API and API population scripts
->>>>>>> Update README.md
 
 ## Installation
 To install dependencies, run:
@@ -25,7 +21,7 @@ The `listings/` directory contains a `config.json` file which contains settings 
 ```
 python manage.py createsuperuser
 ```
-Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. At this point, you will need to migrate the database again by running 
+Replace the `username` and `password` fields in the config file with the ones you used to create the new admin user. At this point, you will need to migrate the database again by running
 ```
 python manage.py migrate
 ```
