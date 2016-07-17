@@ -45,7 +45,7 @@ You will notice that at this point, the API is empty since it has not yet been p
 1. Replace the `username` and `password` fields in the config file with the ones you used to create the Django admin user in the previous section.
 2. Run the following command from the shell, replacing `${username}` and `${password}` with the appropriate values:
 
-<pre>
+ <pre>
  > curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<b>${username}</b>\", \"password\": \"<b>${password}</b>\"}" http://localhost:8000/api-token-auth/
  </pre>
 
