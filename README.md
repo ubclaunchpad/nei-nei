@@ -43,11 +43,11 @@ At this point, you will need to migrate the database again by running
 You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to make the following changes to the *config.json* file found under *scripts/api/*. 
 
 1. Replace the `username` and `password` fields in the config file with the ones you used to create the Django admin user in the previous section.
-2. Run the following command from the shell, replacing `<username>` and `<password>` with the appropriate values:
+2. Run the following command from the shell, replacing `${username}` and `${password}` with the appropriate values:
 
- ```bash
- > curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<username>\", \"password\": \"<password>\"}" http://localhost:8000/api-token-auth/
- ```
+<pre>
+ > curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<b>${username}</b>\", \"password\": \"<b>${password}</b>\"}" http://localhost:8000/api-token-auth/
+ </pre>
 
  You should get a response similar to the following:
 
@@ -88,7 +88,7 @@ The project includes scripts for generating plots of the data, which can be foun
 
 By default, the first time the **plotly** library is configured, it will create a folder in your home directory containing configuration and credentials files. However, since it is best practice to keep the development environment completely isolated and self-contained, it would be ideal if we could move the folder inside our project and set an environment variable telling **plotly** where it can find the folder. Unfortunately, it seems that this feature is not available out of the box, but it can be easily added with a small change to the source code.
 
-Navigate to the folder containing the **plotly** library source code (if you are using a virtual environment, the folder will be located at *${VIRTUAL\_ENVIRONMENT\_DIR}/lib/python2.7/site-packages/plotly/*, and find the file called *files.py*. Change line 4 to the following:
+Navigate to the folder containing the **plotly** library source code (if you are using a virtual environment, the folder will be located at *<b>${VIRTUAL\_ENVIRONMENT\_DIR}</b>/lib/python2.7/site-packages/plotly/*, and find the file called *files.py*. Change line 4 to the following:
 
 ```python
 PLOTLY_DIR = os.environ.get('PLOTLY_DIR', os.path.join(os.path.expanduser("~"), ".plotly"))
