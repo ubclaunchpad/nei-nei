@@ -1,5 +1,3 @@
-import plotly.plotly as py
-import plotly.graph_objs as go
 import pandas as pd
 import numpy as np
 import sys
@@ -34,10 +32,35 @@ def nearest_points(num, point):
              .sort_values('distance').iloc[:num]
 
 
-data = json.load(open(sys.argv[1], 'r'))
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Generate a heatmap of housing price values.')
+group = parser.add_mutually_exclusive_group()
+parser.add_argument('data', type=open, help='the file containing listings data')
+group.add_argument('--offline', action='store_const',
+                    const=True, default=False,
+                    help='run in offline mode')
+group.add_argument('-o', dest='filename',
+                    help='save output to .png file')
+
+args = parser.parse_args()
+
+data = json.load(args.data)
 df = pd.DataFrame(data)
 h = histogram()
 
-data = [ go.Heatmap(z=h) ]
+import plotly.plotly as py
+import plotly.graph_objs as go
+import plotly.offline as ol
 
-py.plot(data, filename='heatmap')
+layout = go.Layout(title='Housing Price Heatmap')
+data = [ go.Heatmap(z=h) ]
+fig = go.Figure(data=data, layout=layout)
+
+if args.offline:
+    ol.plot(fig, filename='heatmap.html')
+elif args.filename:
+    py.image.save_as(fig, args.filename)
+else:
+    py.plot(fig, filename='heatmap')
