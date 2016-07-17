@@ -108,6 +108,12 @@ Finally, run the plotting scripts like so:
 > PLOTLY_DIR=.plotly/ python heatmap.py ../data.json
 ```
 
+To see a list of available options, run 
+
+```bash
+> python heatmap.py -h
+```
+
 ##Setup Script
 Coming soon...
 
