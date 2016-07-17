@@ -43,7 +43,7 @@ At this point, you will need to migrate the database again by running
 You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to make the following changes to the *config.json* file found under *scripts/api/*. 
 
 1. Replace the `username` and `password` fields in the config file with the ones you used to create the Django admin user in the previous section.
-2. Run the following command from the shell, replacing `${username}` and `${password}` with the appropriate values:
+2. Run the following command from the shell, replacing **`${username}`** and **`${password}`** with the appropriate values:
 
  <pre>
  > curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"<b>${username}</b>\", \"password\": \"<b>${password}</b>\"}" http://localhost:8000/api-token-auth/
