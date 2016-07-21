@@ -108,14 +108,19 @@ Finally, run the plotting scripts like so:
 > PLOTLY_DIR=.plotly/ python heatmap.py ../data.json
 ```
 
-To see a list of available options, run 
+To see a list of available options, run
 
 ```bash
 > python heatmap.py -h
 ```
 
 ##Setup Script
-Coming soon...
+You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above:
+
+```bash
+> bash setup.sh
+# paste output here
+```
 
 ## Run
 This project is meant to display a map of Vancouver and the statistics of housing in each neighbourhood. To view the front end, run a local server on your computer:

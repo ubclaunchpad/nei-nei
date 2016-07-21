@@ -5,6 +5,7 @@ set -e
 PROJECT_ROOT=$( cd $(dirname $0) ; pwd -P )
 
 function join { local IFS="$1"; shift; echo "$*"; }
+function print_error { printf "\n\e[01;31m$@\e[0m\n" >&2; }
 
 pushd $PROJECT_ROOT > /dev/null
 
@@ -25,7 +26,7 @@ python manage.py migrate
 read -p "Username for Django admin user ($USER): " DJANGO_USER
 DJANGO_USER=${DJANGO_USER:-$USER}
 while read -s -p "Password for Django admin user: " DJANGO_PASS && [[ -z "$DJANGO_PASS" ]] ; do
-  >&2 printf "\n\e[01;31mError: Blank passwords aren't allowed.\e[0m\n"
+  print_error "Error: Blank passwords aren't allowed."
 done
 echo
 echo "Creating Django admin user..."
@@ -44,7 +45,7 @@ if [[ $response =~ $regex ]]
 then
   token="${BASH_REMATCH[1]}"
 else
-  printf "\n\e[01;31mReceived unexpected response from server: \n\n$response\e[0m\n" >&2
+  print_error "Received unexpected response from server:\n\n$response"
   exit 1
 fi
 
@@ -57,15 +58,17 @@ sed -i "$(join \; "${api_replacements[@]}")" config.json
 echo "Populating API..."
 python pull_listings.py | python populate_api.py
 
-echo "Stopping server."
-kill -SIGINT $!
-
 cd ../..
 
 echo "Updating crontab.txt..."
 sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
 
-cd scripts/plotting
+cd ../../venv/lib/python2.7/site-packages/plotly/
+
+echo "Patching Plotly library file..."
+sed -i 's@\(PLOTLY_DIR\) = \(os\.path\.join(os\.path\.expanduser("~"), "\.plotly")\)@\1 = os\.environ\.get("PLOTLY_DIR", \2)@' files.py
+
+cd ../../../../../scripts/plotting
 
 read -p "Plotly account username: " PLOTLY_USER
 read -p "Plotly API key: " PLOTLY_API_KEY
@@ -74,10 +77,12 @@ plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
 plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.config
 
-cd ../../venv/lib/python2.7/site-packages/plotly/
+echo "Generating plots..."
+curl http://localhost:8000/listings/ -o data.json
+PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
 
-echo "Patching Plotly library file..."
-sed -i 's@\(PLOTLY_DIR\) = \(os\.path\.join(os\.path\.expanduser("~"), "\.plotly")\)@\1 = os\.environ\.get("PLOTLY_DIR", \2)@' files.py
+echo "Stopping server."
+kill -SIGINT $!
 
 deactivate
 

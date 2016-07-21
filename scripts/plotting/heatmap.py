@@ -3,6 +3,7 @@ import numpy as np
 import sys
 import json
 
+# TODO: figure out how to show axes
 
 def histogram(res=0.05):
     xx, yy = np.meshgrid(np.arange(df.longitude.min(), df.longitude.max(), res),
