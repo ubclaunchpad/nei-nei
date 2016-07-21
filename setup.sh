@@ -77,13 +77,11 @@ plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
 plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.config
 
-print_progress "Generating plots..."
-curl http://localhost:8000/listings/ -o data.json
-PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
+# print_progress "Generating plots..."
+# curl http://localhost:8000/listings/ -o data.json
+# PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
 
 print_progress "Stopping server."
 kill -SIGINT $!
-
-deactivate
 
 popd > /dev/null
