@@ -7,6 +7,8 @@ PROJECT_ROOT=$( cd $(dirname $0) ; pwd -P )
 function join { local IFS="$1"; shift; echo "$*"; }
 function print_error { printf "\n\e[01;31m$@\e[0m\n" >&2; }
 function print_progress { printf "\n\e[01;34m$@\e[0m\n"; }
+function finish { print_progress "Exiting."; pkill -SIGINT -P $SERVER_PID 2>/dev/null; }
+trap finish EXIT
 
 pushd $PROJECT_ROOT > /dev/null
 
@@ -34,6 +36,7 @@ echo "from django.contrib.auth.models import User; User.objects.create_superuser
 
 print_progress "Running server..."
 python manage.py runserver &
+SERVER_PID=$!
 sleep 1
 
 cd ../scripts/api
@@ -77,11 +80,9 @@ plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
 plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.config
 
-# print_progress "Generating plots..."
-# curl http://localhost:8000/listings/ -o data.json
-# PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
-
-print_progress "Stopping server."
-kill -SIGINT $!
+print_progress "Generating plots..."
+curl http://localhost:8000/listings/ -o data.json
+PLOTLY_DIR=.plotly/
+python heatmap.py data.json -o heatmap.png
 
 popd > /dev/null
