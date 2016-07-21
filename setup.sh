@@ -6,20 +6,23 @@ PROJECT_ROOT=$( cd $(dirname $0) ; pwd -P )
 
 function join { local IFS="$1"; shift; echo "$*"; }
 function print_error { printf "\n\e[01;31m$@\e[0m\n" >&2; }
+function print_progress { printf "\n\e[01;34m$@\e[0m\n"; }
+function finish { print_progress "Exiting."; pkill -SIGINT -P $SERVER_PID 2>/dev/null; }
+trap finish EXIT
 
 pushd $PROJECT_ROOT > /dev/null
 
-command -v virtualenv >/dev/null 2>&1 || { echo "Installing virtualenv..."; pip install virtualenv; }
-echo "Creating virtual environment..."
+command -v virtualenv >/dev/null 2>&1 || { print_progress "Installing virtualenv..."; pip install virtualenv; }
+print_progress "Creating virtual environment..."
 virtualenv venv
 source venv/bin/activate
 
-echo "Installing project dependencies..."
+print_progress "Installing project dependencies..."
 pip install -r requirements.txt
 
 cd rentmyrez
 
-echo "Migrating database..."
+print_progress "Migrating database..."
 python manage.py makemigrations listings
 python manage.py migrate
 
@@ -28,17 +31,17 @@ DJANGO_USER=${DJANGO_USER:-$USER}
 while read -s -p "Password for Django admin user: " DJANGO_PASS && [[ -z "$DJANGO_PASS" ]] ; do
   print_error "Error: Blank passwords aren't allowed."
 done
-echo
-echo "Creating Django admin user..."
+print_progress "Creating Django admin user..."
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('$DJANGO_USER', '', '$DJANGO_PASS')" | python manage.py shell
 
-echo "Running server..."
+print_progress "Running server..."
 python manage.py runserver &
+SERVER_PID=$!
 sleep 1
 
 cd ../scripts/api
 
-echo "Requesting authentication token..."
+print_progress "Requesting authentication token..."
 regex="{\"token\":\"([a-zA-Z0-9]+)\"}"
 response=$(curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"$DJANGO_USER\", \"password\": \"$DJANGO_PASS\"}" http://localhost:8000/api-token-auth/)
 if [[ $response =~ $regex ]]
@@ -49,41 +52,37 @@ else
   exit 1
 fi
 
-echo "Updating API config file..."
+print_progress "Updating API config file..."
 api_replacements[0]='s@${username}@'$DJANGO_USER'@'
 api_replacements[1]='s@${password}@'$DJANGO_PASS'@'
 api_replacements[2]='s@${token}@'$token'@'
 sed -i "$(join \; "${api_replacements[@]}")" config.json
 
-echo "Populating API..."
+print_progress "Populating API..."
 python pull_listings.py | python populate_api.py
 
 cd ../..
 
-echo "Updating crontab.txt..."
+print_progress "Updating crontab.txt..."
 sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
 
-cd ../../venv/lib/python2.7/site-packages/plotly/
+cd venv/lib/python2.7/site-packages/plotly/
 
-echo "Patching Plotly library file..."
+print_progress "Patching Plotly library file..."
 sed -i 's@\(PLOTLY_DIR\) = \(os\.path\.join(os\.path\.expanduser("~"), "\.plotly")\)@\1 = os\.environ\.get("PLOTLY_DIR", \2)@' files.py
 
 cd ../../../../../scripts/plotting
 
 read -p "Plotly account username: " PLOTLY_USER
 read -p "Plotly API key: " PLOTLY_API_KEY
-echo "Updating Plotly credentials file..."
+print_progress "Updating Plotly credentials file..."
 plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
 plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.config
 
-echo "Generating plots..."
+print_progress "Generating plots..."
 curl http://localhost:8000/listings/ -o data.json
-PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
-
-echo "Stopping server."
-kill -SIGINT $!
-
-deactivate
+PLOTLY_DIR=.plotly/
+python heatmap.py data.json -o heatmap.png
 
 popd > /dev/null
