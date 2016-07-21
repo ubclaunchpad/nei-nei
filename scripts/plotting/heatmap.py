@@ -32,7 +32,6 @@ def nearest_points(num, point):
              .sort_values('distance').iloc[:num]
 
 
-
 import argparse
 
 parser = argparse.ArgumentParser(description='Generate a heatmap of housing price values.')
