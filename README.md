@@ -40,7 +40,7 @@ At this point, you will need to migrate the database again by running
 ```
 
 ## Populating the API
-You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to make the following changes to the *config.json* file found under *scripts/api/*. 
+You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to make the following changes to the *config.json* file found under *scripts/api/*.
 
 1. Replace the `username` and `password` fields in the config file with the ones you used to create the Django admin user in the previous section.
 2. Run the following command from the shell, replacing **`${username}`** and **`${password}`** with the appropriate values:
@@ -94,7 +94,7 @@ Navigate to the folder containing the **plotly** library source code (if you are
 PLOTLY_DIR = os.environ.get('PLOTLY_DIR', os.path.join(os.path.expanduser("~"), ".plotly"))
 ```
 
-This tells **plotly** that if the `PLOTLY_DIR` environment variable is set, use that value as the folder location, otherwise default to *~/.plotly/*. 
+This tells **plotly** that if the `PLOTLY_DIR` environment variable is set, use that value as the folder location, otherwise default to *~/.plotly/*.
 
 The last step before generating the plots is to actually pull the JSON data from the server:
 
@@ -108,11 +108,16 @@ Finally, run the plotting scripts like so:
 > PLOTLY_DIR=.plotly/ python heatmap.py ../data.json
 ```
 
-To see a list of available options, run 
+To see a list of available options, run
 
 ```bash
 > python heatmap.py -h
 ```
 
 ##Setup Script
-Coming soon...
+You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above:
+
+```bash
+> bash setup.sh
+# paste output here
+```
