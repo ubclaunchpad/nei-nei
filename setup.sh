@@ -4,7 +4,7 @@ set -e
 
 PROJECT_ROOT=$( cd $(dirname $0) ; pwd -P )
 
-function join { local IFS="$1"; shift; print_progress "$*"; }
+function join { local IFS="$1"; shift; echo "$*"; }
 function print_error { printf "\n\e[01;31m$@\e[0m\n" >&2; }
 function print_progress { printf "\n\e[01;34m$@\e[0m\n"; }
 
