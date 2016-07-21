@@ -49,9 +49,9 @@ else
 fi
 
 echo "Updating API config file..."
-api_replacements[0]='s@\("username": \?\)"[[:alnum:]]\+"@\1"'$DJANGO_USER'"@'
-api_replacements[1]='s@\("password": \?\)"[[:alnum:]]\+"@\1"'$DJANGO_PASS'"@'
-api_replacements[2]='s@\("token": \?\)"[[:alnum:]]\+"@\1"'$token'"@'
+api_replacements[0]='s@${username}@'$DJANGO_USER'@'
+api_replacements[1]='s@${password}@'$DJANGO_PASS'@'
+api_replacements[2]='s@${token}@'$token'@'
 sed -i "$(join \; "${api_replacements[@]}")" config.json
 
 echo "Populating API..."
@@ -70,8 +70,8 @@ cd scripts/plotting
 read -p "Plotly account username: " PLOTLY_USER
 read -p "Plotly API key: " PLOTLY_API_KEY
 echo "Updating Plotly credentials file..."
-plotly_replacements[0]='s@\("username": \?\)"[[:alnum:]]\+"@\1"'PLOTLY_USER'"@'
-plotly_replacements[1]='s@\("api_key": \?\)"[[:alnum:]]\+"@\1"'PLOTLY_API_KEY'"@'
+plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
+plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.config
 
 cd ../../venv/lib/python2.7/site-packages/plotly/
