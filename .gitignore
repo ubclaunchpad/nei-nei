@@ -89,6 +89,7 @@ tests/report/
 venv/
 scripts/plotting/*.png
 scripts/plotting/*.json
+scripts/plotting/*.html
 scripts/api/config.json
 crontab.txt
 scripts/plotting/.plotly/.credentials
