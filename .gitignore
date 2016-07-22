@@ -78,3 +78,16 @@ venv/
 
 # NPM stuff
 **/node_modules/
+docs/locale/
+node_modules/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
+
+venv/
+scripts/plotting/*.png
+scripts/plotting/*.json
+scripts/api/config.json
+crontab.txt
+scripts/plotting/.plotly/.credentials
