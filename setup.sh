@@ -79,8 +79,8 @@ read -p "Plotly account username: " PLOTLY_USER
 read -p "Plotly API key: " PLOTLY_API_KEY
 print_progress "Updating Plotly credentials file..."
 cp .plotly/.credentials{.sample,}
-plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
-plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
+plotly_replacements[0]='s@${username}@'$PLOTLY_USER'@'
+plotly_replacements[1]='s@${api_key}@'$PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.credentials
 
 print_progress "Generating plots..."
