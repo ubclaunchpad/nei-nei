@@ -40,7 +40,7 @@ At this point, you will need to migrate the database again by running
 ```
 
 ## Populating the API
-You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to make the following changes to the *config.json* file found under *scripts/api/*.
+You will notice that at this point, the API is empty since it has not yet been populated. Before running the API population scripts, you will first need to create a *config.json* file from the template found under *scripts/api/* and make the following changes:
 
 1. Replace the `username` and `password` fields in the config file with the ones you used to create the Django admin user in the previous section.
 2. Run the following command from the shell, replacing **`${username}`** and **`${password}`** with the appropriate values:
@@ -77,14 +77,14 @@ Then, later on you can populate the API directly from the file with:
 > python populate_api.py output.json
 ```
 
-Finally, to setup a cronjob to run daily and repopulate the API with any new postings, run the following command from the project root (after changing the contents appropriately):
+Finally, to setup a cronjob to run daily and repopulate the API with any new postings, copy the sample file found under the project root to *crontab.txt*, replace the **`${PROJECT_ROOT}`** placeholder with the appropriate directory path, and run the following command:
 
 ```bash
 > crontab crontab.txt
 ```
 
 ##Generating Plots
-The project includes scripts for generating plots of the data, which can be found under *scripts/plotting*. You will need to create a [plotly](https://plot.ly/) account before moving on. Once you have created one, open *scripts/plotting/.plotly/.credentials* and fill in the `username` and `api_key` fields.
+The project includes scripts for generating plots of the data, which can be found under *scripts/plotting*. You will need to create a [plotly](https://plot.ly/) account before moving on. Once you have created one, copy *scripts/plotting/.plotly/.credentials.sample* to *scripts/plotting/.plotly/.credentials* and fill in the `username` and `api_key` fields.
 
 By default, the first time the **plotly** library is configured, it will create a folder in your home directory containing configuration and credentials files. However, since it is best practice to keep the development environment completely isolated and self-contained, it would be ideal if we could move the folder inside our project and set an environment variable telling **plotly** where it can find the folder. Unfortunately, it seems that this feature is not available out of the box, but it can be easily added with a small change to the source code.
 
