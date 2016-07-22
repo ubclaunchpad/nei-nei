@@ -53,6 +53,7 @@ else
 fi
 
 print_progress "Updating API config file..."
+cp config{.sample,}.json
 api_replacements[0]='s@${username}@'$DJANGO_USER'@'
 api_replacements[1]='s@${password}@'$DJANGO_PASS'@'
 api_replacements[2]='s@${token}@'$token'@'
@@ -64,6 +65,7 @@ python pull_listings.py | python populate_api.py
 cd ../..
 
 print_progress "Updating crontab.txt..."
+cp crontab{.sample,}.txt
 sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
 
 cd venv/lib/python2.7/site-packages/plotly/
@@ -76,6 +78,7 @@ cd ../../../../../scripts/plotting
 read -p "Plotly account username: " PLOTLY_USER
 read -p "Plotly API key: " PLOTLY_API_KEY
 print_progress "Updating Plotly credentials file..."
+cp .plotly/.credentials{.sample,}
 plotly_replacements[0]='s@${username}@'PLOTLY_USER'@'
 plotly_replacements[1]='s@${api_key}@'PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.credentials
