@@ -3,13 +3,13 @@ import numpy as np
 import sys
 import json
 
-# TODO: figure out how to show axes
 
 def histogram(res=0.05):
-    xx, yy = np.meshgrid(np.arange(df.longitude.min(), df.longitude.max(), res),
-                         np.arange(df.latitude.min(), df.latitude.max(), res))
+    longitudes = np.arange(df.longitude.min(), df.longitude.max(), res)
+    latitudes = np.arange(df.latitude.min(), df.latitude.max(), res)
+    xx, yy = np.meshgrid(longitudes, latitudes)
     squares = np.array([xx.ravel(), (xx + res).ravel(), yy.ravel(), (yy + res).ravel()]).T
-    return np.apply_along_axis(average_value_rating, 1, squares).reshape(xx.shape)
+    return np.apply_along_axis(average_value_rating, 1, squares).reshape(xx.shape), longitudes, latitudes
 
 def average_value_rating(square):
     def value_rating(row):
@@ -48,13 +48,30 @@ args = parser.parse_args()
 
 data = json.load(args.data)
 df = pd.DataFrame(data)
-h = histogram()
+h, x, y = histogram()
 
 import plotly.plotly as py
 import plotly.graph_objs as go
+from plotly.grid_objs import Column
 import plotly.offline as ol
 
-layout = go.Layout(title='Housing Price Heatmap')
+layout = go.Layout(
+    title='Housing Price Heatmap',
+    xaxis=dict(
+        title='Longitude',
+        ticktext=np.char.mod('%.5f', x),
+        tickvals=range(len(x))
+    ),
+    yaxis=dict(
+        title='Latitude',
+        ticktext=np.char.mod('%.5f', y),
+        tickvals=range(len(y))
+    ),
+    margin=dict(
+        b=150,
+        l=125
+    )
+)
 data = [ go.Heatmap(z=h) ]
 fig = go.Figure(data=data, layout=layout)
 
