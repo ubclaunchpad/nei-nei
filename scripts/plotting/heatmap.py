@@ -8,8 +8,9 @@ def histogram(res=0.05):
     longitudes = np.arange(df.longitude.min(), df.longitude.max(), res)
     latitudes = np.arange(df.latitude.min(), df.latitude.max(), res)
     xx, yy = np.meshgrid(longitudes, latitudes)
-    squares = np.array([xx.ravel(), (xx + res).ravel(), yy.ravel(), (yy + res).ravel()]).T
-    return np.apply_along_axis(average_value_rating, 1, squares).reshape(xx.shape), longitudes, latitudes
+    squares = pd.DataFrame(np.array([xx.ravel(), (xx + res).ravel(), yy.ravel(), (yy + res).ravel()]).T,
+                           columns=['left', 'right', 'lower', 'upper'])
+    return squares.apply(average_value_rating, axis=1).values.reshape(xx.shape), longitudes, latitudes
 
 def average_value_rating(square):
     def value_rating(row):
@@ -17,19 +18,18 @@ def average_value_rating(square):
         return row.price
     points = points_in_square(square)
     if points.empty:
-        center = (square[:2].mean(), square[2:].mean())
+        center = (square.left + square.right) / 2, (square.lower + square.upper)/2
         points = nearest_neighbours(center, 5)
     return points.apply(value_rating, axis=1).mean()
 
 def points_in_square(square):
-    left, right, lower, upper = square.tolist()
-    return df[(left <= df.longitude) &
-              (df.longitude <= right) &
-              (lower <= df.latitude) &
-              (df.latitude <= upper)]
+    return df[(df.longitude >= square.left) &
+              (df.longitude <= square.right) &
+              (df.latitude >= square.upper) &
+              (df.latitude <= square.upper)]
 
 def nearest_neighbours(point, num):
-    return df.assign(distance=(df.longitude-point[0])**2+(df.latitude-point[1])**2) \
+    return df.assign(distance=(df[['longitude', 'latitude']] - point).apply(np.linalg.norm, axis=1)) \
              .sort_values('distance').iloc[:num]
 
 
