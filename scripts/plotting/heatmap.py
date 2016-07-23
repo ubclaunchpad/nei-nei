@@ -25,7 +25,7 @@ def average_value_rating(square):
 def points_in_square(square):
     return df[(df.longitude >= square.left) &
               (df.longitude <= square.right) &
-              (df.latitude >= square.upper) &
+              (df.latitude >= square.lower) &
               (df.latitude <= square.upper)]
 
 def nearest_neighbours(point, num):
