@@ -18,7 +18,7 @@ def average_value_rating(square):
     points = points_in_square(square)
     if points.empty:
         center = (square[:2].mean(), square[2:].mean())
-        points = nearest_points(5, center)
+        points = nearest_neighbours(center, 5)
     return points.apply(value_rating, axis=1).mean()
 
 def points_in_square(square):
@@ -28,7 +28,7 @@ def points_in_square(square):
               (lower <= df.latitude) &
               (df.latitude <= upper)]
 
-def nearest_points(num, point):
+def nearest_neighbours(point, num):
     return df.assign(distance=(df.longitude-point[0])**2+(df.latitude-point[1])**2) \
              .sort_values('distance').iloc[:num]
 
