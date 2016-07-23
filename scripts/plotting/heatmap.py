@@ -12,15 +12,18 @@ def histogram(res=0.05):
                            columns=['left', 'right', 'lower', 'upper'])
     return squares.apply(average_value_rating, axis=1).values.reshape(xx.shape), longitudes, latitudes
 
-def average_value_rating(square):
-    def value_rating(row):
-        # TODO
+class RatingFunctions(object):
+    # TODO: implement more rating functions
+    @staticmethod
+    def price(row):
         return row.price
+
+def average_value_rating(square, rating_func=RatingFunctions.price):
     points = points_in_square(square)
     if points.empty:
         center = (square.left + square.right) / 2, (square.lower + square.upper)/2
         points = nearest_neighbours(center, 5)
-    return points.apply(value_rating, axis=1).mean()
+    return points.apply(rating_func, axis=1).mean()
 
 def points_in_square(square):
     return df[(df.longitude >= square.left) &
