@@ -6,7 +6,7 @@ function initMap() {
 	var mapDiv = document.getElementById('map');
 	map = new google.maps.Map(mapDiv, {
 		center: {lat: 49.2827, lng: -123.1207},
-		zoom: 3,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
@@ -61,7 +61,7 @@ function initMap() {
 		} else {
 			var weightedLoc = {
 				location: latLng,
-				weight: pricingScale/100000
+				weight: pricingScale/10
 			}
 			heatmapData.push(weightedLoc);
 		}
