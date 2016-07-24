@@ -11,6 +11,12 @@ __pycache__/
 env/
 build/
 develop-eggs/
+*.egg-info
+*.pot
+*.py[co]
+__pycache__
+db.sqlite3
+MANIFEST
 dist/
 downloads/
 eggs/
@@ -72,3 +78,18 @@ venv/
 
 # NPM stuff
 **/node_modules/
+docs/locale/
+node_modules/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
+
+.DS_Store
+venv/
+scripts/plotting/*.png
+scripts/plotting/*.json
+scripts/plotting/*.html
+scripts/api/config.json
+crontab.txt
+scripts/plotting/.plotly/.credentials
