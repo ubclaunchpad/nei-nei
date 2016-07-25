@@ -1,3 +1,4 @@
+
 #map {
   width: 1000px;
   height: 500px;
@@ -8,4 +9,26 @@
 
 .toggle-panel button{
 	
+}
+
+.plotly {
+	opacity: 0.4;
+}
+.plotly-wrap {
+	position:relative;
+}
+.plotly-background {
+	z-index:-1;
+	position:absolute;
+	background-image: url(../images/testing.jpg);
+	width: 650px;
+	height:350px;
+	top: 0;
+    margin-left:124px;
+    margin-top: 100px
+
+}
+
+.is-frame {
+	background-color: transparent !important;
 }
