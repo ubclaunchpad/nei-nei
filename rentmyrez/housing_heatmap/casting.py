@@ -69,9 +69,9 @@ class RayCaster():
     #   If number of edges intersected is odd, the point resides within the polygon, else outside
     #            __________________
     #            |                |
-    #        o --|----------------|------> (2 passes through)
+    #  (out) o --|----------------|------> (2 passes through)
     #            |                |
-    #            |      o --------|------> (1 pass through)
+    #            | (in) o --------|------> (1 pass through)
     #            |                |
     #            |________________|
     #
@@ -86,8 +86,9 @@ class RayCaster():
             poly_name = poly[0]
             postings_within_poly = []
             for posting in list(posting_list):
-                pos = Pos(posting['lat'], posting['lon'])
-                if pos_within_polygon(pos, poly):
+                pos = Pos(lat=float(posting['lat']),
+                          lon=float(posting['lon']))
+                if RayCaster.pos_within_polygon(pos, poly):
                     postings_within_poly.append(posting)
                     # Remove to account for placement
                     posting_list.remove(posting)
@@ -100,46 +101,61 @@ class RayCaster():
         # Create a special dict for all other positions, add to out_list
         out_list.append({
             'name':      'Outside',
-            'positions': poly_list
+            'positions': posting_list
         })
 
-
+# Create polygons using edges and edges using positions, from a JSON source
 def organize_polygons(data, out_list):
     for poly in data:
         new_poly  = poly['polygon']
         new_name  = poly['name']
         new_edges = ()
+        # TODO: lat an lng are reversed in JSON file, change later
         for i in range(0, len(new_poly) - 1):
-            pos_a = Pos(new_poly[i]['lat'], new_poly[i]['lng'])
-            pos_b = Pos(new_poly[i + 1]['lat'], new_poly[i + 1]['lng'])
+            pos_a = Pos(lat=float(new_poly[i]['lng']),
+                        lon=float(new_poly[i]['lat']))
+            pos_b = Pos(lat=float(new_poly[i + 1]['lng']),
+                        lon=float(new_poly[i + 1]['lat']))
             new_edges += (Edge(pos_a, pos_b),)
         # Join first pos to last to complete the polygon
         #   Note: first and last pos's may be the same point
-        new_edges += (Edge(Pos(new_poly[-1]['lat'], new_poly[-1]['lng']), Pos(new_poly[0]['lat'], new_poly[0]['lng'])),)
+        new_edges += (Edge(
+            Pos(lat=float(new_poly[-1]['lng']),
+                lon=float(new_poly[-1]['lat'])),
+            Pos(lat=float(new_poly[0]['lng']),
+                lon=float(new_poly[0]['lat']))),
+            )
         out_list.append(Polygon(new_name, new_edges))
 
 
-#       Generate tuples
-# ---------------------------------------
+#               Generate tuples
 #
-import os
-import time
-import json
-import pickle
-
-# Initialization of tuples data
-week_secs = 60 * 60 * 24 * 7
-file_path = './tuples_data/tuples.pickle'
-# If there are no tuples created yet or the tuples are a week old, recalculate
-if (not os.path.isfile(file_path)) or (int(time.time()) - int(os.path.getctime(file_path)) > week_secs):
-
-    with open('../../places/polygons.json') as neighbourhoods_data:
-        ndata = json.load(neighbourhoods_data)
-
-    polygons = []
-    organize_polygons(ndata, polygons)
-
-    with open(file_path, 'wb') as tuples:
-        pickle.dump(polygons, tuples, pickle.HIGHEST_PROTOCOL)
-
-    del polygons
+# Note: necessary for testing. Place these scripts
+#       into backend when using real data
+# -----------------------------------------------------
+#
+# import json
+# from pprint import pprint
+#
+#
+# with open('../../places/polygons.json') as neighbourhoods_data:
+#     ndata = json.load(neighbourhoods_data)
+#
+# polygons = []
+# organize_polygons(ndata, polygons)
+#
+# rc = RayCaster()
+#
+# out_list = []
+## A few test positions
+# in_list  = [{'lat': 49.263112837069855, 'lon':-123.12820912384622},
+#             {'lat': 49.26261501901451, 'lon':-123.11415059359008},
+#             {'lat': 49.261563462520094, 'lon':-123.20533683179627}]
+# rc.place_pos_in_polygon(in_list, polygons, out_list)
+# print("In list:")
+# pprint(in_list)
+# print("\n Out list:")
+# pprint(out_list)
+# print("\n")
+#
+# del polygons
