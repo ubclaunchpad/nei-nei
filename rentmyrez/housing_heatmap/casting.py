@@ -1,4 +1,5 @@
 import sys
+import json
 from collections import namedtuple
 
 # Tuple objects
@@ -86,13 +87,15 @@ class RayCaster():
             poly_name = poly[0]
             postings_within_poly = []
             for posting in list(posting_list):
-                pos = Pos(lat=float(posting['lat']),
-                          lon=float(posting['lon']))
+                pos = Pos(lat=float(posting['latitude']),
+                          lon=float(posting['longitude']))
+                # Determine whether position is within a polygon
                 if RayCaster.pos_within_polygon(pos, poly):
                     postings_within_poly.append(posting)
                     # Remove to account for placement
                     posting_list.remove(posting)
                 del pos
+            # Create a list of dictionaries with neighbourhood's name and a list of postings
             poly_dict = {
                 'name':      poly_name,
                 'positions': postings_within_poly
@@ -106,11 +109,11 @@ class RayCaster():
 
 # Create polygons using edges and edges using positions, from a JSON source
 def organize_polygons(data, out_list):
-    for poly in data:
+    for poly in ndata:
         new_poly  = poly['polygon']
         new_name  = poly['name']
         new_edges = ()
-        # TODO: lat an lng are reversed in JSON file, change later
+        # Note: lat an lng are reversed in JSON file, so they are switched them here
         for i in range(0, len(new_poly) - 1):
             pos_a = Pos(lat=float(new_poly[i]['lng']),
                         lon=float(new_poly[i]['lat']))
@@ -137,20 +140,26 @@ def organize_polygons(data, out_list):
 # import json
 # from pprint import pprint
 #
-#
 # with open('../../places/polygons.json') as neighbourhoods_data:
 #     ndata = json.load(neighbourhoods_data)
 #
 # polygons = []
 # organize_polygons(ndata, polygons)
 #
-# rc = RayCaster()
-#
+# # Output list of the form:
+# # [{
+# #     'name':      neighbourhood_name,
+# #     'positions': list_of_postings_within_polygon
+# # },]
+# #   Note: list_of_postings_within_polygon contains postings, not lat,lon
+# #         positions
 # out_list = []
-## A few test positions
-# in_list  = [{'lat': 49.263112837069855, 'lon':-123.12820912384622},
-#             {'lat': 49.26261501901451, 'lon':-123.11415059359008},
-#             {'lat': 49.261563462520094, 'lon':-123.20533683179627}]
+#
+# # A few test positions
+# in_list  = [{'latitude': 49.263112837069855, 'longitude':-123.12820912384622},
+#             {'latitude': 49.26261501901451, 'longitude':-123.11415059359008},
+#             {'latitude': 49.261563462520094, 'longitude':-123.20533683179627}]
+# rc = RayCaster()
 # rc.place_pos_in_polygon(in_list, polygons, out_list)
 # print("In list:")
 # pprint(in_list)
