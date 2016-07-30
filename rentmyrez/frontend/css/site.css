@@ -1,16 +1,10 @@
-
 #map {
-  width: 1000px;
-  height: 500px;
-  margin-left: auto;
-  margin-right:auto;
-  padding: 0;
+	width: 1000px;
+	height: 500px;
+	margin-left: auto;
+	margin-right:auto;
+	padding: 0;
 }
-
-.toggle-panel button{
-	
-}
-
 .plotly {
 	opacity: 0.4;
 }
@@ -26,9 +20,4 @@
 	top: 0;
     margin-left:124px;
     margin-top: 100px
-
-}
-
-.is-frame {
-	background-color: transparent !important;
 }
