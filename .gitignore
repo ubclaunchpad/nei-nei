@@ -6,6 +6,16 @@ __pycache__/
 # C extensions
 *.so
 
+# Frontend heatmap
+**/frontend/output.json
+**/places/.vancouver.json.swp
+**/scripts/api/config.json
+**/scripts/plotting/.plotly/.credentials
+**/places/output.json
+**/db.sqlite3
+**/data.json
+**/config.json
+
 # Distribution / packaging
 .Python
 env/
