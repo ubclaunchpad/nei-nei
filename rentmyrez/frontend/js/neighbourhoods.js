@@ -27,9 +27,10 @@ function NeighbourhoodsAPI (map) {
 		// whether its reasonable to actually display the neighbourhoods
 		// on the map here, or if that should be done in a different method.
 
-		this.neighbourhoods = polygons;
-		// window.alert("neighbourhoods" + this.neighbourhoods[0].polygon[0].lat);
+		visible = true;
+	  //window.alert("neighbourhoods" + polygons[0].polygon[0].lat);
 		var polygon;
+
 		polygons.forEach(function (hood) {
 			// Construct the polygon
 			polygon = new google.maps.Polygon({
@@ -40,7 +41,13 @@ function NeighbourhoodsAPI (map) {
 				fillColor: '#FF0000',
 				fillOpacity: 0.35
 			});
-			polygon.setMap(map);
+
+			neighbourhoods[hood.name] = polygon;
+			// window.alert("neighbourhood " + hood.name + " has polygon " + neighbourhoods[hood.name]);
+
+			if (visible === true) {
+				polygon.setMap(map);
+			};
 		});
 
 	}
@@ -50,8 +57,8 @@ function NeighbourhoodsAPI (map) {
 	 */
 	this.displayAll = function () {
 		// Set all neighbourhood overlays to be visible on the map.
-		if (this.visible == false) {
-			this.visible = true;
+		if (visible === false) {
+			visible = true;
 		}
 	}
 
@@ -60,7 +67,7 @@ function NeighbourhoodsAPI (map) {
 	 */
 	this.hideAll = function () {
 		// Set all neighbourhood overlays to be invisible on the map.
-		this.visible = false;
+		visible = false;
 	}
 
 	/**
@@ -71,9 +78,16 @@ function NeighbourhoodsAPI (map) {
 	 * @param {string} neighbourhood - the name of the neighbourhood
 	 *   to (un)highlight
 	 */
-	this.highlight = function (neighbourhood) {
+	this.highlight = function (neighbourhoodName) {
 		// Toggle highlight state of a neighbourhood.
 		// Update internal state of which neighbourhoods are highlighted,
 		// then update the map to reflect the change.
+	}
+
+	/**
+	 * Update the fillColor and strokeColor for the polygon of given neighbourhoodName.
+	 */
+	this.updateColour = function (neighbourhoodName, colour) {
+
 	}
 }
