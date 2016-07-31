@@ -44,7 +44,7 @@ polygons = map(create_polygon, neighbourhoods)
 
 rc = RayCaster(polygons)
 
-points = map(lambda l: Point(x=l['lng'], y=l['lat']), listings)
+points = (Point(x=l['lng'], y=l['lat']) for l in listings)
 payloads = map(lambda (l, p): dict(
     latitude=l['lat'],
     longitude=l['lng'],
@@ -56,7 +56,7 @@ payloads = map(lambda (l, p): dict(
     address=l['location'],
     price=int(l['price']),
     date_listed=l['date'],
-    neighbourhood=p.name if p else None
+    neighbourhood=p and p.name
 ), zip(listings, map(rc.find_polygon_containing_point, points)))
 
 headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
