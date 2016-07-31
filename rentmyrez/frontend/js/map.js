@@ -22,16 +22,17 @@ function initMap() {
 	
 	for (var i = 0; i < results.length; i++) {
 		var coords = results[i];
-		var latLng = new google.maps.LatLng(coords.latitude,coords.longitude);
-		var pricingScale = coords.price / coords.numBeds;
-	
-		if (coords == null || coords.latitude == null || coords.longitude == null ||
-			coords.price == null || coords.numBeds == null) {
+		var latLng = new google.maps.LatLng(coords.lat,coords.lng);
+		var pricingScale = coords.price / coords.beds;
+		
+		if (coords == null || coords.lat == null || coords.lng == null ||
+			coords.price == null || coords.beds == null || pricingScale > 100000) {
 			// do nothing
 		} else {
+			console.log(pricingScale);
 			var weightedLoc = {
 				location: latLng,
-				weight: pricingScale/10
+				weight: pricingScale/100000
 			}
 			heatmapData.push(weightedLoc);
 		}
