@@ -15,8 +15,8 @@ def histogram(res=0.05):
 class RatingFunctions(object):
     # TODO: implement more rating functions
     @staticmethod
-    def price(row):
-        return row.price
+    def price(listing):
+        return listing.price
 
 def average_value_rating(square, rating_func=RatingFunctions.price):
     points = points_in_square(square)

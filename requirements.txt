@@ -3,6 +3,7 @@ djangorestframework==3.3.3
 gevent==1.1.1
 greenlet==0.4.10
 grequests==0.3.0
+jsonfield==1.0.3
 numpy==1.11.1
 pandas==0.18.1
 plotly==1.12.4
