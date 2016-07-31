@@ -16,6 +16,7 @@ class RayCaster(object):
         elif point.y < p2.y and point.y > p1.y:
             slope = (p2.y - p1.y) / (p2.x - p1.x)
             return point.x <= (p1.x + (point.y - p1.y) / slope)
+        return False
 
     def _point_in_polygon(self, point, polygon):
         return bool(sum(self._ray_intersects_edge(point, edge) for edge in polygon.edges) & 1)
