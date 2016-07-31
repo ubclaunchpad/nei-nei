@@ -67,7 +67,7 @@ cd ../..
 
 print_progress "Updating crontab.txt..."
 cp crontab{.sample,}.txt
-sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
+sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@g' crontab.txt
 
 cd venv/lib/python2.7/site-packages/plotly/
 
