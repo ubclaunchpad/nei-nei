@@ -1,4 +1,4 @@
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 
 Point = namedtuple('Point', 'x, y')
 Edge = namedtuple('Edge', 'p1, p2')
@@ -21,7 +21,14 @@ class RayCaster(object):
     def _point_in_polygon(self, point, polygon):
         return bool(sum(self._ray_intersects_edge(point, edge) for edge in polygon.edges) & 1)
 
-    def get_polygon_containing_point(self, point):
+    def find_polygon_containing_point(self, point):
         for polygon in self.polygons:
             if self._point_in_polygon(point, polygon):
                 return polygon
+
+    def assign_points(self, points):
+        poly_map = defaultdict(list)
+        for p in points:
+            poly = self.find_polygon_containing_point(p)
+            poly_map[poly and poly.name].append(p)
+        return poly_map

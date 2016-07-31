@@ -42,7 +42,7 @@ def create_polygon(neighbourhood):
 neighbourhoods = requests.get(neighbourhoods_url, headers={'accept': 'application/json'}).json()
 polygons = map(create_polygon, neighbourhoods)
 
-ray_caster = RayCaster(polygons)
+rc = RayCaster(polygons)
 
 points = map(lambda l: Point(x=l['lng'], y=l['lat']), listings)
 payloads = map(lambda (l, p): dict(
@@ -57,7 +57,7 @@ payloads = map(lambda (l, p): dict(
     price=int(l['price']),
     date_listed=l['date'],
     neighbourhood=p.name if p else None
-), zip(listings, map(ray_caster.get_polygon_containing_point, points)))
+), zip(listings, map(rc.find_polygon_containing_point, points)))
 
 headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
            'Content-Type': 'application/json'}
