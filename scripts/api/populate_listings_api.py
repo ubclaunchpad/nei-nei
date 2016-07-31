@@ -64,7 +64,3 @@ headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
 
 rs = (grequests.post(listings_url, headers=headers, data=json.dumps(payload)) for payload in payloads)
 grequests.map(rs, size=10, exception_handler=lambda r, e: sys.stderr.write(str(e) + '\n'))
-
-
-#     # change setup (and readme) to make sure that we don't use piping, but instead save files to data folder
-#     # Also change crontab
