@@ -1,6 +1,7 @@
 {
-  "ids_url": "https://www.padmapper.com/reloadMarkersJSON.php",
+  "listing_ids_url": "https://www.padmapper.com/reloadMarkersJSON.php",
   "listings_url": "https://www.padmapper.com/pullListingsForCache.php",
+  "neighbourhoods_url": "http://data.vancouver.ca/download/kml/cov_localareas.kml",
   "rest_api": {
     "base_url": "http://localhost:8000",
     "listings": "/listings/",
@@ -9,7 +10,7 @@
     "password": "${password}",
     "token": "${token}"
   },
-  "search_criteria": {
+  "listings_search_criteria": {
     "shouldStoreSettings": false,
     "northLat": 49.740707115045225,
     "southLat": 48.64405446874574,

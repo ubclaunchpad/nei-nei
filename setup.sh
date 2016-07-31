@@ -23,7 +23,7 @@ pip install -r requirements.txt
 cd rentmyrez
 
 print_progress "Migrating database..."
-python manage.py makemigrations listings
+python manage.py makemigrations
 python manage.py migrate
 
 read -p "Username for Django admin user ($USER): " DJANGO_USER
@@ -60,7 +60,8 @@ api_replacements[2]='s@${token}@'$token'@'
 sed -i "$(join \; "${api_replacements[@]}")" config.json
 
 print_progress "Populating API..."
-python populate_listings_api.py <(python pull_listings.py)
+python populate_neighbourhoods_api.py
+python populate_listings_api.py
 
 cd ../..
 

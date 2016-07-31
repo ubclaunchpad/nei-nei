@@ -5,8 +5,26 @@ import json
 from collections import namedtuple
 from raycaster import Point, Edge, Polygon, RayCaster
 
-listings = json.load(open(sys.argv[1], 'r'))
-rest_api = json.load(open('config.json'))['rest_api']
+config = json.load(open('config.json'))
+rest_api = config['rest_api']
+
+if len(sys.argv) > 1:
+    listings = json.load(open(sys.argv[1]))
+else:
+    def getListingsData(url, ids):
+        limit = 300
+        batches = [ids[i:i+limit] for i in range(0, len(ids), limit)]
+        reqs = (grequests.post(url, headers={'accept': 'application/json'}, data={'ids': ','.join(batch)}, params={'getBuilding': True}) for batch in batches)
+        return reduce(lambda x, y: x + y.json(), grequests.imap(reqs), [])
+
+    def getListingIds(url, payload):
+        req = requests.get(url, params={k: json.dumps(v) for k, v in payload.items()}, headers={'accept': 'application/json'})
+        return map(lambda x: x['id'], req.json())
+
+    ids = getListingIds(config['listing_ids_url'], config['listings_search_criteria'])
+    listings = getListingsData(config['listings_url'], ids)
+    json.dump(listings, open('data/raw_listings_data.json', 'w'))
+
 listings_url = rest_api['base_url'] + rest_api['listings']
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
 
@@ -41,16 +59,12 @@ payloads = map(lambda (l, p): dict(
     neighbourhood=p.name if p else None
 ), zip(listings, map(ray_caster.get_polygon_containing_point, points)))
 
-def exception_handler(request, exception):
-    print str(exception)
-
 headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
            'Content-Type': 'application/json'}
 
 rs = (grequests.post(listings_url, headers=headers, data=json.dumps(payload)) for payload in payloads)
-grequests.map(rs, size=10, exception_handler=exception_handler)
+grequests.map(rs, size=10, exception_handler=lambda r, e: sys.stderr.write(str(e) + '\n'))
 
 
 #     # change setup (and readme) to make sure that we don't use piping, but instead save files to data folder
 #     # Also change crontab
-#     pass
