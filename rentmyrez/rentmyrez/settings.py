@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'listings.apps.ListingsConfig',
-    'neighbourhoods.apps.NeighbourhoodsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,5 +1,5 @@
 from listings.views import ListingViewSet
-from neighbourhoods.views import NeighbourhoodViewSet
+from listings.views import NeighbourhoodViewSet
 from django.conf.urls import patterns, url, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views

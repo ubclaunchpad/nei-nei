@@ -15,9 +15,6 @@ tests/report/
 
 .DS_Store
 venv/
-scripts/plotting/*.png
-scripts/plotting/*.json
-scripts/plotting/*.html
-scripts/api/config.json
 crontab.txt
+scripts/api/config.json
 scripts/plotting/.plotly/.credentials
