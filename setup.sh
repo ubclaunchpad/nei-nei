@@ -85,7 +85,7 @@ plotly_replacements[1]='s@${api_key}@'$PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.credentials
 
 print_progress "Generating plots..."
-curl http://localhost:8000/listings/ -o data.json
-PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
+curl http://localhost:8000/listings/ -o data/listings.json
+PLOTLY_DIR=.plotly/ python heatmap.py data/listings.json -o plots/heatmap.png
 
 popd > /dev/null
