@@ -29,7 +29,7 @@ neighbourhoods = requests.get(neighbourhoods_url, headers={'accept': 'applicatio
 
 from geometry import Point, Polygon
 
-polygons = map(Polygon, map(lambda n: map(lambda c: (c['longitude'], c['latitude']), n['boundary']), neighbourhoods))
+polygons = (Polygon(map(lambda c: (c['longitude'], c['latitude']), n['boundary']), name=n['name']) for n in neighbourhoods)
 points = (Point(x=l['lng'], y=l['lat']) for l in listings)
 find_polygon_containing_point = lambda point: next((p for p in polygons if p.intersects(point)), None)
 
