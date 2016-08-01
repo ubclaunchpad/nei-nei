@@ -47,8 +47,10 @@ payloads = map(lambda (l, p): dict(
     neighbourhood=p and p.name
 ), zip(listings, map(find_polygon_containing_point, points)))
 
-headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
-           'Content-Type': 'application/json'}
+headers = {
+    'Authorization': 'Token {token}'.format(token=rest_api['token']),
+    'Content-Type': 'application/json'
+}
 
 rs = (grequests.post(listings_url, headers=headers, data=json.dumps(payload)) for payload in payloads)
 grequests.map(rs, size=10, exception_handler=lambda r, e: sys.stderr.write(str(e) + '\n'))
