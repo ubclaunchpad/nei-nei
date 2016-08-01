@@ -10,7 +10,8 @@ if len(sys.argv) > 1:
     neighbourhoods = ET.parse(sys.argv[1])
 else:
     import requests
-    neighbourhoods = ET.ElementTree(ET.fromstring(requests.get(config['neighbourhoods_url']).content))
+    neighbourhoods_data_url = config['neighbourhoods']['data']['url']
+    neighbourhoods = ET.ElementTree(ET.fromstring(requests.get(neighbourhoods_data_url).content))
     neighbourhoods.write('data/raw_neighbourhoods_data.kml')
 
 def get_clean_neighbourhood(n):

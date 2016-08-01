@@ -1,7 +1,4 @@
 {
-  "listing_ids_url": "https://www.padmapper.com/reloadMarkersJSON.php",
-  "listings_url": "https://www.padmapper.com/pullListingsForCache.php",
-  "neighbourhoods_url": "http://data.vancouver.ca/download/kml/cov_localareas.kml",
   "rest_api": {
     "base_url": "http://localhost:8000",
     "listings": "/listings/",
@@ -10,46 +7,62 @@
     "password": "${password}",
     "token": "${token}"
   },
-  "listings_search_criteria": {
-    "shouldStoreSettings": false,
-    "northLat": 49.740707115045225,
-    "southLat": 48.64405446874574,
-    "eastLong": -121.572267157959,
-    "westLong": -124.670411689209,
-    "zoom": 10,
-    "minRent": 100,
-    "maxRent": 10000,
-    "maxPricePerBedroom": 10000,
-    "minBR": 0,
-    "maxBR": 10,
-    "minBA": 1,
-    "maxAge": 30,
-    "noFee": false,
-    "cats": false,
-    "dogs": false,
-    "imagesOnly": false,
-    "phoneReq": false,
-    "showSubs": true,
-    "showNonSubs": true,
-    "showRooms": true,
-    "showVac": false,
-    "pl": true,
-    "aptsrc": true,
-    "airbnb": true,
-    "forrent": true,
-    "hmst": true,
-    "cl": true,
-    "rnt": true,
-    "ood": true,
-    "af": true,
-    "rltr": true,
-    "kijiji": true,
-    "cities": false,
-    "showPOI": false,
-    "favsOnly": false,
-    "onlyHQ": true,
-    "showHidden": false,
-    "limit": 5000,
-    "am": false
+  "neighbourhoods": {
+    "data": {
+      "url": "http://data.vancouver.ca/download/kml/cov_localareas.kml"
+    }
+  },
+  "listings": {
+    "ids": {
+      "url": "https://www.padmapper.com/reloadMarkersJSON.php",
+      "params": {
+        "shouldStoreSettings": false,
+        "northLat": 49.740707115045225,
+        "southLat": 48.64405446874574,
+        "eastLong": -121.572267157959,
+        "westLong": -124.670411689209,
+        "zoom": 10,
+        "minRent": 100,
+        "maxRent": 10000,
+        "maxPricePerBedroom": 10000,
+        "minBR": 0,
+        "maxBR": 10,
+        "minBA": 1,
+        "maxAge": 30,
+        "noFee": false,
+        "cats": false,
+        "dogs": false,
+        "imagesOnly": false,
+        "phoneReq": false,
+        "showSubs": true,
+        "showNonSubs": true,
+        "showRooms": true,
+        "showVac": false,
+        "pl": true,
+        "aptsrc": true,
+        "airbnb": true,
+        "forrent": true,
+        "hmst": true,
+        "cl": true,
+        "rnt": true,
+        "ood": true,
+        "af": true,
+        "rltr": true,
+        "kijiji": true,
+        "cities": false,
+        "showPOI": false,
+        "favsOnly": false,
+        "onlyHQ": true,
+        "showHidden": false,
+        "limit": 5000,
+        "am": false
+      }
+    },
+    "data": {
+      "url": "https://www.padmapper.com/pullListingsForCache.php",
+      "params": {
+        "getBuilding": false
+      }
+    }
   }
 }

@@ -9,18 +9,26 @@ rest_api = config['rest_api']
 if len(sys.argv) > 1:
     listings = json.load(open(sys.argv[1]))
 else:
-    def getListingsData(url, ids):
+    def getListingsData(url, params, ids):
         limit = 300
-        batches = [ids[i:i+limit] for i in range(0, len(ids), limit)]
-        reqs = (grequests.post(url, headers={'accept': 'application/json'}, data={'ids': ','.join(batch)}, params={'getBuilding': True}) for batch in batches)
+        batches = (ids[i:i+limit] for i in range(0, len(ids), limit))
+        headers = {
+            'accept': 'application/json'
+        }
+        reqs = (grequests.post(url, headers=headers, params=params, data={'ids': ','.join(batch)}) for batch in batches)
         return reduce(lambda x, y: x + y.json(), grequests.imap(reqs), [])
 
-    def getListingIds(url, payload):
-        req = requests.get(url, params={k: json.dumps(v) for k, v in payload.items()}, headers={'accept': 'application/json'})
+    def getListingsIds(url, params):
+        headers = {
+            'accept': 'application/json'
+        }
+        req = requests.get(url, headers=headers, params={k: json.dumps(v) for k, v in params.items()})
         return map(lambda x: x['id'], req.json())
 
-    ids = getListingIds(config['listing_ids_url'], config['listings_search_criteria'])
-    listings = getListingsData(config['listings_url'], ids)
+    listings_ids = config['listings']['ids']
+    listings_data = config['listings']['data']
+    ids = getListingsIds(listings_ids['url'], listings_ids['params'])
+    listings = getListingsData(listings_data['url'], listings_data['params'], ids)
     json.dump(listings, open('data/raw_listings_data.json', 'w'))
 
 listings_url = rest_api['base_url'] + rest_api['listings']
