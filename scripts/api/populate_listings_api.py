@@ -2,8 +2,6 @@ import grequests
 import requests
 import sys
 import json
-from collections import namedtuple
-from raycaster import Point, Edge, Polygon, RayCaster
 
 config = json.load(open('config.json'))
 rest_api = config['rest_api']
@@ -27,24 +25,14 @@ else:
 
 listings_url = rest_api['base_url'] + rest_api['listings']
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
-
-def create_polygon(neighbourhood):
-    boundary = neighbourhood['boundary']
-    edges = []
-    for i in range(-1, len(boundary) - 1):
-        p1 = Point(x=boundary[i]['longitude'],
-                   y=boundary[i]['latitude'])
-        p2 = Point(x=boundary[i + 1]['longitude'],
-                   y=boundary[i + 1]['latitude'])
-        edges.append(Edge(p1, p2))
-    return Polygon(neighbourhood['name'], edges)
-
 neighbourhoods = requests.get(neighbourhoods_url, headers={'accept': 'application/json'}).json()
-polygons = map(create_polygon, neighbourhoods)
 
-rc = RayCaster(polygons)
+from geometry import Point, Polygon
 
+polygons = map(Polygon, map(lambda n: map(lambda c: (c['longitude'], c['latitude']), n['boundary']), neighbourhoods))
 points = (Point(x=l['lng'], y=l['lat']) for l in listings)
+find_polygon_containing_point = lambda point: next((p for p in polygons if p.intersects(point)), None)
+
 payloads = map(lambda (l, p): dict(
     latitude=l['lat'],
     longitude=l['lng'],
@@ -57,7 +45,7 @@ payloads = map(lambda (l, p): dict(
     price=int(l['price']),
     date_listed=l['date'],
     neighbourhood=p and p.name
-), zip(listings, map(rc.find_polygon_containing_point, points)))
+), zip(listings, map(find_polygon_containing_point, points)))
 
 headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
            'Content-Type': 'application/json'}
