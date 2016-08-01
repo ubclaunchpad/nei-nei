@@ -14,16 +14,18 @@ else:
     neighbourhoods.write('data/raw_neighbourhoods_data.kml')
 
 def get_clean_neighbourhood(n):
-    return {
-        'name': n[0].text,
-        'boundary': map(lambda x: dict(zip(['longitude', 'latitude'], map(float, x.split(',')))),
-                        n[3][0][0][0].text.split())
-    }
+    return dict(
+        name=n[0].text,
+        boundary=map(lambda x: dict(zip(['longitude', 'latitude'], map(float, x.split(',')))),
+                     n[3][0][0][0].text.split())
+    )
 
 cleaned_neighbourhoods = map(get_clean_neighbourhood, neighbourhoods.getroot()[0][0][2:])
 
-headers = {'Authorization': 'Token {token}'.format(token=rest_api['token']),
-           'Content-Type': 'application/json'}
+headers = {
+    'Authorization': 'Token {token}'.format(token=rest_api['token']),
+    'Content-Type': 'application/json'
+}
 
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
 rs = (grequests.post(neighbourhoods_url,
