@@ -56,7 +56,7 @@ payloads = map(lambda (l, p): dict(
 ), zip(listings, map(find_polygon_containing_point, points)))
 
 headers = {
-    'Authorization': 'Token {token}'.format(token=rest_api['token']),
+    'Authorization': 'Token {token}'.format(token=rest_api['credentials']['token']),
     'Content-Type': 'application/json'
 }
 

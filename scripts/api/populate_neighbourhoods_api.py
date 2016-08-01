@@ -24,7 +24,7 @@ def get_clean_neighbourhood(n):
 cleaned_neighbourhoods = map(get_clean_neighbourhood, neighbourhoods.getroot()[0][0][2:])
 
 headers = {
-    'Authorization': 'Token {token}'.format(token=rest_api['token']),
+    'Authorization': 'Token {token}'.format(token=rest_api['credentials']['token']),
     'Content-Type': 'application/json'
 }
 

@@ -3,9 +3,11 @@
     "base_url": "http://localhost:8000",
     "listings": "/listings/",
     "neighbourhoods": "/neighbourhoods/",
-    "username": "${username}",
-    "password": "${password}",
-    "token": "${token}"
+    "credentials": {
+      "username": "${username}",
+      "password": "${password}",
+      "token": "${token}"
+    }
   },
   "neighbourhoods": {
     "data": {
