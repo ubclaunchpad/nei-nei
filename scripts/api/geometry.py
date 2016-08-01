@@ -12,7 +12,7 @@ class RayCaster(object):
 
     @staticmethod
     def polygon_intersects_point(polygon, point):
-        return bool(sum(RayCaster.ray_intersects_edge(point, edge) for edge in p.edges) & 1)
+        return bool(sum(RayCaster.ray_intersects_edge(point, edge) for edge in polygon.edges) & 1)
 
 from collections import namedtuple
 
