@@ -33,7 +33,7 @@ else:
 
 listings_url = rest_api['base_url'] + rest_api['listings']
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
-neighbourhoods = requests.get(neighbourhoods_url, headers={'accept': 'application/json'}).json()
+neighbourhoods = requests.get(neighbourhoods_url).json()
 
 from geometry import Point, Polygon
 
