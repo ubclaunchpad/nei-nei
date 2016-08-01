@@ -27,5 +27,5 @@ class Polygon(object):
                            p2=Point(x=boundary[i + 1][0], y=boundary[i + 1][1]))
                       for i in range(-1, len(boundary) - 1)]
 
-    def intersects(point):
+    def intersects(self, point):
         return RayCaster.polygon_intersects_point(self, point)
