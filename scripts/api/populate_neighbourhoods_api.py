@@ -10,9 +10,10 @@ if len(sys.argv) > 1:
     neighbourhoods = ET.parse(sys.argv[1])
 else:
     import requests
+    from datetime import datetime
     neighbourhoods_data_url = config['neighbourhoods']['data']['url']
     neighbourhoods = ET.ElementTree(ET.fromstring(requests.get(neighbourhoods_data_url).content))
-    neighbourhoods.write('data/raw_neighbourhoods_data.kml')
+    neighbourhoods.write('data/neighbourhoods_{date}.kml'.format(date=datetime.today().strftime('%Y-%m-%d_%H-%M')))
 
 def get_clean_neighbourhood(n):
     return dict(

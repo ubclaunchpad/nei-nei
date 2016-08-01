@@ -9,6 +9,8 @@ rest_api = config['rest_api']
 if len(sys.argv) > 1:
     listings = json.load(open(sys.argv[1]))
 else:
+    from datetime import datetime
+
     def getListingsData(url, params, ids):
         limit = 300
         batches = (ids[i:i+limit] for i in range(0, len(ids), limit))
@@ -29,7 +31,7 @@ else:
     listings_data = config['listings']['data']
     ids = getListingsIds(listings_ids['url'], listings_ids['params'])
     listings = getListingsData(listings_data['url'], listings_data['params'], ids)
-    json.dump(listings, open('data/raw_listings_data.json', 'w'))
+    json.dump(listings, open('data/listings_{date}.json'.format(date=datetime.today().strftime('%Y-%m-%d_%H-%M')), 'w'))
 
 listings_url = rest_api['base_url'] + rest_api['listings']
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
