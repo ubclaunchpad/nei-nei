@@ -1,14 +1,11 @@
+from operator import itemgetter
+
 class RayCaster(object):
 
     @staticmethod
     def ray_intersects_edge(point, edge):
-        p1, p2 = sorted(edge, key=lambda p: p.y)
-        if point.y == p1.y or point.y == p2.y:
-            return 2 * point.y - (p1.y + p2.y) > 0
-        elif point.y < p2.y and point.y > p1.y:
-            slope = (p2.y - p1.y) / (p2.x - p1.x)
-            return point.x <= (p1.x + (point.y - p1.y) / slope)
-        return False
+        p1, p2 = sorted(edge, key=itemgetter(0))
+        return p1.y < point.y <= p2.y and point.x <= p1.x + (point.y - p1.y) * (p2.x - p1.x) / (p2.y - p1.y)
 
     @staticmethod
     def polygon_intersects_point(polygon, point):
