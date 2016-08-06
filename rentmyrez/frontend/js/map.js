@@ -1,64 +1,71 @@
 var map;
+var heatmap;
+var mapJSONData;
 
 function initMap() {
 	var mapDiv = document.getElementById('map');
 	map = new google.maps.Map(mapDiv, {
+<<<<<<< HEAD
 		center: {lat: 49.2414, lng: -123.1135},
 		zoom: 12,
+=======
+		center: {lat: 49.2827, lng: -123.1207},
+		zoom: 13,
+>>>>>>> 6aea383a1a0831378c3192efaec93c6f96c3f665
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
-	// Create a <script> tag and set the USGS URL as the source.
-	var script = document.createElement('script');
-
-	script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
-	document.getElementsByTagName('head')[0].appendChild(script);
-
-	map.data.setStyle(function(feature) {
-		console.log('feature', feature);
-		var magnitude = feature.getProperty('mag');
-		console.log('magnitude', magnitude);
-		return {
-			icon: getCircle(magnitude)
-		};
+	loadJSON(function(response){
+		mapJSONData = JSON.parse(response);
+		addData(mapJSONData);
 	});
 }
 
-function getCircle(magnitude) {
-  var circle = {
-    path: google.maps.SymbolPath.CIRCLE,
-    fillColor: 'red',
-    fillOpacity: .2,
-    scale: Math.pow(2, magnitude) / 2,
-    strokeColor: 'white',
-    strokeWeight: .5
-  };
-  return circle;
-}
-
-window.eqfeed_callback = function (results) {
+	function addData(results) {
+	// Note: results = arrayOfJSONObjects
 	var heatmapData = [];
-	for (var i = 0; i < results.features.length; i++) {
-		var coords = results.features[i].geometry.coordinates;
-		var latLng = new google.maps.LatLng(coords[1], coords[0]);
-		var magnitude = results.features[i].properties.mag;
-      var weightedLoc = {
-        location: latLng,
-        weight: Math.pow(2, magnitude)
-      };
-		heatmapData.push(latLng);
+	
+	for (var i = 0; i < results.length; i++) {
+		var coords = results[i];
+		var latLng = new google.maps.LatLng(coords.lat,coords.lng);
+		var pricingScale = coords.price / coords.beds;
+		
+		if (coords == null || coords.lat == null || coords.lng == null ||
+			coords.price == null || coords.beds == null || pricingScale > 100000) {
+			// do nothing
+		} else {
+			console.log(pricingScale);
+			var weightedLoc = {
+				location: latLng,
+				weight: pricingScale/100000
+			}
+			heatmapData.push(weightedLoc);
+		}
 	}
-	var heatmap = new google.maps.visualization.HeatmapLayer({
+
+	heatmap = new google.maps.visualization.HeatmapLayer({
 		data: heatmapData,
 		dissipating: false,
 		map: map
 	});
 }
 
-function getPostings (cb) {
-	request
-		.get('/api/postings')
-		.end(function (err, res) {
-			cb(err, res);
-		});
+function loadJSON(callback) {
+	// this function allows you use a pure JSON file instead of using a js file 
+	var xobj = new XMLHttpRequest();
+	xobj.overrideMimeType("application/json");
+	// load json file here
+	xobj.open('GET', 'js/output.json', true);
+	xobj.onreadystatechange = function() {
+		if (xobj.readyState == 4 && xobj.status == "200") {
+			callback(xobj.responseText);
+		}
+	};
+	xobj.send(null);
 }
+
+function toggleHeatmap() {
+	heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+

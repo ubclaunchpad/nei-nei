@@ -3,11 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Rent My Rez</title>
-    <link rel="stylesheet" type="text/css" href="./css/site.css">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
   </head>
   <body>
+    <h2>Rental Housing Prices Per Housing Bedroom Unit</h2>
+    <div class="toggle-panel">
+        <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+    </div>
+
+   
+    <div class="plotly-wrap">
+      <iframe class="plotly" scrolling="no" allowtransparency="true" width="900" height="600" frameborder="0" src="https://plot.ly/~stanleyye/4.embed"></iframe>
+      <div class="plotly-background"></div>
+    </div> 
+    
+
     <div id="map"></div>
-    <script src="./js/map.js"></script>
+    <script src="/js/map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKzsQ2stw2y11yUwp3sBoAKPhEprSc9MY&libraries=geometry,visualization&callback=initMap" async defer></script>
+      
   </body>
 </html>

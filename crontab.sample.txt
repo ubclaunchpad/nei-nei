@@ -1,0 +1,2 @@
+# Replace ${PROJECT_ROOT} below with the path to the directory containing this file
+30 9 * * * cd ${PROJECT_ROOT}/listings && python pull_listings.py | python populate_api.py
