@@ -15,7 +15,7 @@ __pycache__/
 **/db.sqlite3
 **/data.json
 **/config.json
-
+**/listings.json
 
 # google-heatmap branch - still part of frontend heatmap
 rentmyrez/frontend/js/output.json
@@ -63,7 +63,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
 .hypothesis/
 
 # Translations

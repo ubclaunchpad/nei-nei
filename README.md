@@ -60,21 +60,17 @@ You will notice that at this point, the API is empty since it has not yet been p
 Once that has been done, you can navigate to the *scripts/api/* directory under the project root and run the scripts using the following command:
 
 ```bash
-> python pull_listings.py | python populate_api.py
+> python populate_neighbourhoods_api.py
+> python populate_listings_api.py
 ```
 
-After this command runs, if you visit [http://localhost:8000/listings/?limit=100](http://localhost:8000/listings/?limit=100), you should see some new listings.
+After this command runs, if you visit [http://localhost:8000/listings/?limit=100](http://localhost:8000/listings/?limit=100), you should see some new listings. A list of neighbourhoods can also be seen at [http://localhost:8000/neighbourhoods](http://localhost:8000/neighbourhoods).
 
-If you want to save the listings data to a file instead, you can run this command:
-
-```bash
-> python pull_listings.py output.json
-```
-
-Then, later on you can populate the API directly from the file with:
+The API can also be populated from raw data files (samples can be found under the *data/* directory):
 
 ```bash
-> python populate_api.py output.json
+> python populate_neighbourhoods_api.py data/raw_neighbourhoods_data.kml
+> python populate_listings_api.py data/raw_listings_data.json
 ```
 
 Finally, to setup a cronjob to run daily and repopulate the API with any new postings, copy the sample file found under the project root to *crontab.txt*, replace the **`${PROJECT_ROOT}`** placeholder with the appropriate directory path, and run the following command:
@@ -99,13 +95,14 @@ This tells **plotly** that if the `PLOTLY_DIR` environment variable is set, use 
 The last step before generating the plots is to actually pull the JSON data from the server:
 
 ```bash
-> curl http://localhost:8000/listings/ -o data.json
+> curl http://localhost:8000/listings/ -o data/listings.json --create-dirs
 ```
 
 Finally, run the plotting scripts like so:
 
 ```bash
-> PLOTLY_DIR=.plotly/ python heatmap.py ../data.json
+> mkdir -p plots
+> PLOTLY_DIR=.plotly/ python heatmap.py data/listings.json -o plots/heatmap.png
 ```
 
 To see a list of available options, run
@@ -119,108 +116,9 @@ You will find a setup script located under the root project directory called *se
 
 ```bash
 > bash setup.sh
-
-Creating virtual environment...
-New python executable in venv/bin/python2.7
-Also creating executable in venv/bin/python
-Installing setuptools, pip, wheel...done.
-
-Installing project dependencies...
-Collecting Django==1.9.7 (from -r requirements.txt (line 1))
-  Using cached Django-1.9.7-py2.py3-none-any.whl
-Collecting djangorestframework==3.3.3 (from -r requirements.txt (line 2))
-  Using cached djangorestframework-3.3.3-py2.py3-none-any.whl
-Collecting gevent==1.1.1 (from -r requirements.txt (line 3))
-Collecting greenlet==0.4.10 (from -r requirements.txt (line 4))
-Collecting grequests==0.3.0 (from -r requirements.txt (line 5))
-Collecting numpy==1.11.1 (from -r requirements.txt (line 6))
-Collecting pandas==0.18.1 (from -r requirements.txt (line 7))
-Collecting plotly==1.12.4 (from -r requirements.txt (line 8))
-Collecting python-dateutil==2.5.3 (from -r requirements.txt (line 9))
-  Using cached python_dateutil-2.5.3-py2.py3-none-any.whl
-Collecting pytz==2016.6.1 (from -r requirements.txt (line 10))
-  Using cached pytz-2016.6.1-py2.py3-none-any.whl
-Collecting requests==2.10.0 (from -r requirements.txt (line 11))
-  Using cached requests-2.10.0-py2.py3-none-any.whl
-Collecting six==1.10.0 (from -r requirements.txt (line 12))
-  Using cached six-1.10.0-py2.py3-none-any.whl
-Requirement already satisfied (use --upgrade to upgrade): wheel==0.24.0 in ./venv/lib/python2.7/site-packages (from -r requirements.txt (line 13))
-Installing collected packages: Django, djangorestframework, greenlet, gevent, requests, grequests, numpy, pytz, six, python-dateutil, pandas, plotly
-Successfully installed Django-1.9.7 djangorestframework-3.3.3 gevent-1.1.1 greenlet-0.4.10 grequests-0.3.0 numpy-1.11.1 pandas-0.18.1 plotly-1.12.4 python-dateutil-2.5.3 pytz-2016.6.1 requests-2.10.0 six-1.10.0
-You are using pip version 7.1.2, however version 8.1.2 is available.
-You should consider upgrading via the 'pip install --upgrade pip' command.
-
-Migrating database...
-No changes detected in app 'listings'
-Operations to perform:
-  Apply all migrations: authtoken, sessions, admin, listings, auth, contenttypes
-Running migrations:
-  Rendering model states... DONE
-  Applying contenttypes.0001_initial... OK
-  Applying auth.0001_initial... OK
-  Applying admin.0001_initial... OK
-  Applying admin.0002_logentry_remove_auto_add... OK
-  Applying contenttypes.0002_remove_content_type_name... OK
-  Applying auth.0002_alter_permission_name_max_length... OK
-  Applying auth.0003_alter_user_email_max_length... OK
-  Applying auth.0004_alter_user_username_opts... OK
-  Applying auth.0005_alter_user_last_login_null... OK
-  Applying auth.0006_require_contenttypes_0002... OK
-  Applying auth.0007_alter_validators_add_error_messages... OK
-  Applying authtoken.0001_initial... OK
-  Applying authtoken.0002_auto_20160226_1747... OK
-  Applying listings.0001_initial... OK
-  Applying sessions.0001_initial... OK
-Username for Django admin user (simon):
-Password for Django admin user:
-Creating Django admin user...
-Python 2.7.12 (default, Jun 29 2016, 14:05:02)
-[GCC 4.2.1 Compatible Apple LLVM 7.3.0 (clang-703.0.31)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
-(InteractiveConsole)
->>> <User: simon>
-
->>>
-Running server...
-Performing system checks...
-
-System check identified no issues (0 silenced).
-July 21, 2016 - 18:45:05
-Django version 1.9.7, using settings 'rentmyrez.settings'
-Starting development server at http://127.0.0.1:8000/
-Quit the server with CONTROL-C.
-
-Requesting authentication token...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[21/Jul/2016 18:45:06] "POST /api-token-auth/ HTTP/1.1" 200 52
-100    93    0    52  100    41   1458   1149 --:--:-- --:--:-- --:--:--  1529
-
-Updating API config file...
-
-Populating API...
-[21/Jul/2016 18:45:09] "POST /listings/ HTTP/1.1" 201 398
-[21/Jul/2016 18:45:09] "POST /listings/ HTTP/1.1" 201 387
-[21/Jul/2016 18:45:09] "POST /listings/ HTTP/1.1" 201 390
 .
 . Output truncated for brevity
 .
-
-Updating crontab.txt...
-
-Patching Plotly library file...
-Plotly account username: simon_zhu
-Plotly API key: 9bz47vjp1j
-
-Updating Plotly credentials file...
-
-Generating plots...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:[21/Jul/2016 18:45:31] "GET /listings/ HTTP/1.1" 200 318969
-100  311k    0  311k    0     0  1661k      0 --:--:-- --:--:-- --:--:-- 1674k
-
-Exiting.
 ```
 
 ## Run

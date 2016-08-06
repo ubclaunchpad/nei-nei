@@ -23,7 +23,7 @@ pip install -r requirements.txt
 cd rentmyrez
 
 print_progress "Migrating database..."
-python manage.py makemigrations listings
+python manage.py makemigrations
 python manage.py migrate
 
 read -p "Username for Django admin user ($USER): " DJANGO_USER
@@ -60,13 +60,14 @@ api_replacements[2]='s@${token}@'$token'@'
 sed -i "$(join \; "${api_replacements[@]}")" config.json
 
 print_progress "Populating API..."
-python pull_listings.py | python populate_api.py
+python populate_neighbourhoods_api.py
+python populate_listings_api.py
 
 cd ../..
 
 print_progress "Updating crontab.txt..."
 cp crontab{.sample,}.txt
-sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
+sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@g' crontab.txt
 
 cd venv/lib/python2.7/site-packages/plotly/
 
@@ -84,7 +85,8 @@ plotly_replacements[1]='s@${api_key}@'$PLOTLY_API_KEY'@'
 sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.credentials
 
 print_progress "Generating plots..."
-curl http://localhost:8000/listings/ -o data.json
-PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
+mkdir -p plots
+curl http://localhost:8000/listings/ -o data/listings.json --create-dirs
+PLOTLY_DIR=.plotly/ python heatmap.py data/listings.json -o plots/heatmap.png
 
 popd > /dev/null
