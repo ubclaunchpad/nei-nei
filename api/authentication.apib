@@ -1,0 +1,25 @@
+FORMAT: 1A
+HOST: http://localhost:8000/
+
+# Authentication
+
+This API Blueprint showcases token authentication.
+
+## Token exchange [/api-token-auth]
+
+### Exchange credentials for token [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "username": "simon",
+                "password": "pass"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "token": "e2f044c5391570961f2803143c6dc83f0403d102"
+        }

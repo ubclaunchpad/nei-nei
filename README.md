@@ -1,6 +1,13 @@
 # rent-my-rez
 The Django REST API and api + plotting scripts
 
+
+## Available APIs
+
+- [Authentication](api/authentication.apib)
+- [Neighbourhoods](api/neighbourhoods.apib)
+- [Listings](api/listings.apib)
+
 ## Installation
 Create a virtual environment in the root project folder by running
 
