@@ -86,8 +86,12 @@ function NeighbourhoodsAPI (map) {
 
 	/**
 	 * Update the fillColor and strokeColor for the polygon of given neighbourhoodName.
+	 * @param {string} neighbourhoodName - the name of the neighbourhood to update
+	 *   colour for;
+	 * 	 {string} colour - the colour to set the neighbourhood overlay to
 	 */
 	this.updateColour = function (neighbourhoodName, colour) {
-
+		neighbourhoods[neighbourhoodName].fillColor = colour;
+		neighbourhodds[neighbourhoddName].strokeColor = colour;
 	}
 }
