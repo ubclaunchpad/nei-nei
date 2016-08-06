@@ -89,4 +89,13 @@ mkdir -p plots
 curl http://localhost:8000/listings/ -o data/listings.json --create-dirs
 PLOTLY_DIR=.plotly/ python heatmap.py data/listings.json -o plots/heatmap.png
 
+cd ../..
+
+print_progress "Generating API documentation..."
+npm install aglio
+alias aglio=$(npm bin)/aglio
+aglio -i api/neighbourhoods.apib -o api/neighbourhoods.html
+aglio -i api/listings.apib -o api/listings.html
+aglio -i api/authentication.apib -o api/authentication.html
+
 popd > /dev/null
