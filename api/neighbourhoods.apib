@@ -279,6 +279,8 @@ The Neighbourhoods API allows consumers to view, add, modify, and delete neighbo
 
 You may create a new neighbourhood using this action. It takes a JSON object containing the neighbourhood name and a collection of boundary points.
 
+Note that once a neighbourhood has been created, any new listings that are created with a `neighbourhood` field that matches the `name` field of the neighbourhood will automatically show up in the `listings` field of the serialized neighbourhood object.
+
 + Request (application/json)
 
     + Headers
@@ -288,19 +290,19 @@ You may create a new neighbourhood using this action. It takes a JSON object con
     + Body
 
             {
-                "name": "Magnolia",
+                "name": "Bermuda Triangle",
                 "boundary": [
                     {
-                        "latitude": 0,
-                        "longitude": 0
+                        "latitude": 25.7617,
+                        "longitude": -80.1918
                     },
                     {
-                        "latitude": 0,
-                        "longitude": 1
+                        "latitude": 18.4655,
+                        "longitude": -66.1057
                     },
                     {
-                        "latitude": 1,
-                        "longitude": 0
+                        "latitude": 32.3078,
+                        "longitude": -64.7505
                     }
                 ]
             }
@@ -315,17 +317,19 @@ You may create a new neighbourhood using this action. It takes a JSON object con
 
             {
                 "url": "http://localhost:8000/neighbourhoods/2/",
-                "name": "Magnolia",
+                "name": "Bermuda Triangle",
                 "boundary": [
                     {
-                        "latitude": 0,
-                        "longitude": 0
-                    }, {
-                        "latitude": 0,
-                        "longitude": 1
-                    }, {
-                        "latitude": 1,
-                        "longitude": 0
+                        "latitude": 25.7617,
+                        "longitude": -80.1918
+                    },
+                    {
+                        "latitude": 18.4655,
+                        "longitude": -66.1057
+                    },
+                    {
+                        "latitude": 32.3078,
+                        "longitude": -64.7505
                     }
                 ],
                 "listings": []
@@ -339,23 +343,23 @@ You may create a new neighbourhood using this action. It takes a JSON object con
 
 ### Fetch One Neighbourhood [GET]
 
-Note that once a neighbourhood has been created, any new listings that are created with a `neighbourhood` field that matches the `name` field of the neighbourhood will automatically show up in the `listings` field of the serialized neighbourhood object.
-
 + Response 200 (application/json)
 
         {
             "url": "http://localhost:8000/neighbourhoods/2/",
-            "name": "Magnolia",
+            "name": "Bermuda Triangle",
             "boundary": [
                 {
-                    "latitude": 0,
-                    "longitude": 0
-                }, {
-                    "latitude": 0,
-                    "longitude": 1
-                }, {
-                    "latitude": 1,
-                    "longitude": 0
+                    "latitude": 25.7617,
+                    "longitude": -80.1918
+                },
+                {
+                    "latitude": 18.4655,
+                    "longitude": -66.1057
+                },
+                {
+                    "latitude": 32.3078,
+                    "longitude": -64.7505
                 }
             ],
             "listings": []
@@ -372,36 +376,40 @@ Note that once a neighbourhood has been created, any new listings that are creat
     + Body
 
             {
-                "name": "Magnolia",
+                "name": "Devil's Triangle",
                 "boundary": [
-                    {
-                        "latitude": 0,
-                        "longitude": 0
-                    }, {
-                        "latitude": 0,
-                        "longitude": 2
-                    }, {
-                        "latitude": 2,
-                        "longitude": 2
-                    }
-                ]
+		                {
+		                    "latitude": 25.7617,
+		                    "longitude": -80.1918
+		                },
+		                {
+		                    "latitude": 18.4655,
+		                    "longitude": -66.1057
+		                },
+		                {
+		                    "latitude": 32.3078,
+		                    "longitude": -64.7505
+		                }
+		            ]
             }
 
 + Response 200 (application/json)
 
         {
             "url": "http://localhost:8000/neighbourhoods/2/",
-            "name": "Magnolia",
+            "name": "Devil's Triangle",
             "boundary": [
                 {
-                    "latitude": 0,
-                    "longitude": 0
-                }, {
-                    "latitude": 0,
-                    "longitude": 2
-                }, {
-                    "latitude": 2,
-                    "longitude": 2
+                    "latitude": 25.7617,
+                    "longitude": -80.1918
+                },
+                {
+                    "latitude": 18.4655,
+                    "longitude": -66.1057
+                },
+                {
+                    "latitude": 32.3078,
+                    "longitude": -64.7505
                 }
             ],
             "listings": []
@@ -418,24 +426,26 @@ Note that once a neighbourhood has been created, any new listings that are creat
     + Body
 
             {
-                "name": "Crocus"
+                "name": "Bermuda Triangle"
             }
 
 + Response 200 (application/json)
 
         {
-            "url": "http://localhost:8000/neighbourhoods/23/",
-            "name": "Crocus",
+            "url": "http://localhost:8000/neighbourhoods/2/",
+            "name": "Bermuda Triangle",
             "boundary": [
                 {
-                    "latitude": 0,
-                    "longitude": 0
-                }, {
-                    "latitude": 0,
-                    "longitude": 2
-                }, {
-                    "latitude": 2,
-                    "longitude": 2
+                    "latitude": 25.7617,
+                    "longitude": -80.1918
+                },
+                {
+                    "latitude": 18.4655,
+                    "longitude": -66.1057
+                },
+                {
+                    "latitude": 32.3078,
+                    "longitude": -64.7505
                 }
             ],
             "listings": []
