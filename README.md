@@ -4,9 +4,9 @@ The Django REST API and api + plotting scripts
 
 ## Available APIs
 
-- [Authentication](api/authentication.apib)
-- [Neighbourhoods](api/neighbourhoods.apib)
-- [Listings](api/listings.apib)
+- [Authentication](api/authentication.html)
+- [Neighbourhoods](api/neighbourhoods.html)
+- [Listings](api/listings.html)
 
 ## Installation
 Create a virtual environment in the root project folder by running
