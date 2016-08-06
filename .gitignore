@@ -10,12 +10,9 @@ __pycache__/
 **/frontend/output.json
 **/places/.vancouver.json.swp
 **/scripts/api/config.json
-**/scripts/plotting/.plotly/.credentials
 **/places/output.json
 **/db.sqlite3
-**/data.json
 **/config.json
-**/listings.json
 
 # google-heatmap branch - still part of frontend heatmap
 rentmyrez/frontend/js/output.json
@@ -107,4 +104,3 @@ scripts/plotting/*.json
 scripts/plotting/*.html
 scripts/api/config.json
 crontab.txt
-scripts/plotting/.plotly/.credentials
