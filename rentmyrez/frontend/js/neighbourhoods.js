@@ -12,6 +12,9 @@ function NeighbourhoodsAPI (map) {
 	var visible = true;
 	// Keeps track of which, if any neighbourhood is highlighted
 	var highlighted = null;
+	// Different fill opacities to show highlighted neighbourhood
+	var HIGHLIGHTED_FILL_OPACITY = 0.65;
+	var UNHIGHLIGHTED_FILL_OPACITY = 0.35;
 
 	/**
 	 * Initializes the API with the neighbourhood polygons
@@ -28,7 +31,6 @@ function NeighbourhoodsAPI (map) {
 		// on the map here, or if that should be done in a different method.
 
 		visible = true;
-	  //window.alert("neighbourhoods" + polygons[0].polygon[0].lat);
 		var polygon;
 
 		polygons.forEach(function (hood) {
@@ -43,7 +45,6 @@ function NeighbourhoodsAPI (map) {
 			});
 
 			neighbourhoods[hood.name] = polygon;
-			// window.alert("neighbourhood " + hood.name + " has polygon " + neighbourhoods[hood.name]);
 
 			if (visible === true) {
 				polygon.setMap(map);
@@ -82,6 +83,19 @@ function NeighbourhoodsAPI (map) {
 		// Toggle highlight state of a neighbourhood.
 		// Update internal state of which neighbourhoods are highlighted,
 		// then update the map to reflect the change.
+		if (!highlighted) {
+			highlighted = neighbourhoodName;
+			neighbourhoods[neighbourhoodName].fillOpacity = HIGHLIGHTED_FILL_OPACITY;
+		} else {
+			if (highlighted !== neighbourhoodName) {
+				neighbourhoods[highlighted].fillOpacity = UNHIGHLIGHTED_FILL_OPACITY;
+				highlighted = neighbourhoodName;
+				neighbourhoods[neighbourhoodName].fillOpacity = HIGHLIGHTED_FILL_OPACITY;
+			} else {
+				highlighted = null;
+				neighbourhoods[neighbourhoodName].fillOpacity = UNHIGHLIGHTED_FILL_OPACITY;
+			}
+		}
 	}
 
 	/**
