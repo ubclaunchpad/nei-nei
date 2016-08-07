@@ -19,9 +19,10 @@ Then, start generating HTML:
 ```
 alias aglio=$(npm bin)/aglio
 cd rentmyrez
-aglio -i api-docs/neighbourhoods.apib -o api-docs/neighbourhoods.html
-aglio -i api-docs/listings.apib -o api-docs/listings.html
-aglio -i api-docs/authentication.apib -o api-docs/authentication.html
+for resource in api-docs/*
+do
+  aglio -i $resource -o templates/api-docs/`basename $resource .apib`.html
+done
 ```
 
 ## Installation
