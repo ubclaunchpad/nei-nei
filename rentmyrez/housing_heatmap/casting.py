@@ -11,11 +11,9 @@ Polygon = namedtuple('Polygon', 'name, edges')
 class RayCaster():
     """Initialization objects for finding points in a polygon
         @param epsilon: """
-    def __init__(self):
-        self.epsilon   = float(1.0e-10)
-        self.float_min = sys.float_info.min
-        self.float_max = sys.float_info.max
-
+    epsilon   = float(1.0e-10)
+    float_min = sys.float_info.min
+    float_max = sys.float_info.max
 
     # Does a ray cast from a pos from right to left intersect an edge?
     @classmethod
@@ -109,7 +107,7 @@ class RayCaster():
 
 # Create polygons using edges and edges using positions, from a JSON source
 def organize_polygons(data, out_list):
-    for poly in ndata:
+    for poly in data:
         new_poly  = poly['polygon']
         new_name  = poly['name']
         new_edges = ()
@@ -131,14 +129,12 @@ def organize_polygons(data, out_list):
         out_list.append(Polygon(new_name, new_edges))
 
 
-#               Generate tuples
+#                            Generate tuples
 #
-# Note: necessary for testing. Place these scripts
-#       into backend when using real data
-# -----------------------------------------------------
+# Note: sample usage. Place these scripts into backend when using real data
+# -------------------------------------------------------------------------
 #
 # import json
-# from pprint import pprint
 #
 # with open('../../places/polygons.json') as neighbourhoods_data:
 #     ndata = json.load(neighbourhoods_data)
@@ -159,12 +155,7 @@ def organize_polygons(data, out_list):
 # in_list  = [{'latitude': 49.263112837069855, 'longitude':-123.12820912384622},
 #             {'latitude': 49.26261501901451, 'longitude':-123.11415059359008},
 #             {'latitude': 49.261563462520094, 'longitude':-123.20533683179627}]
-# rc = RayCaster()
-# rc.place_pos_in_polygon(in_list, polygons, out_list)
-# print("In list:")
-# pprint(in_list)
-# print("\n Out list:")
-# pprint(out_list)
-# print("\n")
+
+# RayCaster.place_pos_in_polygon(in_list, polygons, out_list)
 #
 # del polygons
