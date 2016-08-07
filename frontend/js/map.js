@@ -5,13 +5,8 @@ var mapJSONData;
 function initMap() {
 	var mapDiv = document.getElementById('map');
 	map = new google.maps.Map(mapDiv, {
-<<<<<<< HEAD
-		center: {lat: 49.2414, lng: -123.1135},
-		zoom: 12,
-=======
 		center: {lat: 49.2827, lng: -123.1207},
 		zoom: 13,
->>>>>>> 6aea383a1a0831378c3192efaec93c6f96c3f665
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
