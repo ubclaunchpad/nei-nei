@@ -4,19 +4,19 @@ The Django REST API and api + plotting scripts
 
 ## Available APIs
 
-- [Authentication](api/authentication.apib)
-- [Neighbourhoods](api/neighbourhoods.apib)
-- [Listings](api/listings.apib)
+- [Authentication](rentmyrez/api-docs/authentication.apib)
+- [Neighbourhoods](rentmyrez/api-docs/neighbourhoods.apib)
+- [Listings](rentmyrez/api-docs/listings.apib)
 
 To render static HTML files for the API Blueprints, first install `aglio` via NPM:
 
-```
+```bash
 npm install aglio
 ```
 
 Then, start generating HTML:
 
-```
+```bash
 alias aglio=$(npm bin)/aglio
 cd rentmyrez
 for resource in api-docs/*
