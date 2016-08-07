@@ -13,7 +13,7 @@ resources = [
 ]
 
 documentation_urls = [
-    url(r'^$', type('ApiDocsView', (TemplateView,), dict(get_context_data=lambda self, **_: dict(resources=resources))).as_view(template_name='api-docs/index.html'), name='index'))
+    url(r'^$', type('ApiDocsView', (TemplateView,), dict(get_context_data=lambda self, **_: dict(resources=resources))).as_view(template_name='api-docs/index.html'), name='index')
 ]
 
 documentation_urls += [
