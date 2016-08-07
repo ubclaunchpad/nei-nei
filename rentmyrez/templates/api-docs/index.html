@@ -1,0 +1,52 @@
+{% load staticfiles %}
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>API Documentation</title>
+    <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "api-docs/css/main.css" %}" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">API Root</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              {% for resource in resources %}
+                <li><a href="{% url "api-docs:"|add:resource %}">{{ resource|capfirst }}</a></li>
+              {% endfor %}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="container">
+      <div class="content">
+        <h1>API Documentation</h1>
+        <p class="lead">
+          Click one of the tabs above to see full documentation of all available actions for a resource and the data they return. <br />
+          You can also see an example of how to view schema information <a href="http://bit.ly/2aInjvk">here</a>.
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+    {% block script %}
+      <script src="{% static "rest_framework/js/jquery-1.12.4.min.js" %}"></script>
+      <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>
+    {% endblock %}
+
+  </body>
+</html>

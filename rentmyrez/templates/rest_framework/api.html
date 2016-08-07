@@ -7,3 +7,8 @@
        Rent My Rez
    </a>
 {% endblock %}
+
+{% block userlinks %}
+  <li><a href="{% url 'api-docs:index' %}">Documentation</a></li>
+  {{ block.super }}
+{% endblock %}

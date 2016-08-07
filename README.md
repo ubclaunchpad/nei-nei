@@ -18,9 +18,10 @@ Then, start generating HTML:
 
 ```
 alias aglio=$(npm bin)/aglio
-aglio -i api/neighbourhoods.apib -o api/neighbourhoods.html
-aglio -i api/listings.apib -o api/listings.html
-aglio -i api/authentication.apib -o api/authentication.html
+cd rentmyrez
+aglio -i api-docs/neighbourhoods.apib -o api-docs/neighbourhoods.html
+aglio -i api-docs/listings.apib -o api-docs/listings.html
+aglio -i api-docs/authentication.apib -o api-docs/authentication.html
 ```
 
 ## Installation
@@ -134,7 +135,7 @@ To see a list of available options, run
 ```
 
 ##Setup Script
-You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above. Make sure that you have first installed at least Python, Pip, and Node.js before running the script.
+You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above. Make sure that you have first installed at least Python and Pip before running the script.
 
 ```bash
 > bash setup.sh
