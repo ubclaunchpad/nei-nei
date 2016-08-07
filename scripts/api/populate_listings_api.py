@@ -39,7 +39,7 @@ neighbourhoods = requests.get(neighbourhoods_url).json()
 
 from geometry import Point, Polygon
 
-polygons = map(lambda n: Polygon([(c['longitude'], c['latitude']) for c in n['boundary']], name=n['name']), neighbourhoods)
+polygons = map(lambda n: Polygon([(c['longitude'], c['latitude']) for c in n['boundary']], name=n['name']), neighbourhoods['results'])
 points = (Point(x=l['lng'], y=l['lat']) for l in listings)
 find_polygon_containing_point = lambda point: next((p for p in polygons if p.intersects(point)), None)
 

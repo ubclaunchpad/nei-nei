@@ -13,6 +13,11 @@ __pycache__/
 **/places/output.json
 **/db.sqlite3
 **/config.json
+**/scripts/api/data/listings_*.json
+**/scripts/api/data/neighbourhoods_*.kml
+/api/authentication.html
+/api/neighbourhoods.html
+/api/listings.html
 
 # google-heatmap branch - still part of frontend heatmap
 rentmyrez/frontend/js/output.json

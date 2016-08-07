@@ -1,0 +1,452 @@
+FORMAT: 1A
+HOST: http://localhost:8000
+
+# Neighbourhoods
+
+The Neighbourhoods API allows consumers to view, add, modify, and delete neighbourhoods.
+
+## Neighbourhoods Collection [/neighbourhoods]
+
+### List All Neighbourhoods [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "url": "http://localhost:8000/neighbourhoods/1/",
+                "name": "Oakridge",
+                "boundary": [
+                    {
+                        "latitude": 49.23315910836121,
+                        "longitude": -123.10565550196236
+                    }, {
+                        "latitude": 49.23261787690695,
+                        "longitude": -123.10566340889704
+                    }, {
+                        "latitude": 49.23223564282832,
+                        "longitude": -123.10567822412845
+                    }, {
+                        "latitude": 49.23171328573228,
+                        "longitude": -123.10569896966958
+                    }, {
+                        "latitude": 49.23130782993761,
+                        "longitude": -123.10573412199702
+                    }, {
+                        "latitude": 49.23099160873248,
+                        "longitude": -123.10574760480947
+                    }, {
+                        "latitude": 49.23038129119451,
+                        "longitude": -123.10577337130243
+                    }, {
+                        "latitude": 49.229907139528166,
+                        "longitude": -123.10579319869657
+                    }, {
+                        "latitude": 49.229454572421496,
+                        "longitude": -123.1058126187833
+                    }, {
+                        "latitude": 49.22900416442133,
+                        "longitude": -123.10583125033581
+                    }, {
+                        "latitude": 49.22855240840896,
+                        "longitude": -123.10584874611837
+                    }, {
+                        "latitude": 49.22810559873598,
+                        "longitude": -123.10586625215683
+                    }, {
+                        "latitude": 49.227648356457955,
+                        "longitude": -123.10588396210005
+                    }, {
+                        "latitude": 49.226744304458705,
+                        "longitude": -123.10591906357152
+                    }, {
+                        "latitude": 49.22574977333957,
+                        "longitude": -123.10595963279812
+                    }, {
+                        "latitude": 49.225277244024866,
+                        "longitude": -123.10597515666169
+                    }, {
+                        "latitude": 49.224803994468594,
+                        "longitude": -123.10599147142665
+                    }, {
+                        "latitude": 49.224330475484386,
+                        "longitude": -123.10600733232631
+                    }, {
+                        "latitude": 49.22385632723162,
+                        "longitude": -123.10602285184869
+                    }, {
+                        "latitude": 49.22340484246181,
+                        "longitude": -123.10603830633045
+                    }, {
+                        "latitude": 49.22295839521822,
+                        "longitude": -123.10605241240118
+                    }, {
+                        "latitude": 49.22205470716315,
+                        "longitude": -123.10608207282903
+                    }, {
+                        "latitude": 49.22115020955096,
+                        "longitude": -123.1061117304686
+                    }, {
+                        "latitude": 49.220245890929704,
+                        "longitude": -123.10614218009341
+                    }, {
+                        "latitude": 49.219385013220936,
+                        "longitude": -123.1061696643476
+                    }, {
+                        "latitude": 49.21889773371978,
+                        "longitude": -123.10618560564855
+                    }, {
+                        "latitude": 49.21905326572934,
+                        "longitude": -123.11677253482098
+                    }, {
+                        "latitude": 49.219099451504476,
+                        "longitude": -123.12040372511991
+                    }, {
+                        "latitude": 49.21912329789988,
+                        "longitude": -123.12227418669475
+                    }, {
+                        "latitude": 49.21914313638215,
+                        "longitude": -123.12382860307542
+                    }, {
+                        "latitude": 49.21917281541997,
+                        "longitude": -123.1261551908741
+                    }, {
+                        "latitude": 49.21920376369125,
+                        "longitude": -123.12859218837487
+                    }, {
+                        "latitude": 49.219213105060895,
+                        "longitude": -123.12932778378237
+                    }, {
+                        "latitude": 49.219227809853024,
+                        "longitude": -123.13048689062268
+                    }, {
+                        "latitude": 49.219272517040984,
+                        "longitude": -123.13401324750882
+                    }, {
+                        "latitude": 49.21931158420696,
+                        "longitude": -123.13704894918556
+                    }, {
+                        "latitude": 49.219321000278946,
+                        "longitude": -123.13775216289848
+                    }, {
+                        "latitude": 49.219342000866824,
+                        "longitude": -123.13943794742511
+                    }, {
+                        "latitude": 49.21935067330455,
+                        "longitude": -123.1401490863672
+                    }, {
+                        "latitude": 49.219897771589224,
+                        "longitude": -123.14012685379669
+                    }, {
+                        "latitude": 49.220802376132205,
+                        "longitude": -123.14009068393088
+                    }, {
+                        "latitude": 49.22170635043469,
+                        "longitude": -123.14005496395964
+                    }, {
+                        "latitude": 49.222610415068274,
+                        "longitude": -123.14001879000672
+                    }, {
+                        "latitude": 49.22351447954954,
+                        "longitude": -123.13998261476873
+                    }, {
+                        "latitude": 49.22407911524113,
+                        "longitude": -123.13995986189285
+                    }, {
+                        "latitude": 49.22696578829352,
+                        "longitude": -123.13984457035586
+                    }, {
+                        "latitude": 49.227456040777845,
+                        "longitude": -123.13982772019004
+                    }, {
+                        "latitude": 49.22788846317493,
+                        "longitude": -123.13981274510344
+                    }, {
+                        "latitude": 49.228754476323296,
+                        "longitude": -123.13978336374772
+                    }, {
+                        "latitude": 49.229702873532304,
+                        "longitude": -123.13975036298726
+                    }, {
+                        "latitude": 49.230613856534205,
+                        "longitude": -123.13971850135923
+                    }, {
+                        "latitude": 49.232474134492655,
+                        "longitude": -123.13965442963477
+                    }, {
+                        "latitude": 49.23433027622612,
+                        "longitude": -123.13958920890133
+                    }, {
+                        "latitude": 49.23430635971375,
+                        "longitude": -123.1388379416238
+                    }, {
+                        "latitude": 49.2342803048749,
+                        "longitude": -123.13799050380061
+                    }, {
+                        "latitude": 49.23425571109785,
+                        "longitude": -123.13719494805798
+                    }, {
+                        "latitude": 49.234231546531674,
+                        "longitude": -123.1364120803975
+                    }, {
+                        "latitude": 49.23420747005087,
+                        "longitude": -123.13562626875809
+                    }, {
+                        "latitude": 49.23418250170838,
+                        "longitude": -123.13482946839525
+                    }, {
+                        "latitude": 49.23415710701244,
+                        "longitude": -123.134085337602
+                    }, {
+                        "latitude": 49.23413170412322,
+                        "longitude": -123.13334415253595
+                    }, {
+                        "latitude": 49.234106038376915,
+                        "longitude": -123.13259277336303
+                    }, {
+                        "latitude": 49.23410395118833,
+                        "longitude": -123.13253069663081
+                    }, {
+                        "latitude": 49.234080278972165,
+                        "longitude": -123.13184037530664
+                    }, {
+                        "latitude": 49.23403014107477,
+                        "longitude": -123.13037398315306
+                    }, {
+                        "latitude": 49.23397858795224,
+                        "longitude": -123.12886964544225
+                    }, {
+                        "latitude": 49.233951411696545,
+                        "longitude": -123.12807545165771
+                    }, {
+                        "latitude": 49.233806174070956,
+                        "longitude": -123.12386355175045
+                    }, {
+                        "latitude": 49.23375569977977,
+                        "longitude": -123.12236444065074
+                    }, {
+                        "latitude": 49.233733975503746,
+                        "longitude": -123.12173088096
+                    }, {
+                        "latitude": 49.23370553234493,
+                        "longitude": -123.12089727482883
+                    }, {
+                        "latitude": 49.233653058917305,
+                        "longitude": -123.11938083507927
+                    }, {
+                        "latitude": 49.233600656439215,
+                        "longitude": -123.11786349258448
+                    }, {
+                        "latitude": 49.23357549713438,
+                        "longitude": -123.11713421787178
+                    }, {
+                        "latitude": 49.23354308170746,
+                        "longitude": -123.11619334368275
+                    }, {
+                        "latitude": 49.23350941373761,
+                        "longitude": -123.11532835680212
+                    }, {
+                        "latitude": 49.233436011854984,
+                        "longitude": -123.11343662742946
+                    }, {
+                        "latitude": 49.23338249711301,
+                        "longitude": -123.11205838709846
+                    }, {
+                        "latitude": 49.23333079874655,
+                        "longitude": -123.11073837291352
+                    }, {
+                        "latitude": 49.23324280887754,
+                        "longitude": -123.1081160560316
+                    }, {
+                        "latitude": 49.233181198116775,
+                        "longitude": -123.10628089280391
+                    }, {
+                        "latitude": 49.23315910836121,
+                        "longitude": -123.10565550196236
+                    }
+                ],
+                "listings": [
+                    "http://localhost:8000/listings/2656/",
+                    "http://localhost:8000/listings/1784/",
+                    "http://localhost:8000/listings/2722/",
+                    "http://localhost:8000/listings/2577/",
+                    "http://localhost:8000/listings/1607/",
+                    "http://localhost:8000/listings/2348/"
+                ]
+            }
+        ]
+
+### Create a New Neighbourhood [POST]
+
+You may create a new neighbourhood using this action. It takes a JSON object containing the neighbourhood name and a collection of boundary points.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "name": "Magnolia",
+                "boundary": [
+                    {
+                        "latitude": 0,
+                        "longitude": 0
+                    },
+                    {
+                        "latitude": 0,
+                        "longitude": 1
+                    },
+                    {
+                        "latitude": 1,
+                        "longitude": 0
+                    }
+                ]
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: http://localhost:8000/neighbourhoods/2/
+
+    + Body
+
+            {
+                "url": "http://localhost:8000/neighbourhoods/2/",
+                "name": "Magnolia",
+                "boundary": [
+                    {
+                        "latitude": 0,
+                        "longitude": 0
+                    }, {
+                        "latitude": 0,
+                        "longitude": 1
+                    }, {
+                        "latitude": 1,
+                        "longitude": 0
+                    }
+                ],
+                "listings": []
+            }
+
+
+## Neighbourhood [/neighbourhoods/{neighbourhood_id}]
+
++ Parameters
+    + neighbourhood_id (number) - ID of the neighbourhood in the form of an integer
+
+### Fetch One Neighbourhood [GET]
+
+Note that once a neighbourhood has been created, any new listings that are created with a `neighbourhood` field that matches the `name` field of the neighbourhood will automatically show up in the `listings` field of the serialized neighbourhood object.
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/neighbourhoods/2/",
+            "name": "Magnolia",
+            "boundary": [
+                {
+                    "latitude": 0,
+                    "longitude": 0
+                }, {
+                    "latitude": 0,
+                    "longitude": 1
+                }, {
+                    "latitude": 1,
+                    "longitude": 0
+                }
+            ],
+            "listings": []
+        }
+
+### Update Neighbourhood [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "name": "Magnolia",
+                "boundary": [
+                    {
+                        "latitude": 0,
+                        "longitude": 0
+                    }, {
+                        "latitude": 0,
+                        "longitude": 2
+                    }, {
+                        "latitude": 2,
+                        "longitude": 2
+                    }
+                ]
+            }
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/neighbourhoods/2/",
+            "name": "Magnolia",
+            "boundary": [
+                {
+                    "latitude": 0,
+                    "longitude": 0
+                }, {
+                    "latitude": 0,
+                    "longitude": 2
+                }, {
+                    "latitude": 2,
+                    "longitude": 2
+                }
+            ],
+            "listings": []
+        }
+
+### Update Partial Neighbourhood [PATCH]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "name": "Crocus"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/neighbourhoods/23/",
+            "name": "Crocus",
+            "boundary": [
+                {
+                    "latitude": 0,
+                    "longitude": 0
+                }, {
+                    "latitude": 0,
+                    "longitude": 2
+                }, {
+                    "latitude": 2,
+                    "longitude": 2
+                }
+            ],
+            "listings": []
+        }
+
+### Remove Neighbourhood [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Token TOKEN
+
++ Response 204

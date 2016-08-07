@@ -18,6 +18,7 @@ virtualenv venv
 source venv/bin/activate
 
 print_progress "Installing project dependencies..."
+pip install --upgrade pip
 pip install -r requirements.txt
 
 cd rentmyrez
@@ -42,7 +43,7 @@ sleep 1
 cd ../scripts/api
 
 print_progress "Requesting authentication token..."
-regex="{\"token\":\"([a-zA-Z0-9]+)\"}"
+regex='\{\"token\":\"([a-zA-Z0-9]+)\"\}'
 response=$(curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"$DJANGO_USER\", \"password\": \"$DJANGO_PASS\"}" http://localhost:8000/api-token-auth/)
 if [[ $response =~ $regex ]]
 then
@@ -68,5 +69,12 @@ cd ../..
 print_progress "Updating crontab.txt..."
 cp crontab{.sample,}.txt
 sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@g' crontab.txt
+
+print_progress "Generating API documentation..."
+npm install aglio
+alias aglio=$(npm bin)/aglio
+aglio -i api/neighbourhoods.apib -o api/neighbourhoods.html
+aglio -i api/listings.apib -o api/listings.html
+aglio -i api/authentication.apib -o api/authentication.html
 
 popd > /dev/null

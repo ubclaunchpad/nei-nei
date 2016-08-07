@@ -24,12 +24,12 @@ function initMap() {
 	function addData(results) {
 	// Note: results = arrayOfJSONObjects
 	var heatmapData = [];
-	
+
 	for (var i = 0; i < results.length; i++) {
 		var coords = results[i];
 		var latLng = new google.maps.LatLng(coords.lat,coords.lng);
 		var pricingScale = coords.price / coords.beds;
-		
+
 		if (coords == null || coords.lat == null || coords.lng == null ||
 			coords.price == null || coords.beds == null || pricingScale > 100000) {
 			// do nothing
@@ -51,11 +51,11 @@ function initMap() {
 }
 
 function loadJSON(callback) {
-	// this function allows you use a pure JSON file instead of using a js file 
+	// this function allows you use a pure JSON file instead of using a js file
 	var xobj = new XMLHttpRequest();
 	xobj.overrideMimeType("application/json");
 	// load json file here
-	xobj.open('GET', 'js/output.json', true);
+	xobj.open('GET', '../../scripts/api/data/raw_listings_data.json', true);
 	xobj.onreadystatechange = function() {
 		if (xobj.readyState == 4 && xobj.status == "200") {
 			callback(xobj.responseText);
@@ -67,5 +67,3 @@ function loadJSON(callback) {
 function toggleHeatmap() {
 	heatmap.setMap(heatmap.getMap() ? null : map);
 }
-
-

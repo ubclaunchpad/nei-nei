@@ -1,6 +1,27 @@
 # rent-my-rez
 The front-page of Vancouver housing!
 
+## Available APIs
+
+- [Authentication](api/authentication.apib)
+- [Neighbourhoods](api/neighbourhoods.apib)
+- [Listings](api/listings.apib)
+
+To render static HTML files for the API Blueprints, first install `aglio` via NPM:
+
+```
+npm install aglio
+```
+
+Then, start generating HTML:
+
+```
+alias aglio=$(npm bin)/aglio
+aglio -i api/neighbourhoods.apib -o api/neighbourhoods.html
+aglio -i api/listings.apib -o api/listings.html
+aglio -i api/authentication.apib -o api/authentication.html
+```
+
 ## Installation
 Create a virtual environment in the root project folder by running
 
@@ -80,7 +101,7 @@ Finally, to setup a cronjob to run daily and repopulate the API with any new pos
 ```
 
 ##Setup Script
-You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above:
+You will find a setup script located under the root project directory called *setup.sh*. You can run the script and it will automatically perform all the setup steps listed above. Make sure that you have first installed at least Python, Pip, and Node.js before running the script.
 
 ```bash
 > bash setup.sh
@@ -90,8 +111,8 @@ You will find a setup script located under the root project directory called *se
 ```
 
 ## Run
-This project is meant to display a map of Vancouver and the statistics of housing in each neighbourhood. To view the front end, run a local server on your computer:
+This project is meant to display a map of Vancouver and the statistics of housing in each neighbourhood. To view the front end, run a local server on your computer from the root folder:
 ```
 python -m SimpleHTTPServer 8080
 ```
-And navigate to http://localhost:8080/rentmyrez/frontend/index.html
+And navigate to http://localhost:8080/frontend/index.html

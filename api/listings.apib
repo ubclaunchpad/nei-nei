@@ -1,0 +1,185 @@
+FORMAT: 1A
+HOST: http://localhost:8000
+
+# Listings
+
+The Listings API allows consumers to view, add, modify, and delete listings.
+
+## Listings Collection [/listings]
+
+### List All Listings [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "url": "http://localhost:8000/listings/1/",
+                "latitude": 49.278561162522,
+                "longitude": -123.10757743748,
+                "neighbourhood": "Downtown",
+                "price": 5942,
+                "date_listed": 1470075735,
+                "bedrooms": 1,
+                "bathrooms": 0,
+                "description": "Central Location to all of Downtown",
+                "listing_url": "https://www.airbnb.com/rooms/6145277?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+                "listing_id": 254196410,
+                "address": "Abbott St, Vancouver, BC V6B 0C1"
+            }
+        ]
+
+### Create a New Listing [POST]
+
+You may create a new listing using this action. It takes a JSON object containing the listing attributes. Make sure the `neighbourhood` field contains the name of an existing neighbourhood.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "latitude": 49.266587366733,
+                "longitude": -123.14911563962,
+                "neighbourhood": "Kitsilano",
+                "price": 3242,
+                "date_listed": 1466523420,
+                "bedrooms": 1,
+                "bathrooms": 0,
+                "description": "Beautiful Vancouver Townhouse",
+                "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+                "listing_id": 253289601,
+                "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: http://localhost:8000/listings/2/
+
+    + Body
+
+            {
+                "url": "http://localhost:8000/listings/2/",
+                "latitude": 49.266587366733,
+                "longitude": -123.14911563962,
+                "neighbourhood": "Kitsilano",
+                "price": 3242,
+                "date_listed": 1466523420,
+                "bedrooms": 1,
+                "bathrooms": 0,
+                "description": "Beautiful Vancouver Townhouse",
+                "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+                "listing_id": 253289601,
+                "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+            }
+
+
+## Listing [/listings/{listing_id}]
+
++ Parameters
+    + listing_id (number) - ID of the Listing in the form of an integer
+
+### Fetch One Listing [GET]
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/listings/2/",
+            "latitude": 49.266587366733,
+            "longitude": -123.14911563962,
+            "neighbourhood": "Kitsilano",
+            "price": 3242,
+            "date_listed": 1466523420,
+            "bedrooms": 1,
+            "bathrooms": 0,
+            "description": "Beautiful Vancouver Townhouse",
+            "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+            "listing_id": 253289601,
+            "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+        }
+
+### Update Listing [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "latitude": 49.266587366733,
+                "longitude": -123.14911563962,
+                "neighbourhood": "Kitsilano",
+                "price": 3000,
+                "date_listed": 1466523420,
+                "bedrooms": 2,
+                "bathrooms": 2,
+                "description": "Beautiful Vancouver Townhouse!",
+                "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+                "listing_id": 253289601,
+                "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/listings/2/",
+            "latitude": 49.266587366733,
+            "longitude": -123.14911563962,
+            "neighbourhood": "Kitsilano",
+            "price": 3000,
+            "date_listed": 1466523420,
+            "bedrooms": 2,
+            "bathrooms": 2,
+            "description": "Beautiful Vancouver Townhouse!",
+            "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+            "listing_id": 253289601,
+            "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+        }
+
+### Update Partial Listing [PATCH]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Token TOKEN
+
+    + Body
+
+            {
+                "bedrooms": 4
+            }
+
++ Response 200 (application/json)
+
+        {
+            "url": "http://localhost:8000/listings/2/",
+            "latitude": 49.266587366733,
+            "longitude": -123.14911563962,
+            "neighbourhood": "Kitsilano",
+            "price": 3000,
+            "date_listed": 1466523420,
+            "bedrooms": 4,
+            "bathrooms": 2,
+            "description": "Beautiful Vancouver Townhouse!",
+            "listing_url": "https://www.airbnb.com/rooms/1233101?checkin=2016-09-01&checkout=2016-09-30&af=3483444",
+            "listing_id": 253289601,
+            "address": "W 6th Ave, Vancouver, BC V6J 1R7"
+        }
+
+### Remove Listing [DELETE]
+
++ Request
+
+    + Headers
+
+            Authorization: Token TOKEN
+
++ Response 204
