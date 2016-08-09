@@ -1,5 +1,6 @@
 from listings.views import ListingViewSet
-from django.conf.urls import patterns, url, include
+from listings.views import NeighbourhoodViewSet
+from django.conf.urls import url, include
 from django.contrib import admin
 from housing_heatmap import views
 from rest_framework.routers import DefaultRouter
@@ -21,6 +22,7 @@ Including another URLconf
 
 router = DefaultRouter()
 router.register(r'listings', ListingViewSet)
+router.register(r'neighbourhoods', NeighbourhoodViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

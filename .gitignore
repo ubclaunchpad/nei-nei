@@ -10,12 +10,14 @@ __pycache__/
 **/frontend/output.json
 **/places/.vancouver.json.swp
 **/scripts/api/config.json
-**/scripts/plotting/.plotly/.credentials
 **/places/output.json
 **/db.sqlite3
-**/data.json
 **/config.json
-
+**/scripts/api/data/listings_*.json
+**/scripts/api/data/neighbourhoods_*.kml
+/api/authentication.html
+/api/neighbourhoods.html
+/api/listings.html
 
 # google-heatmap branch - still part of frontend heatmap
 rentmyrez/frontend/js/output.json
@@ -63,7 +65,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*,cover
+*.cover
 .hypothesis/
 
 # Translations
@@ -107,4 +109,3 @@ scripts/plotting/*.json
 scripts/plotting/*.html
 scripts/api/config.json
 crontab.txt
-scripts/plotting/.plotly/.credentials

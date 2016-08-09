@@ -18,12 +18,13 @@ virtualenv venv
 source venv/bin/activate
 
 print_progress "Installing project dependencies..."
+pip install --upgrade pip
 pip install -r requirements.txt
 
 cd rentmyrez
 
 print_progress "Migrating database..."
-python manage.py makemigrations listings
+python manage.py makemigrations
 python manage.py migrate
 
 read -p "Username for Django admin user ($USER): " DJANGO_USER
@@ -42,7 +43,7 @@ sleep 1
 cd ../scripts/api
 
 print_progress "Requesting authentication token..."
-regex="{\"token\":\"([a-zA-Z0-9]+)\"}"
+regex='\{\"token\":\"([a-zA-Z0-9]+)\"\}'
 response=$(curl -H "Content-Type: application/json" -X POST -d "{\"username\": \"$DJANGO_USER\", \"password\": \"$DJANGO_PASS\"}" http://localhost:8000/api-token-auth/)
 if [[ $response =~ $regex ]]
 then
@@ -60,31 +61,20 @@ api_replacements[2]='s@${token}@'$token'@'
 sed -i "$(join \; "${api_replacements[@]}")" config.json
 
 print_progress "Populating API..."
-python pull_listings.py | python populate_api.py
+python populate_neighbourhoods_api.py
+python populate_listings_api.py
 
 cd ../..
 
 print_progress "Updating crontab.txt..."
 cp crontab{.sample,}.txt
-sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@' crontab.txt
+sed -i '1d; s@${PROJECT_ROOT}@'$PROJECT_ROOT'@g' crontab.txt
 
-cd venv/lib/python2.7/site-packages/plotly/
-
-print_progress "Patching Plotly library file..."
-sed -i 's@\(PLOTLY_DIR\) = \(os\.path\.join(os\.path\.expanduser("~"), "\.plotly")\)@\1 = os\.environ\.get("PLOTLY_DIR", \2)@' files.py
-
-cd ../../../../../scripts/plotting
-
-read -p "Plotly account username: " PLOTLY_USER
-read -p "Plotly API key: " PLOTLY_API_KEY
-print_progress "Updating Plotly credentials file..."
-cp .plotly/.credentials{.sample,}
-plotly_replacements[0]='s@${username}@'$PLOTLY_USER'@'
-plotly_replacements[1]='s@${api_key}@'$PLOTLY_API_KEY'@'
-sed -i "$(join \; "${plotly_replacements[@]}")" .plotly/.credentials
-
-print_progress "Generating plots..."
-curl http://localhost:8000/listings/ -o data.json
-PLOTLY_DIR=.plotly/ python heatmap.py data.json -o heatmap.png
+print_progress "Generating API documentation..."
+npm install aglio
+alias aglio=$(npm bin)/aglio
+aglio -i api/neighbourhoods.apib -o api/neighbourhoods.html
+aglio -i api/listings.apib -o api/listings.html
+aglio -i api/authentication.apib -o api/authentication.html
 
 popd > /dev/null
