@@ -1,14 +1,35 @@
 var map;
+var markerMap; 
 var heatmap;
 var mapJSONData;
 
 function initMap() {
 	var mapDiv = document.getElementById('map');
+	var markerMapDiv = document.getElementById('markerMap');
+	
+	// first map 
 	map = new google.maps.Map(mapDiv, {
 		center: {lat: 49.2827, lng: -123.1207},
 		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
+
+	// second map with the markers
+	markerMap = new google.maps.Map(markerMapDiv, {
+		center: {lat: 49.2827, lng: -123.1207},
+		zoom: 13,
+		mapTypeId: google.maps.MapTypeId.TERRAIN
+	});
+
+	var marker = new google.maps.Marker({
+	    position: {lat: 49.2827, lng: -123.1207},
+	    map: markerMap,
+	    title: 'Hello World!'
+  	});
+
+
+
+
 
 	loadJSON(function(response){
 		mapJSONData = JSON.parse(response);
