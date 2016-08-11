@@ -21,23 +21,57 @@ function initMap() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
-	var marker = new google.maps.Marker({
-	    position: {lat: 49.2827, lng: -123.1207},
-	    map: markerMap,
-	    title: 'Hello World!'
+	
+
+  	loadJSON('http://localhost:8000/listings',
+  		function(err,data) {
+  			if (err != null) {
+  				console.log("Error: " + err);
+  			} else {
+  				mapJSONData = data;
+  				addMarkers(mapJSONData, markerMap);
+
+  			}
   	});
-
-
-
-
-
-	loadJSON(function(response){
-		mapJSONData = JSON.parse(response);
-		addData(mapJSONData);
-	});
 }
 
-	function addData(results) {
+function addMarkers(results, someMap) {
+
+	var icon; 
+	for (var x = 0; x < results.length; x++) {
+		if ((results[x].latitude != null) && (results[x].longitude != null)
+			&& (results[x].price < 100000)) {
+
+				switch (results[x].price >= 0) {
+					case results[x].price <= 500:
+						icon = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+						break;
+					case results[x].price <= 1000:
+						icon = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+						break;
+					case results[x].price <= 1500:
+						icon = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+						break;
+					case results[x].price > 1500:
+						icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+						break;
+					default:
+						icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+				}
+
+				var marker = new google.maps.Marker({
+				    position: {lat: results[x].latitude, 
+				    		   lng: results[x].longitude},
+				    map: someMap,
+				    icon: icon
+		  		});
+		}
+
+	}
+}
+
+
+function addData(results) {
 	// Note: results = arrayOfJSONObjects
 	var heatmapData = [];
 
@@ -66,15 +100,16 @@ function initMap() {
 	});
 }
 
-function loadJSON(callback) {
+function loadJSON(url, callback) {
 	// this function allows you use a pure JSON file instead of using a js file
 	var xobj = new XMLHttpRequest();
-	xobj.overrideMimeType("application/json");
-	// load json file here
-	xobj.open('GET', '../../scripts/api/data/raw_listings_data.json', true);
+	xobj.open("get", url, true);
+	xobj.responseType = "json";
 	xobj.onreadystatechange = function() {
 		if (xobj.readyState == 4 && xobj.status == "200") {
-			callback(xobj.responseText);
+			callback(null, xobj.response);
+		} else {
+			callback(xobj.status);
 		}
 	};
 	xobj.send(null);
