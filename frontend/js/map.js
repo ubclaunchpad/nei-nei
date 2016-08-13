@@ -1,7 +1,4 @@
-var map;
-var markerMap; 
-var heatmap;
-var mapJSONData;
+var map, markerMap, heatmap, mapJSONData, neighbourhoodMarkerMap;
 
 function initMap() {
 	var mapDiv = document.getElementById('map');
@@ -21,6 +18,30 @@ function initMap() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
+
+	loadJSON('http://localhost:8000/neighbourhoods', 
+		function(err, data) {
+			console.log(data);
+			neighbourhoodAPIInput = data.map(function(nbhObj) {
+				return {
+					name: nbhObj.name,
+					polygon: nbhObj.boundary.map(function(latLng) {
+
+						return {
+							lat: latLng.latitude,
+							lng: latLng.longitude
+
+						};
+						
+					})
+				}
+		});
+
+			neighbourhoodMarkerMap = new NeighbourhoodsAPI(markerMap);
+			neighbourhoodMarkerMap.init(neighbourhoodAPIInput);
+			neighbourhoodMarkerMap.displayAll();
+	});
+	
 	
 
   	loadJSON('http://localhost:8000/listings',

@@ -110,4 +110,5 @@ scripts/plotting/*.json
 scripts/plotting/*.html
 scripts/plotting/.plotly/.credentials
 scripts/api/config.json
+rentmyrez/rentmyrez/settings.py
 crontab.txt
