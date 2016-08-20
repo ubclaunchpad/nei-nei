@@ -106,6 +106,6 @@ function NeighbourhoodsAPI (map) {
 	 */
 	this.updateColour = function (neighbourhoodName, colour) {
 		neighbourhoods[neighbourhoodName].fillColor = colour;
-		neighbourhodds[neighbourhoddName].strokeColor = colour;
+		neighbourhoods[neighbourhoodName].strokeColor = colour;
 	}
 }
