@@ -42,7 +42,6 @@ class HistoricalListingsSerializer(serializers.HyperlinkedModelSerializer):
         required=False,
         allow_null=True,
         slug_field='name',
-        queryset=Neighbourhood.objects.all()
     )
     class Meta:
         model = HistoricalListings
