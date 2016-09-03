@@ -1,18 +1,15 @@
 /**
  * Creates an exponential moving average plot using the D3.js API
  * @param {string} id - id of tag to place svg object within
- * @param {json} data - json object of the form
+ * @param {JSON} curr_neighbourhood_data - json object of the form
  *
  *        [{
- *         latitude : float,
- *         longitude : float,
  *         bedrooms : int,
- *         bathrooms : int,
  *         price : int,
  *         date_listed : int
  *        },]
  */
-function movingAverage (id) {
+function movingAverage (id, curr_neighbourhood_data) {
   // Margins to center and transform the graph
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
       width = 500 - margin.left - margin.right,
@@ -45,7 +42,7 @@ function movingAverage (id) {
               .attr("viewBox", "0 0 500 350")
            .append("g")
              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  // Now to use real data in a callback
+  // TODO: Pipe in data from dashboard, as it might need to be in a callback
   d3.json('../../places/dashboard_test_data.json', function (error, data) {
     // TODO: robust error handling
     if (error) throw error;
