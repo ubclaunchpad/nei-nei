@@ -1,0 +1,54 @@
+.x-axis, .y-axis {
+  font-size: 1em;
+}
+
+#dashboard {
+  width: 20vw;
+  height: 100vh;
+  min-width: 340px;
+  float: right;
+}
+
+.chart-box {
+  width: inherit;
+  min-width: inherit;
+  max-width: 400px;
+  max-height: 250px;
+}
+
+.title {
+  font-size: 1.25em;
+  font-family: monospace;
+}
+
+@media (max-width: 1200px) {
+  #dashboard {
+    float: none;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    width: 95vw;
+    height: 30vh;
+  }
+
+  .chart-box {
+    width: 30vw;
+    min-width: 240px;
+    max-width: 300px;
+    display: inline-block;
+  }
+
+  .option-box {
+    visibility: hidden;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .chart {
+    visibility: hidden;
+  }
+
+  .option-box {
+    visibility: hidden;
+  }
+}
