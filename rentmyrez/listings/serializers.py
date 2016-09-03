@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from listings.models import Listing, Neighbourhood
+from listings.models import Listing, Neighbourhood, HistoricalListings
 from rest_framework.serializers import ValidationError
 
 class CoordinateField(serializers.DictField):
@@ -34,3 +34,19 @@ class ListingSerializer(serializers.HyperlinkedModelSerializer):
         model = Listing
         fields = ('url', 'latitude', 'longitude', 'neighbourhood', 'price', 'date_listed',
                   'bedrooms', 'bathrooms', 'description', 'listing_url', 'listing_id', 'address')
+
+
+class HistoricalListingsSerializer(serializers.HyperlinkedModelSerializer):
+    neighbourhood = serializers.SlugRelatedField(
+        read_only=True,
+        required=False,
+        allow_null=True,
+        slug_field='name',
+        queryset=Neighbourhood.objects.all()
+    )
+    class Meta:
+        model = HistoricalListings
+        fields = ('week', 'neighbourhood_name', 'average_price', 'median_price', 'first_q_price', 'third_q_price',
+                  'range_price', 'average_bedrooms', 'exp_moving_average_price', 'neighbourhood')
+
+
