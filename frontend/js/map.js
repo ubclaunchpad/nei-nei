@@ -12,47 +12,55 @@ function initMap() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
-	// ajax call
-	loadJSON('http://localhost:8000/api/listings',
+	// promise ajax call. 
+	var promise = new Promise(function(resolve, reject) {
+
+		loadJSON('http://localhost:8000/api/listings',
   		function(err,data) {
   			if (err != null) {
   				console.log("Error: " + err);
+  				//reject(err);
   			} else {
   				mapJSONData = data;
   				addMarkers(mapJSONData, markerMap);
+  				resolve();
 
   			}
-  	});
-
-	setTimeout(function() {
-		loadJSON('http://localhost:8000/api/neighbourhoods', 
-		function(err, data) {
-			if (err != null) {
-  				console.log("Error: " + err);
-  			} else {
-				neighbourhoodAPIInput = data.map(function(nbhObj) {
-					return {
-						name: nbhObj.name,
-						polygon: nbhObj.boundary.map(function(latLng) {
-
-							return {
-								lat: latLng.latitude,
-								lng: latLng.longitude
-
-							};
-								
-						})
-					}
-				});
-			}
-
-		neighbourhoodMarkerMap = new NeighbourhoodsAPI(markerMap);
-		neighbourhoodMarkerMap.init(neighbourhoodAPIInput);
-		neighbourhoodMarkerMap.displayAll();
-		
-		colourNeighbourhoods();
+  		});
 	});
-	}, 5000);
+
+	promise.then(function() {
+		// callback to hand promise resolution
+		loadJSON('http://localhost:8000/api/neighbourhoods', 
+			function(err, data) {
+				if (err != null) {
+	  				console.log("Error: " + err);
+	  			} else {
+					neighbourhoodAPIInput = data.map(function(nbhObj) {
+						return {
+							name: nbhObj.name,
+							polygon: nbhObj.boundary.map(function(latLng) {
+								return {
+									lat: latLng.latitude,
+									lng: latLng.longitude
+								};
+							})
+						}
+					});
+				}
+
+			neighbourhoodMarkerMap = new NeighbourhoodsAPI(markerMap);
+			neighbourhoodMarkerMap.init(neighbourhoodAPIInput);
+			neighbourhoodMarkerMap.displayAll();
+			colourNeighbourhoods();
+			}
+		);
+	}, 	
+		// callback to handle promise rejection 
+		function(value) {
+			console.log("Promise was not fulfilled due to Error: " + value);
+		}
+	);
   	
 }
 
@@ -127,6 +135,8 @@ function addMarkers(results, someMap) {
 						icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 				}
 
+
+
 				//if listing's neighbourhood != null 
 				if (results[x].neighbourhood != null) {
 
@@ -147,7 +157,7 @@ function addMarkers(results, someMap) {
 
 					}
 					
-				}
+				} 
 
 				var marker = new google.maps.Marker({
 				    position: {lat: results[x].latitude, 
@@ -196,15 +206,11 @@ function loadJSON(url, callback) {
 	xobj.open("get", url, true);
 	xobj.responseType = "json";
 	xobj.onreadystatechange = function() {
-		if (xobj.readyState == 4 && xobj.status == "200") {
+		if (xobj.readyState == 4 && xobj.status == 200) {
 			callback(null, xobj.response);
 		} else {
 			callback(xobj.status);
 		}
 	};
-	xobj.send(null);
-}
-
-function toggleHeatmap() {
-	heatmap.setMap(heatmap.getMap() ? null : map);
+	xobj.send();
 }

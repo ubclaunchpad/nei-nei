@@ -44,6 +44,10 @@ function NeighbourhoodsAPI (map) {
 				fillOpacity: 0.35
 			});
 
+			google.maps.event.addListener(polygon, 'click', function(event){
+				document.getElementById("sidebar").innerHTML = hood.name;
+			});
+
 			neighbourhoods[hood.name] = polygon;
 
 			if (visible === true) {

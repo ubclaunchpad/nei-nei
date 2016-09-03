@@ -4,7 +4,7 @@ class RayCaster(object):
 
     @staticmethod
     def ray_intersects_edge(point, edge):
-        p1, p2 = sorted(edge, key=itemgetter(0))
+        p1, p2 = sorted(edge, key=itemgetter(1))
         return p1.y < point.y <= p2.y and point.x <= p1.x + (point.y - p1.y) * (p2.x - p1.x) / (p2.y - p1.y)
 
     @staticmethod

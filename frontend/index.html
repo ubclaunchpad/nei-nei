@@ -6,13 +6,12 @@
     <link rel="stylesheet" type="text/css" href="css/site.css">
   </head>
   <body>
-    <h2>Rental Housing Prices Per Housing Bedroom Unit</h2>
-    <div class="toggle-panel">
-        <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-    </div>
+   
 
     <div id="markerMap"></div>
+    <div id="sidebar">
 
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="./js/neighbourhoods.js"></script>
     <script src="./js/map.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKzsQ2stw2y11yUwp3sBoAKPhEprSc9MY&libraries=geometry,visualization&callback=initMap" async defer></script>
