@@ -2,7 +2,6 @@ from listings.views import ListingViewSet
 from listings.views import NeighbourhoodViewSet
 from django.conf.urls import url, include
 from django.contrib import admin
-from housing_heatmap import views
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 """

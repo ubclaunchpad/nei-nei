@@ -6,8 +6,6 @@ body {
 #markerMap {
 	width: 80%;
 	height:100vh;
-	padding: 0;
-	display:inline-block;
 }
 
 #sidebar {
@@ -17,6 +15,15 @@ body {
     margin-top:20px;
 }
 
-#graph {
-	width: 200px;
+#dashboard {
+	width: 500px;
+	height: 100vh;
+	position: relative;
+	float: right;
+	padding-top: 30px;
 }
+
+/*.main-box {
+	display: inline-block;
+	float: right;
+}*/

@@ -2,20 +2,38 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <title>Rent My Rez</title>
     <link rel="stylesheet" type="text/css" href="css/site.css">
+    <link rel="stylesheet" type="text/css" href="css/graphs/graph.css">
+    <link rel="stylesheet" type="text/css" href="css/graphs/movingaverageprice.css">
+    <link rel="stylesheet" type="text/css" href="css/graphs/bedroomdist.css">
+    <link rel="stylesheet" type="text/css" href="css/graphs/posttimeseries.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
   </head>
   <body>
-   
-
     <div id="markerMap"></div>
-    <div id="sidebar">
+    <div id="sidebar"></div>
 
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="./js/neighbourhoods.js"></script>
-    <script src="./js/map.js"></script>
+    <div class="main-box">
+      <div id="map"></div>
+      <div id="dashboard">
+        <div id="chart-box-1" class="chart-box">
+        </div>
+        <div id="chart-box-2" class="chart-box">
+        </div>
+        <div id="chart-box-3" class="chart-box">
+        </div>
+      </div>
+    </div>
+    <script src="js/neighbourhoods.js"></script>
+    <script src="js/neighbourhoods_data.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/movingaverageprice.js"></script>
+    <script src="js/bedroomdist.js"></script>
+    <script src="js/posttimeseries.js"></script>
+    <script src="js/renderdash.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKzsQ2stw2y11yUwp3sBoAKPhEprSc9MY&libraries=geometry,visualization&callback=initMap" async defer></script>
-
-
+>>>>>>> 9e0da496cb487762c84eb3da1fc56d3c4abcc654
   </body>
 </html>

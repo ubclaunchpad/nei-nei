@@ -20,6 +20,9 @@ __pycache__/
 /api/listings.html
 /rentmyrez/data.json
 
+**/places/*test*
+**/linreg.js
+
 # google-heatmap branch - still part of frontend heatmap
 rentmyrez/frontend/js/output.json
 listings/output.json
