@@ -82,7 +82,7 @@ function colourNeighbourhoods(){
 			neighbourhoodDictionary[neighbourhoodKeys[property]][0] / 
 			neighbourhoodDictionary[neighbourhoodKeys[property]][1];
 
-		console.log(neighbourhoodPPB);
+		// console.log(neighbourhoodPPB);
 
 		switch (neighbourhoodPPB >= 0) {
 			case neighbourhoodPPB <= 500:
@@ -157,7 +157,11 @@ function addMarkers(results, someMap) {
 
 					}
 					
-				} 
+				} else {
+					icon = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
+				}
+
+				
 
 				var marker = new google.maps.Marker({
 				    position: {lat: results[x].latitude, 
@@ -165,6 +169,29 @@ function addMarkers(results, someMap) {
 				    map: someMap,
 				    icon: icon
 		  		});
+
+		  		marker.addListener('click', function(res, m) {
+		  			if (typeof res === undefined) {
+		  				throw new Error('undefined listing');
+		  			} else {
+
+		  				var contentString = '<div id="tooltip">Price: $' + res.price 
+							+ '<br> Listing url: <a target="_blank" href="' 
+							+ res.listing_url + '">Click here</a></div>';
+
+				  		var infowindow = new google.maps.InfoWindow({
+		          			content: contentString
+		        		});
+
+		  				infowindow.open(someMap, m);
+
+		  				console.log("Latitude: " + res.latitude + 
+		  					" Longitude: " + res.longitude);
+		  			}
+		  			
+		  		}.bind(null, results[x], marker));
+
+		  		
 		}
 
 	}
