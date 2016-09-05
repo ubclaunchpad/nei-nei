@@ -3,24 +3,22 @@ body {
 	padding:0;
 	overflow: hidden;
 }
+
+.main-box {
+	display: inline-block;
+}
+
 #markerMap {
 	width: 80%;
 	height:100vh;
 }
 
-#sidebar {
-	display: inline-block;
-    position: absolute;
-    margin-left: 20px;
-    margin-top:20px;
-}
-
 #dashboard {
-	width: 500px;
-	height: 100vh;
-	position: relative;
-	float: right;
 	padding-top: 30px;
+  width: 20vw;
+  height: 100vh;
+  min-width: 340px;
+  float: right;
 }
 
 /*.main-box {

@@ -2,16 +2,10 @@
   font-size: 1em;
 }
 
-#dashboard {
-  width: 20vw;
-  height: 100vh;
-  min-width: 340px;
-  float: right;
-}
-
 .chart-box {
   width: inherit;
   min-width: inherit;
+  padding-top: 2vh;
   max-width: 400px;
   max-height: 250px;
 }
