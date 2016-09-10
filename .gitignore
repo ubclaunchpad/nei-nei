@@ -18,6 +18,7 @@ __pycache__/
 /api/authentication.html
 /api/neighbourhoods.html
 /api/listings.html
+/rentmyrez/data.json
 
 **/places/*test*
 **/linreg.js
@@ -110,5 +111,7 @@ venv/
 scripts/plotting/*.png
 scripts/plotting/*.json
 scripts/plotting/*.html
+scripts/plotting/.plotly/.credentials
 scripts/api/config.json
+rentmyrez/rentmyrez/settings.py
 crontab.txt

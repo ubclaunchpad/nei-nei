@@ -1,20 +1,58 @@
-#map {
-	max-width: 1000px;
-	height: 500px;
-	margin-left: auto;
-	margin-right:auto;
+body {
+	margin:0;
+	padding:0;
+	overflow: hidden;
+}
+
+.main-box {
+	display: inline-block;
+	margin: 0;
 	padding: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+#markerMap {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 75vw;
+	height:100vh;
 }
 
 #dashboard {
-  width: 500px;
-  height: 100vh;
-  position: relative;
 	float: right;
-	padding-top: 30px;
+	margin: 1vw;
+	padding: 0;
+  width: 22.5vw;
+  height: 100vh;
 }
 
-/*.main-box {
-	display: inline-block;
-	float: right;
-}*/
+
+@media (max-width: 1200px) {
+
+  #dashboard {
+    float: none;
+    width: 95vw;
+    height: 27.5vh;
+  }
+
+	#markerMap {
+		height: 72.5vh;
+		width: 100vw;
+	}
+
+}
+
+@media (max-width: 768px) {
+
+  #markerMap {
+		width: 100vw;
+		height: 100vh;
+	}
+
+	#dashboard {
+		display: none;
+	}
+
+}

@@ -10,15 +10,14 @@
     <link rel="stylesheet" type="text/css" href="css/graphs/bedroomdist.css">
     <link rel="stylesheet" type="text/css" href="css/graphs/posttimeseries.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h2>Rental Housing Prices Per Housing Bedroom Unit</h2>
-    <div class="toggle-panel">
-        <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-    </div>
     <div class="main-box">
-      <div id="map"></div>
+      <div id="markerMap"></div>
       <div id="dashboard">
+        <!-- <button class="dash-button">Blah</button> -->
         <div id="chart-box-1" class="chart-box">
         </div>
         <div id="chart-box-2" class="chart-box">
@@ -33,6 +32,7 @@
     <script src="js/movingaverageprice.js"></script>
     <script src="js/bedroomdist.js"></script>
     <script src="js/posttimeseries.js"></script>
+    <script src="js/slidedash.js"></script>
     <script src="js/renderdash.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKzsQ2stw2y11yUwp3sBoAKPhEprSc9MY&libraries=geometry,visualization&callback=initMap" async defer></script>
   </body>

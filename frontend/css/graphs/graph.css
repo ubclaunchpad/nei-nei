@@ -2,18 +2,20 @@
   font-size: 1em;
 }
 
-#dashboard {
-  width: 20vw;
-  height: 100vh;
-  min-width: 340px;
+.chart-box {
   float: right;
+  margin: auto;
+  margin-top: 3vh;
+  padding: 0;
+  width: inherit;
 }
 
-.chart-box {
+.chart {
+  float: right;
+  margin: auto;
   width: inherit;
-  min-width: inherit;
-  max-width: 400px;
-  max-height: 250px;
+  max-width: 325px;
+  max-height: 225px;
 }
 
 .title {
@@ -22,33 +24,25 @@
 }
 
 @media (max-width: 1200px) {
-  #dashboard {
-    float: none;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
-    width: 95vw;
-    height: 30vh;
-  }
 
   .chart-box {
-    width: 30vw;
-    min-width: 240px;
-    max-width: 300px;
+    align-content: center;
     display: inline-block;
+    width: 30vw;
   }
 
-  .option-box {
-    visibility: hidden;
+  .chart {
+    float: right;
+    width: inherit;
+    min-width: 240px;
+    max-width: 280px;
   }
 
 }
 
 @media (max-width: 768px) {
-  .chart {
+  .chart, .chart-box {
     visibility: hidden;
   }
 
-  .option-box {
-    visibility: hidden;
-  }
 }
