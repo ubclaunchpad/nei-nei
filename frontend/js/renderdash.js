@@ -18,6 +18,7 @@
  *        },]
  */
 function passDataToDashboard (clicked_neighbourhood_data) {
+  console.log(clicked_neighbourhood_data);
   var size = clicked_neighbourhood_data.length;
   var curr_neighbourhood_data = new Array(size);
   for (var i = 0; i < size; i++) {
