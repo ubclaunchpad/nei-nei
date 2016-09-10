@@ -36,11 +36,10 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
               .attr("viewBox", "0 0 500 350")
            .append("g")
              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-             
-  // TODO: Pipe in data from dashboard, as it might need to be in a callback
+
   d3.json('../../places/dashboard_test_data.json', function (error, data) {
-    // TODO: robust error handling
-    if (error) throw error;
+     // TODO: robust error handling
+     if (error) throw error;
 
     // Useful callbacks
     function sortMinToMaxCallback(a, b) {
@@ -51,12 +50,10 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
       return d.bedrooms <= 8;
     }
 
-    // TODO: function that grabs data from most recently clicked neighbourhood
-    //  For now default to 'Outside' data points and 'All' data points as background
-    outsideData = data[data.length - 1]['positions'].sort(sortMinToMaxCallback).filter(filterCallback);
+    data = data[data.length - 1]['positions'].sort(sortMinToMaxCallback);
 
     // Initialize an array of 0's of size maxBedrooms
-    var maxBedrooms = d3.max(outsideData, function (d) { return d.bedrooms; });
+    var maxBedrooms = d3.max(data, function (d) { return d.bedrooms; });
     var bedBinArray = new Array(maxBedrooms+1);
     bedBinArray.fill(0);
 
@@ -66,12 +63,15 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
      */
     function binPostingByBeds (data, bedBinArray) {
       for (var i = 0; i < data.length; i++) {
-        bedBinArray[data[i].bedrooms] += 1;
+        if (data[i].bedrooms != 0){
+          bedBinArray[data[i].bedrooms] += 1;
+        } else {
+          bedBinArray[1] += 1;
+        }
       }
     }
 
-    binPostingByBeds(outsideData, bedBinArray);
-    // console.log(bedBinArray)
+    binPostingByBeds(data, bedBinArray);
 
     xScale.domain([0, maxBedrooms]);
     yScale.domain([0, d3.max(bedBinArray)]);
@@ -79,12 +79,9 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
     svg.append('g')
        .attr('class', 'x-axis')
        .attr('transform', 'translate(0,'+height+')')
-       .call(xAxis);
-
-   function adjustTextLabels(selection) {
-     selection.selectAll('major tick')
-       .attr('transform', 'translate(' + maxBedrooms / width + ',0)');
-   }
+       .call(xAxis)
+          .selectAll('tick')
+          .attr('transform', 'translate('+(width / (maxBedrooms))+',0)');
 
     svg.append('g')
        .attr('class', 'y-axis')
@@ -92,15 +89,39 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
 
     var maxOfBins = d3.max(bedBinArray);
 
-     svg.append('g').selectAll('bar')
-             .data(bedBinArray)
-           .enter()
-             .append('rect')
-             .attr('class', 'bar')
-             .attr('x', xMap)
-             .attr('width', width / (maxBedrooms+1))
-             .attr('y', yMap)
-             .attr('height', function (d) { return height - yScale(d); });
+    // Transition callback
+    var neiTransition = d3.transition()
+                       .duration(750);
+
+    var prevPostings = svg.selectAll('bar')
+          .data(data, function (d) { return d; });
+
+    // prevPostings.exit()
+    //             .attr('class', 'exit')
+    //           .transition(neiTransition)
+    //             .attr('y', 60)
+    //             .style('fill-opacity', 1e-6)
+    //             .remove();
+    //
+    // prevPostings.enter().append('rect')
+    //             .attr('class', 'bar')
+    //             .attr('x', xMap)
+    //             .attr('width', width / (maxBedrooms+1))
+    //             .attr('y', yMap)
+    //             .attr('height', function (d) { return height - yScale(d); })
+    //           .transition(neiTransition)
+    //             .attr('y', 0)
+    //             .style('fill-opacity', 1);
+
+    svg.append('g').selectAll('bar')
+            .data(bedBinArray)
+          .enter()
+            .append('rect')
+            .attr('class', 'bar')
+            .attr('x', xMap)
+            .attr('width', width / (maxBedrooms+1))
+            .attr('y', yMap)
+            .attr('height', function (d) { return height - yScale(d); });
 
       svg.append('text')
             .attr('class', 'title')
@@ -110,4 +131,5 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
             .style('text-anchor', 'middle')
             .text('Distribution of Bedrooms per Post');
    });
+
 }

@@ -69,7 +69,9 @@ function postTimeSeries (id, curr_neighbourhood_data) {
     svg.append('g')
        .attr('class', 'x-axis')
        .attr('transform', 'translate(0,'+height+')')
-       .call(xAxis);
+       .call(xAxis)
+          .selectAll('tick')
+          .attr('transform', 'translate('+(width / (numBins))+',0)');
 
     svg.append('g')
        .attr('class', 'y-axis')

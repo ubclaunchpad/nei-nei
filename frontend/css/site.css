@@ -6,22 +6,53 @@ body {
 
 .main-box {
 	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
 }
 
 #markerMap {
-	width: 80%;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 75vw;
 	height:100vh;
 }
 
 #dashboard {
-	padding-top: 30px;
-  width: 20vw;
+	float: right;
+	margin: 1vw;
+	padding: 0;
+  width: 22.5vw;
   height: 100vh;
-  min-width: 340px;
-  float: right;
 }
 
-/*.main-box {
-	display: inline-block;
-	float: right;
-}*/
+
+@media (max-width: 1200px) {
+
+  #dashboard {
+    float: none;
+    width: 95vw;
+    height: 27.5vh;
+  }
+
+	#markerMap {
+		height: 72.5vh;
+		width: 100vw;
+	}
+
+}
+
+@media (max-width: 768px) {
+
+  #markerMap {
+		width: 100vw;
+		height: 100vh;
+	}
+
+	#dashboard {
+		display: none;
+	}
+
+}
