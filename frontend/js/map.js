@@ -1,5 +1,6 @@
 var markerMap, heatmap, mapJSONData, neighbourhoodMarkerMap;
 var neighbourhoodDictionary = {};
+var listingsDictionary = {};
 
 function initMap() {
 
@@ -108,7 +109,7 @@ function colourNeighbourhoods(){
 
 
 function addMarkers(results, someMap) {
-
+	console.log("res: " + results[0]);
 	var icon; 
 	for (var x = 0; x < results.length; x++) {
 		if ((results[x].latitude != null) && (results[x].longitude != null)
@@ -137,10 +138,16 @@ function addMarkers(results, someMap) {
 
 
 
-				//if listing's neighbourhood != null 
-				if (results[x].neighbourhood != null) {
+				//if listing's neighbourhood != null
+				var neiName = results[x].neighbourhood;
+				if (neiName != null) {
 
-					
+					// if neighbourhood key is in listings dictionary
+					if (listingsDictionary[neiName] in listingsDictionary) {
+						listingsDictionary[neiName].push(results[x]);	
+					} else {
+						listingsDictionary[neiName] = [results[x]];
+					}				
 
 					// if neighbourhood key isn't in dictionary
 					if (!(results[x].neighbourhood in neighbourhoodDictionary)) {
