@@ -61,6 +61,17 @@ function movingAverage (id, curr_neighbourhood_data) {
     }
     allData = allData.sort(sortMinToMaxCallback);
 
+    // TODO: Bin by date
+    var formatDate = d3.timeFormat("%B %e %Y");
+
+    outsideData.forEach(function (d) {
+      d.date_bin = formatDate(d.date_listed * 1000);
+    });
+
+    allData.forEach(function (d) {
+      d.date_bin = formatDate(d.date_listed * 1000);
+    });
+
     // Find earliest data point from each set to set domain
     var maxMinArray = [allData[d3.scan(allData, sortMinToMaxCallback)], outsideData[d3.scan(outsideData, sortMinToMaxCallback)]];
     // Find index of the largest time between the two
