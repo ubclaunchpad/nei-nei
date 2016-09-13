@@ -46,7 +46,7 @@ function NeighbourhoodsAPI (map) {
 
 			google.maps.event.addListener(polygon, 'click', function(event){
 				//document.getElementById("sidebar").innerHTML = hood.name;
-				passDataToDashboard(listingsDictionary[hood.name]); 
+				passDataToDashboard(listingsDictionary[hood.name]);
 			});
 
 			neighbourhoods[hood.name] = polygon;

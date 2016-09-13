@@ -37,63 +37,58 @@ function postTimeSeries (id, curr_neighbourhood_data) {
               .attr("viewBox", "0 0 500 350")
            .append("g")
              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  // TODO: Pipe in data from dashboard, as it might need to be in a callback
-  d3.json('../../places/dashboard_test_data.json', function (error, data) {
-    // TODO: robust error handling
-    if (error) throw error;
+
+ function update(data) {
 
     // Useful callbacks
     function sortMinToMaxCallback(a, b) {
       return a.date_listed - b.date_listed;
     }
 
-    // TODO: function that grabs data from most recently clicked neighbourhood
-    //  For now default to 'Outside' data points and 'All' data points as background
-    outsideData = data[data.length - 1]['positions'].sort(sortMinToMaxCallback);
-
-    var formatMonth = d3.timeFormat("%B");
-    var monthExtent = d3.extent(outsideData, xValue);
+    var monthExtent = d3.extent(data, xValue);
     var monthBins = d3.timeMonths(d3.timeMonth.offset(monthExtent[0], -1), d3.timeMonth.offset(monthExtent[1], 1));
 
-    var histogram = d3.histogram()
-        .value(xValue)
-        .thresholds(monthBins);
-
-    var binnedData = histogram(outsideData);
-    var numBins = binnedData.length;
-
     xScale.domain(monthExtent)
-          .ticks(d3.timeMonth.every(1));
-    yScale.domain([0, d3.max(binnedData, function (d) { return d.length; })]);
+        .ticks(d3.timeMonth.every(1));
 
-    svg.append('g')
-       .attr('class', 'x-axis')
-       .attr('transform', 'translate(0,'+height+')')
-       .call(xAxis)
-          .selectAll('tick')
-          .attr('transform', 'translate('+(width / (numBins))+',0)');
+    var histogram = d3.histogram()
+        .domain(xScale.domain())
+        .value(xValue)
+        .thresholds(monthBins) // change
+        (data);
 
-    svg.append('g')
-       .attr('class', 'y-axis')
-       .call(yAxis)
+    yScale.domain([0, d3.max(histogram, function (d) { return d.length; })]);
 
-     svg.append('g').selectAll('bar')
-             .data(binnedData)
-           .enter()
-             .append('rect')
-             .attr('class', 'bar')
-             .attr('x', function (d, i) { return i * (width / numBins); })
-             .attr('width', (width / numBins) - 10)
-             .attr('y', function (d) { return yScale(d.length); })
-             .attr('height', function (d) { return height - yScale(d.length); });
+    var bar = svg.selectAll('bar')
+        .data(histogram)
+      .enter().append('g')
+        .attr('class', 'bar')
+        .attr('transform', function (d) {
+          return 'translate(' + xScale(d.x0) + "," + yScale(d.length) + ')'; });
+
+    bar.append('rect')
+      .attr('x', 1)
+      .attr('width', xScale(histogram[0].x1) - xScale(histogram[0].x0) - 1)
+      // .attr('y', yMap)
+      .attr('height', function (d) { return height - yScale(d.length); });
 
      svg.append('text')
            .attr('class', 'title')
-           .attr('x', width / 2.5)
+           .attr('x', width / 2)
            .attr("dx", "15px")
            .attr('dy', '-5px')
            .style('text-anchor', 'middle')
            .text('Posts per Month');
 
-   });
+     svg.append('g')
+        .attr('class', 'x-axis')
+        .attr('transform', 'translate(0,'+height+')')
+        .call(xAxis);
+
+     svg.append('g')
+        .attr('class', 'y-axis')
+        .call(yAxis)
+   }
+
+   update(curr_neighbourhood_data);
 }

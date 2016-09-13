@@ -13,7 +13,7 @@ function initMap() {
 		mapTypeId: google.maps.MapTypeId.TERRAIN
 	});
 
-	// promise ajax call. 
+	// promise ajax call.
 	var promise = new Promise(function(resolve, reject) {
 
 		loadJSON('http://localhost:8000/api/listings',
@@ -32,7 +32,7 @@ function initMap() {
 
 	promise.then(function() {
 		// callback to hand promise resolution
-		loadJSON('http://localhost:8000/api/neighbourhoods', 
+		loadJSON('http://localhost:8000/api/neighbourhoods',
 			function(err, data) {
 				if (err != null) {
 	  				console.log("Error: " + err);
@@ -56,13 +56,13 @@ function initMap() {
 			colourNeighbourhoods();
 			}
 		);
-	}, 	
-		// callback to handle promise rejection 
+	},
+		// callback to handle promise rejection
 		function(value) {
 			console.log("Promise was not fulfilled due to Error: " + value);
 		}
 	);
-  	
+
 }
 
 function colourNeighbourhoods(){
@@ -76,11 +76,11 @@ function colourNeighbourhoods(){
 	neighbourhoodMarkerMap.updateColour("Riley Park", blue);
 
 	var neighbourhoodKeys = Object.keys(neighbourhoodDictionary);
-	
+
 	for (var property in neighbourhoodKeys) {
 		var neighbourhoodColor;
-		var neighbourhoodPPB = 
-			neighbourhoodDictionary[neighbourhoodKeys[property]][0] / 
+		var neighbourhoodPPB =
+			neighbourhoodDictionary[neighbourhoodKeys[property]][0] /
 			neighbourhoodDictionary[neighbourhoodKeys[property]][1];
 
 		// console.log(neighbourhoodPPB);
@@ -90,7 +90,7 @@ function colourNeighbourhoods(){
 				neighbourhoodColor = blue;
 				break;
 			case neighbourhoodPPB <= 1000:
-				neighbourhoodColor = green; 
+				neighbourhoodColor = green;
 				break;
 			case neighbourhoodPPB <= 1500:
 				neighbourhoodColor = yellow;
@@ -101,23 +101,22 @@ function colourNeighbourhoods(){
 			default:
 				neighbourhoodColor = red;
 		}
-		
+
 		neighbourhoodMarkerMap.updateColour(neighbourhoodKeys[property], neighbourhoodColor);
 	}
-	
+
 }
 
 
 function addMarkers(results, someMap) {
-	console.log("res: " + results[0]);
-	var icon; 
+	var icon;
 	for (var x = 0; x < results.length; x++) {
 		if ((results[x].latitude != null) && (results[x].longitude != null)
 			&& (results[x].price < 100000) && (results[x].bedrooms > 0)) {
-			// skip listings with 0 bedrooms. 
+			// skip listings with 0 bedrooms.
 
-				// price per bedroom 
-				var ppb = results[x].price / results[x].bedrooms; 
+				// price per bedroom
+				var ppb = results[x].price / results[x].bedrooms;
 
 				switch (ppb >= 0) {
 					case ppb <= 500:
@@ -143,17 +142,17 @@ function addMarkers(results, someMap) {
 				if (neiName != null) {
 
 					// if neighbourhood key is in listings dictionary
-					if (listingsDictionary[neiName] in listingsDictionary) {
-						listingsDictionary[neiName].push(results[x]);	
+					if (neiName in listingsDictionary) {
+						listingsDictionary[neiName].push(results[x]);
 					} else {
 						listingsDictionary[neiName] = [results[x]];
-					}				
+					}
 
 					// if neighbourhood key isn't in dictionary
 					if (!(results[x].neighbourhood in neighbourhoodDictionary)) {
 						// then add it inside the dictionary obj
 						var priceCount = [ppb, 1];
-						var neighbourhoodKey = results[x].neighbourhood; 
+						var neighbourhoodKey = results[x].neighbourhood;
 						neighbourhoodDictionary[neighbourhoodKey] = priceCount;
 					} else {
 						// else neighbourhood key is in dictionary
@@ -163,15 +162,15 @@ function addMarkers(results, someMap) {
 						neighbourhoodDictionary[results[x].neighbourhood] = tempPriceCount;
 
 					}
-					
+
 				} else {
 					icon = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png';
 				}
 
-				
+
 
 				var marker = new google.maps.Marker({
-				    position: {lat: results[x].latitude, 
+				    position: {lat: results[x].latitude,
 				    		   lng: results[x].longitude},
 				    map: someMap,
 				    icon: icon
@@ -182,8 +181,8 @@ function addMarkers(results, someMap) {
 		  				throw new Error('undefined listing');
 		  			} else {
 
-		  				var contentString = '<div id="tooltip">Price: $' + res.price 
-							+ '<br> Listing url: <a target="_blank" href="' 
+		  				var contentString = '<div id="tooltip">Price: $' + res.price
+							+ ', Beds: '+ res.bedrooms +'<br> Listing url: <a target="_blank" href="'
 							+ res.listing_url + '">Click here</a></div>';
 
 				  		var infowindow = new google.maps.InfoWindow({
@@ -192,13 +191,13 @@ function addMarkers(results, someMap) {
 
 		  				infowindow.open(someMap, m);
 
-		  				console.log("Latitude: " + res.latitude + 
+		  				console.log("Latitude: " + res.latitude +
 		  					" Longitude: " + res.longitude);
 		  			}
-		  			
+
 		  		}.bind(null, results[x], marker));
 
-		  		
+
 		}
 
 	}

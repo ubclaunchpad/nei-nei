@@ -42,29 +42,23 @@ function movingAverage (id, curr_neighbourhood_data) {
               .attr("viewBox", "0 0 500 350")
            .append("g")
              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-  // TODO: Pipe in data from dashboard, as it might need to be in a callback
-  d3.json('../../places/dashboard_test_data.json', function (error, data) {
-    // TODO: robust error handling
-    if (error) throw error;
+
+  function update(data) {
 
     function sortMinToMaxCallback(a, b) { return a.date_listed - b.date_listed; }
     function sortMaxToMinCallback(a, b) { return b.date_listed - a.date_listed; }
 
-    // TODO: function that grabs data from most recently clicked neighbourhood
-    //  For now default to 'Outside' data points and 'All' data points as background
-    outsideData = data[data.length - 1]['positions'].sort(sortMinToMaxCallback);
-    // console.log(outsideData);
-
-    allData = []
-    for (var i = 0; i < data.length-1; i++) {
-      allData = allData.concat(data[i]['positions']);
+    // Consolidate all listings from api
+    var allData = [];
+    for (var hood in listingsDictionary) {
+      allData = allData.concat(listingsDictionary[hood]);
     }
     allData = allData.sort(sortMinToMaxCallback);
 
     // TODO: Bin by date
     var formatDate = d3.timeFormat("%B %e %Y");
 
-    outsideData.forEach(function (d) {
+    data.forEach(function (d) {
       d.date_bin = formatDate(d.date_listed * 1000);
     });
 
@@ -73,7 +67,7 @@ function movingAverage (id, curr_neighbourhood_data) {
     });
 
     // Find earliest data point from each set to set domain
-    var maxMinArray = [allData[d3.scan(allData, sortMinToMaxCallback)], outsideData[d3.scan(outsideData, sortMinToMaxCallback)]];
+    var maxMinArray = [allData[d3.scan(allData, sortMinToMaxCallback)], data[d3.scan(data, sortMinToMaxCallback)]];
     // Find index of the largest time between the two
     var maxMinIndex = d3.scan(maxMinArray, sortMaxToMinCallback);
     var lowerCutoff = maxMinArray[maxMinIndex].date_listed;
@@ -82,11 +76,11 @@ function movingAverage (id, curr_neighbourhood_data) {
     function filterCallback(d) {
       return d.date_listed >= lowerCutoff;
     };
-    outsideData = outsideData.filter(filterCallback);
+    data = data.filter(filterCallback);
     allData = allData.filter(filterCallback);
     // Set first element's x of both arrays to lowerCutoff
     allData[0].date_listed = lowerCutoff;
-    outsideData[0].date_listed = lowerCutoff;
+    data[0].date_listed = lowerCutoff;
 
     // Exponential moving average function
     function calculateEMA(currPrice, dayRange, prevEMA) {
@@ -113,9 +107,9 @@ function movingAverage (id, curr_neighbourhood_data) {
     // 25 day exponential moving average
     // TODO: convert dayRange to user input
     var dayRange = 25;
-    var movingAvgDataOutside = [],
+    var movingAvgDataHood = [],
         movingAvgDataAll = [];
-    emaOverRange(outsideData, dayRange, movingAvgDataOutside);
+    emaOverRange(data, dayRange, movingAvgDataHood);
     emaOverRange(allData, dayRange, movingAvgDataAll);
 
     xScale.domain(d3.extent(movingAvgDataAll, xValue))
@@ -131,26 +125,6 @@ function movingAverage (id, curr_neighbourhood_data) {
        .attr('class', 'y-axis')
        .call(yAxis)
 
-    // svg.append('g').selectAll('dot')
-    //         .data(outsideData)
-    //       .enter()
-    //         .append('circle')
-    //         .attr('class', 'dot')
-    //         .attr('r', '2')
-    //         .attr('cx', xMap)
-    //         .attr('cy', yMap)
-    //         .attr('fill', 'steelblue')
-    //
-    // svg.append('g').selectAll('dot')
-    //         .data(allData)
-    //       .enter()
-    //         .append('circle')
-    //         .attr('class', 'dot')
-    //         .attr('r', '2')
-    //         .attr('cx', xMap)
-    //         .attr('cy', yMap)
-    //         .attr('fill', 'red')
-
     svg.append('g').append('path')
             .attr('class', 'area')
             .attr('d', area(movingAvgDataAll))
@@ -160,7 +134,7 @@ function movingAverage (id, curr_neighbourhood_data) {
 
     svg.append('g').append('path')
             .attr('class', 'area')
-            .attr('d', area(movingAvgDataOutside))
+            .attr('d', area(movingAvgDataHood))
             .attr('stroke', 'grey')
             .attr('stroke-width', 1)
             .attr('fill', 'steelblue');
@@ -172,5 +146,7 @@ function movingAverage (id, curr_neighbourhood_data) {
            .attr('dy', '-5px')
            .style('text-anchor', 'middle')
            .text('Exp. Moving Average');
-   });
+   }
+
+   update(curr_neighbourhood_data);
 }
