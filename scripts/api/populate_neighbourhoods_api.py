@@ -1,4 +1,4 @@
-import grequests
+import requests
 import sys
 import json
 import xml.etree.ElementTree as ET
@@ -30,7 +30,6 @@ headers = {
 }
 
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
-rs = (grequests.post(neighbourhoods_url,
-                     headers=headers,
-                     data=json.dumps(neighbourhood)) for neighbourhood in cleaned_neighbourhoods)
-grequests.map(rs, size=10, exception_handler=lambda r, e: sys.stderr.write(str(e) + '\n'))
+for n in cleaned_neighbourhoods:
+    r = requests.post(neighbourhoods_url, headers=headers, data=json.dumps(n))
+    print(r.text)

@@ -35,8 +35,8 @@ function initMap() {
 		loadJSON('http://localhost:8000/api/neighbourhoods',
 			function(err, data) {
 				if (err != null) {
-	  				console.log("Error: " + err);
-	  			} else {
+	  			console.log("Error: " + err);
+	  		} else {
 					neighbourhoodAPIInput = data.map(function(nbhObj) {
 						return {
 							name: nbhObj.name,
@@ -48,12 +48,11 @@ function initMap() {
 							})
 						}
 					});
+					neighbourhoodMarkerMap = new NeighbourhoodsAPI(markerMap);
+					neighbourhoodMarkerMap.init(neighbourhoodAPIInput);
+					neighbourhoodMarkerMap.displayAll();
+					colourNeighbourhoods();
 				}
-
-			neighbourhoodMarkerMap = new NeighbourhoodsAPI(markerMap);
-			neighbourhoodMarkerMap.init(neighbourhoodAPIInput);
-			neighbourhoodMarkerMap.displayAll();
-			colourNeighbourhoods();
 			}
 		);
 	},
@@ -182,8 +181,8 @@ function addMarkers(results, someMap) {
 		  			} else {
 
 		  				var contentString = '<div id="tooltip">Price: $' + res.price
-							+ ', Beds: '+ res.bedrooms +'<br> Listing url: <a target="_blank" href="'
-							+ res.listing_url + '">Click here</a></div>';
+							+ ', Beds: '+ res.bedrooms +'<br><a target="_blank" href="'
+							+ res.listing_url + '">List URL</a></div>';
 
 				  		var infowindow = new google.maps.InfoWindow({
 		          			content: contentString

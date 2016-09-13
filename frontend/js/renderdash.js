@@ -21,10 +21,20 @@ function passDataToDashboard (clicked_neighbourhood_data) {
       'date_listed':listing.date_listed
     });
   });
+
+  // Purge the DOM before rerendering
+  ['chart-box-1', 'chart-box-2', 'chart-box-3'].forEach(purgeNode)
   // Calls graph wrapper functions on page load to render each in the dashboard
   movingAverage("chart-box-1", curr_neighbourhood_data);
   bedroomDistribution("chart-box-2", curr_neighbourhood_data);
   postTimeSeries("chart-box-3", curr_neighbourhood_data);
+}
+
+function purgeNode(id) {
+  el = document.getElementById(id);
+  while (el.firstChild) {
+    el.removeChild(el.firstChild)
+  }
 }
 
 
