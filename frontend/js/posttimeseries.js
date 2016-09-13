@@ -47,31 +47,14 @@ function postTimeSeries (id, curr_neighbourhood_data) {
    });
 
    // Initializate x value mapping functions and axis
-   var xScale = d3.scaleOrdinal().range([0, width]),
-       xAxis = d3.axisBottom().scale(xScale);
-
-   console.log(months)
-
-   xScale.domain(data.map(function (d) { console.log(d);return d.month_bin; }));
+   var xScale = d3.scaleOrdinal().domain(months).range([0, width]);
 
    var histogram = d3.histogram()
          .domain(xScale.domain())
          .value(function(d) { return d.month_bin;});
 
-    // var monthExtent = d3.extent(data, function (d) { return d.date_bin; });
-    // var monthBins = d3.timeMonths(d3.timeMonth.offset(monthExtent[0], -1), d3.timeMonth.offset(monthExtent[1], 1));
-
-    // var histogram = d3.histogram()
-    //     .domain(monthExtent)
-    //     .thresholds(xScale.ticks(monthBins.length))
-    //     .value(function (d) { return d.date_bin; });
-
     var bins = histogram(data);
 
-    // console.log(monthBins);
-    console.log(bins);
-
-    // xScale.domain(monthExtent)
     yScale.domain([0, d3.max(bins, function (d) { return d.length; })]);
 
     var bar = svg.selectAll('bar')
@@ -92,11 +75,14 @@ function postTimeSeries (id, curr_neighbourhood_data) {
         .attr('dy', '-5px')
         .style('text-anchor', 'middle')
         .text('Posts per Month');
+        
+    
+     xAxis = d3.axisBottom().scale(xScale);
 
      svg.append('g')
         .attr('class', 'x-axis')
         .attr('transform', 'translate(0,'+height+')')
-        .call(xAxis.tickFormat(monthFormat));
+        .call(xAxis);
 
      svg.append('g')
         .attr('class', 'y-axis')
