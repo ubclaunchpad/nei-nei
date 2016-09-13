@@ -27,7 +27,7 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
                 .scale(yScale)
                 .ticks(5);
 
-  var formatCount = d3.format(",.0f");
+  // var formatCount = d3.format(",.0f");
 
   // Create canvas for SVG objects.
   var svg = d3.select("div#"+id)
@@ -43,22 +43,16 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
 
     // Initialize an array of 0's of size maxBedrooms
     var maxBedrooms = d3.max(data, function (d) { return d.bedrooms; });
-    var bedBinArray = new Array(maxBedrooms+1);
-    bedBinArray.fill(0);
-
-    // Bin postings by bedroom
-    for (var i = 0; i < data.length; i++) {
-      bedBinArray[data[i].bedrooms] += 1;
-    }
 
     xScale.domain([0, maxBedrooms]);
 
     var histogram = d3.histogram()
           .domain(xScale.domain())
-          .thresholds(xScale.ticks(maxBedrooms))
-          (bedBinArray);
+          .value(function(d) { return d.bedrooms;});
 
-    yScale.domain([0, d3.max(histogram, function (d) { return d.length; })]);
+    var bins = histogram(data);
+
+    yScale.domain([0, d3.max(bins, function (d) { return d.length; })]);
 
     // // Transition callback
     // var neiTransition = d3.transition()
@@ -85,24 +79,22 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
     //             .style('fill-opacity', 1);
 
     var bar = svg.selectAll('bar')
-        .data(histogram)
+        .data(bins)
       .enter().append('g')
         .attr('class', 'bar')
         .attr('transform', function (d) {
           return 'translate(' + xScale(d.x0) + "," + yScale(d.length) + ')'; });
 
     bar.append('rect')
-      .attr('x', 1)
-      .attr('width', xScale(histogram[0].x1) - xScale(histogram[0].x0) - 1)
-      // .attr('y', yMap)
+      .attr('width', xScale(bins[0].x1) - xScale(bins[0].x0) - 1)
       .attr('height', function (d) { return height - yScale(d.length); });
 
-    bar.append("text")
-      .attr("dy", ".75em")
-      .attr("y", 6)
-      .attr("x", (xScale(histogram[0].x1) - xScale(histogram[0].x0)) / 2)
-      .attr("text-anchor", "middle")
-      .text(function(d) { return formatCount(d.length); });
+    // bar.append("text")
+    //   .attr("dy", ".75em")
+    //   .attr("y", function (d) { return height - yScale(d.length) + 5; })
+    //   .attr("x", (xScale(bins[0].x1) - xScale(bins[0].x0)) / 2)
+    //   .attr("text-anchor", "middle")
+    //   .text(function(d) { return d.length; });
 
     svg.append('text')
       .attr('class', 'title')

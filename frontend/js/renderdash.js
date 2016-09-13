@@ -37,7 +37,6 @@ function purgeNode(id) {
   }
 }
 
-
 // TODO: not passing data to d3 rendering function calls
 function initializeDashData () {
   // Consolidate all listings from api
