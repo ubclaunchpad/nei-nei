@@ -82,8 +82,6 @@ function colourNeighbourhoods(){
 			neighbourhoodDictionary[neighbourhoodKeys[property]][0] /
 			neighbourhoodDictionary[neighbourhoodKeys[property]][1];
 
-		// console.log(neighbourhoodPPB);
-
 		switch (neighbourhoodPPB >= 0) {
 			case neighbourhoodPPB <= 500:
 				neighbourhoodColor = blue;
@@ -189,10 +187,6 @@ function addMarkers(results, someMap) {
 		        		});
 
 		  				infowindow.open(someMap, m);
-
-		  				console.log("Latitude: " + res.latitude +
-		  					" Longitude: " + res.longitude);
-		  			}
 
 		  		}.bind(null, results[x], marker));
 

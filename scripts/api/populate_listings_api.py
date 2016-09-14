@@ -1,5 +1,5 @@
 import grequests
-import requests
+import requests.
 import sys
 import json
 
@@ -34,28 +34,34 @@ else:
     json.dump(listings, open('data/listings_{date}.json'.format(date=datetime.today().strftime('%Y-%m-%d_%H-%M')), 'w'))
 
 listings_url = rest_api['base_url'] + rest_api['listings']
-neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
+neighbourhoods_url = rest_api['base_url'] +  rest_api['neighbourhoods']
 neighbourhoods = requests.get(neighbourhoods_url).json()
 
-from geometry import Point, Polygon
+# Casting the listings
+from casting import RayCaster, organize_polygons
 
-polygons = map(lambda n: Polygon([(c['longitude'], c['latitude']) for c in n['boundary']], name=n['name']), neighbourhoods)
-points = (Point(x=l['lng'], y=l['lat']) for l in listings)
-find_polygon_containing_point = lambda point: next((p for p in polygons if p.intersects(point)), None)
+polygons = []
+cast_listings = []
+organize_polygons(neighbourhoods, polygons)
+RayCaster.place_pos_in_polygon(listings, polygons, cast_listings)
+del polygons
 
-payloads = map(lambda (l, p): dict(
-    latitude=l['lat'],
-    longitude=l['lng'],
-    bedrooms=int(l['beds']),
-    bathrooms=int(l['baths']),
-    description=l['description'],
-    listing_url=l['url'],
-    listing_id=l['id'],
-    address=l['location'],
-    price=int(l['price']),
-    date_listed=l['date'],
-    neighbourhood=p and p.name
-), zip(listings, map(find_polygon_containing_point, points)))
+payloads = []
+for hood in cast_listings:
+    payloads.extend(map(lambda p: dict(
+        latitude=float(p['lat']),
+        longitude=float(p['lng']),
+        bedrooms=int(p['beds']),
+        bathrooms=int(p['baths']),
+        description=p['description'],
+        listing_url=p['url'],
+        listing_id=p['id'],
+        address=p['location'],
+        price=int(p['price']),
+        date_listed=p['date'],
+        neighbourhood=hood['name']
+    ), hood['positions']))
+del cast_listings
 
 headers = {
     'Authorization': 'Token {token}'.format(token=rest_api['credentials']['token']),

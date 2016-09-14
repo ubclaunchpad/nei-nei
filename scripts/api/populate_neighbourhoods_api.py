@@ -32,4 +32,3 @@ headers = {
 neighbourhoods_url = rest_api['base_url'] + rest_api['neighbourhoods']
 for n in cleaned_neighbourhoods:
     r = requests.post(neighbourhoods_url, headers=headers, data=json.dumps(n))
-    print(r.text)
