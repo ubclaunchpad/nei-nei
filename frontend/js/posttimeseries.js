@@ -1,4 +1,3 @@
-
 /**
  * Creates a  using the D3.js API
  * @param {string} id - id of tag to place svg object within
@@ -11,83 +10,104 @@
  *        },]
  */
 function postTimeSeries (id, curr_neighbourhood_data) {
-  // Margins to center and transform the graph
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
       width = 500 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
 
+  // Parse the date / time
+  var parseDate = d3.timeFormat("%b");
 
-  // Initializate y value mapping functions and axis
-  var yScale = d3.scaleLinear().range([height, 0]),
-      yAxis = d3.axisLeft()
-                .scale(yScale)
-                .ticks(5);
+  var xScale = d3.scaleBand().range([0, width]);
 
-  // Create canvas for SVG objects.
+  var yScale = d3.scaleLinear().range([height, 0]);
+
+  var xAxis = d3.axisBottom()
+      .scale(xScale)
+      .tickFormat(d3.timeFormat("%b"));
+
+  var yAxis = d3.axisLeft()
+      .scale(yScale)
+      .ticks(5);
+
   var svg = d3.select("div#"+id)
-           .append("svg")
-              .attr("class", "chart")
-              .attr("id", "chart1")
-              .attr("preserveAspectRatio", "xMinYMin meet")
-              .attr("viewBox", "0 0 500 350")
-           .append("g")
-             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .append("svg")
+        .attr("class", "chart")
+        .attr("id", "chart1")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 500 350")
+      .append("g")
+        .attr("transform", "translate(" + (margin.left + margin.bottom) + "," + margin.top + ")");
 
- function update(data) {
+  function update(data) {
 
-   var monthFormat = d3.timeFormat('%b');
-   var months = [], currMonth;
+    var months = [], monthBinCounts = [], currMonth;
 
-   data.forEach(function (d) {
-     currMonth = monthFormat(d.date_listed*1000);
-     d.month_bin = currMonth;
-     if (!months.includes(currMonth)) {
-       months.push(currMonth);
-     }
-   });
+    data.forEach(function (d) {
+      currMonth = parseDate(d.date_listed*1000);
+      d.month_bin = currMonth;
+      if (!months.includes(currMonth)) {
+        months.push(currMonth);
+        monthBinCounts.push({'month':currMonth, 'posts':0});
+      } else {
+        for (var i = 0; i < monthBinCounts.length; i++) {
+          if (monthBinCounts[i].month == currMonth) {
+            monthBinCounts[i].posts += 1;
+          }
+        }
+      }
+    });
 
-   // Initializate x value mapping functions and axis
-   var xScale = d3.scaleOrdinal().domain(months).range([0, width]);
+    xScale.domain(months);
+    yScale.domain([0, d3.max(monthBinCounts, function(d) { return d.posts; })]);
 
-   var histogram = d3.histogram()
-         .domain(xScale.domain())
-         .value(function(d) { return d.month_bin;});
+    svg.append("text")
+      .attr('class', 'x-axis-title')
+      .attr("y", height)
+      .attr('x', width / 2)
+      .attr("dy", "3em")
+      .style("text-anchor", "middle")
+      .text("Month");
 
-    var bins = histogram(data);
+    svg.append("text")
+      .attr('class', 'y-axis-title')
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr('x', 0 - (height / 2))
+      .attr("dy", "0.25em")
+      .style("text-anchor", "middle")
+      .text("Number of Posts");
 
-    yScale.domain([0, d3.max(bins, function (d) { return d.length; })]);
+    svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")
+          .style("text-anchor", "center")
+          .text(function (d) { return d; });
 
-    var bar = svg.selectAll('bar')
-        .data(bins)
-      .enter().append('g')
-        .attr('class', 'bar')
-        .attr('transform', function (d) {
-          return 'translate(' + xScale(d.x0) + "," + yScale(d.length) + ')'; });
-
-    bar.append('rect')
-       .attr('width', xScale(bins[0].x1) - xScale(bins[0].x0) - 1)
-       .attr('height', function (d) { return height - yScale(d.length); });
-
-     svg.append('text')
-        .attr('class', 'title')
-        .attr('x', width / 2)
-        .attr("dx", "15px")
-        .attr('dy', '-5px')
-        .style('text-anchor', 'middle')
-        .text('Posts per Month');
-        
-    
-     xAxis = d3.axisBottom().scale(xScale);
-
-     svg.append('g')
-        .attr('class', 'x-axis')
-        .attr('transform', 'translate(0,'+height+')')
-        .call(xAxis);
-
-     svg.append('g')
-        .attr('class', 'y-axis')
+    svg.append("g")
+        .attr("class", "y-axis")
         .call(yAxis)
-   }
+      .append("text");
 
-   update(curr_neighbourhood_data);
+    svg.selectAll("bar")
+        .data(monthBinCounts)
+      .enter().append("rect")
+        .attr('class', 'bar')
+        .attr("x", function(d) { return xScale(d.month); })
+        .attr("width", xScale.bandwidth() - 1)
+        .attr("y", function(d) { return yScale(d.posts); })
+        .attr("height", function(d) { return height - yScale(d.posts); });
+
+    svg.append('text')
+       .attr('class', 'title')
+       .attr('x', width / 2)
+       .attr('dy', '-5px')
+       .style('text-anchor', 'middle')
+       .text('Posts per Month');
+
+  };
+
+  update(curr_neighbourhood_data)
+
 }

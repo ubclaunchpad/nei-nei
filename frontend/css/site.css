@@ -22,7 +22,7 @@ body {
 
 #dashboard {
 	float: right;
-	margin: 1vw;
+	margin-right: 2vw;
 	padding: 0;
   width: 22.5vw;
   height: 100vh;
@@ -53,6 +53,14 @@ body {
 
 	#dashboard {
 		display: none;
+	}
+
+}
+
+@media (max-height: 800px) {
+
+	body {
+		overflow-y: scroll;
 	}
 
 }

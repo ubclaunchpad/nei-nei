@@ -10,91 +10,87 @@
  *        },]
  */
 function bedroomDistribution (id, curr_neighbourhood_data) {
-  // Margins to center and transform the graph
   var margin = {top: 20, right: 20, bottom: 30, left: 50},
       width = 500 - margin.left - margin.right,
       height = 300 - margin.top - margin.bottom;
-  // Initializate x value mapping functions and axis
-  var xScale = d3.scaleLinear().range([0, width]),
-      xMap = function (d, i) { return xScale(i); },
-      xAxis = d3.axisBottom()
-                .scale(xScale);
 
-  // Initializate y value mapping functions and axis
-  var yScale = d3.scaleLinear().range([height, 0]),
-      yMap = function (d) { return yScale(d); },
-      yAxis = d3.axisLeft()
-                .scale(yScale)
-                .ticks(5);
+  var xScale = d3.scaleBand().range([0, width]);
 
-  // var formatCount = d3.format(",.0f");
+  var yScale = d3.scaleLinear().range([height, 0]);
 
-  // Create canvas for SVG objects.
+  var xAxis = d3.axisBottom()
+      .scale(xScale);
+
+  var yAxis = d3.axisLeft()
+      .scale(yScale)
+      .ticks(5);
+
   var svg = d3.select("div#"+id)
-           .append("svg")
-              .attr("class", "chart")
-              .attr("id", "chart1")
-              .attr("preserveAspectRatio", "xMinYMin meet")
-              .attr("viewBox", "0 0 500 350")
-           .append("g")
-             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .append("svg")
+        .attr("class", "chart")
+        .attr("id", "chart1")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "0 0 500 350")
+      .append("g")
+        .attr("transform", "translate(" + (margin.left + margin.bottom) + "," + margin.top + ")");
 
   function update(data) {
 
-    // Initialize an array of 0's of size maxBedrooms
-    var maxBedrooms = d3.max(data, function (d) { return d.bedrooms; });
+    var maxBeds = d3.max(data, function (d) { return d.bedrooms; }),
+        bedBins = new Array(maxBeds+1),
+        bedDomain = new Array(maxBeds);
 
-    xScale.domain([0, maxBedrooms]);
+    bedBins.fill(0);
 
-    var histogram = d3.histogram()
-          .domain(xScale.domain())
-          .value(function(d) { return d.bedrooms;});
+    data.forEach(function (d) {
+      bedBins[d.bedrooms] += 1;
+    });
 
-    var bins = histogram(data);
+    for (var i = 0; i < maxBeds; i++) {
+      bedDomain[i] = i + 1;
+    }
 
-    yScale.domain([0, d3.max(bins, function (d) { return d.length; })]);
+    xScale.domain(bedDomain);
+    yScale.domain([0, d3.max(bedBins, function(d) { return d; })]);
 
-    // // Transition callback
-    // var neiTransition = d3.transition()
-    //                       .duration(750);
-    //
-    // var prevPostings = svg.selectAll('bar')
-    //       .data(data, function (d) { return d; });
+    svg.append("text")
+      .attr('class', 'x-axis-title')
+      .attr("y", height)
+      .attr('x', width / 2)
+      .attr("dy", "3em")
+      .style("text-anchor", "middle")
+      .text("Number of Beds");
 
-    // prevPostings.exit()
-    //             .attr('class', 'exit')
-    //           .transition(neiTransition)
-    //             .attr('y', 60)
-    //             .style('fill-opacity', 1e-6)
-    //             .remove();
-    //
-    // prevPostings.enter().append('rect')
-    //             .attr('class', 'bar')
-    //             .attr('x', xMap)
-    //             .attr('width', width / (maxBedrooms+1))
-    //             .attr('y', yMap)
-    //             .attr('height', function (d) { return height - yScale(d); })
-    //           .transition(neiTransition)
-    //             .attr('y', 0)
-    //             .style('fill-opacity', 1);
+    svg.append("text")
+      .attr('class', 'y-axis-title')
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr('x', 0 - (height / 2))
+      .attr("dy", "0.25em")
+      .style("text-anchor", "middle")
+      .text("Number of Posts");
 
-    var bar = svg.selectAll('bar')
-        .data(bins)
-      .enter().append('g')
+    svg.append("g")
+        .attr("class", "x-axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .selectAll("text")
+          .style("text-anchor", "center")
+          .text(function (d) { return d; });
+
+    svg.append("g")
+        .attr("class", "y-axis")
+        .call(yAxis)
+      .append("text");
+
+    svg.selectAll("bar")
+        .data(bedBins)
+      .enter().append("rect")
         .attr('class', 'bar')
-        .attr('transform', function (d) {
-          return 'translate(' + xScale(d.x0) + "," + yScale(d.length) + ')'; });
-
-    bar.append('rect')
-      .attr('width', xScale(bins[0].x1) - xScale(bins[0].x0) - 1)
-      .attr('height', function (d) { return height - yScale(d.length); });
-
-    // bar.append("text")
-    //   .attr("dy", ".75em")
-    //   .attr("y", function (d) { return height - yScale(d.length) + 5; })
-    //   .attr("x", (xScale(bins[0].x1) - xScale(bins[0].x0)) / 2)
-    //   .attr("text-anchor", "middle")
-    //   .text(function(d) { return d.length; });
+        .attr("x", function(d, i) { return xScale(i); })
+        .attr("width", xScale.bandwidth() - 1)
+        .attr("y", function(d) { return yScale(d); })
+        .attr("height", function(d) { return height - yScale(d); });
 
     svg.append('text')
       .attr('class', 'title')
@@ -102,16 +98,8 @@ function bedroomDistribution (id, curr_neighbourhood_data) {
       .attr("dx", "15px")
       .attr('dy', '-5px')
       .style('text-anchor', 'middle')
-      .text('Distribution of Bedrooms per Post');
+      .text('Distribution of Posts per Bedrooms');
 
-    svg.append('g')
-       .attr('class', 'x-axis')
-       .attr('transform', 'translate(0,'+height+')')
-       .call(xAxis);
-
-    svg.append('g')
-       .attr('class', 'y-axis')
-       .call(yAxis)
    }
 
   update(curr_neighbourhood_data);

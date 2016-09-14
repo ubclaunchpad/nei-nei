@@ -25,9 +25,9 @@ function passDataToDashboard (clicked_neighbourhood_data) {
   // Purge the DOM before rerendering
   ['chart-box-1', 'chart-box-2', 'chart-box-3'].forEach(purgeNode)
   // Calls graph wrapper functions on page load to render each in the dashboard
-  movingAverage("chart-box-1", curr_neighbourhood_data);
+  movingAverage("chart-box-3", curr_neighbourhood_data);
   bedroomDistribution("chart-box-2", curr_neighbourhood_data);
-  postTimeSeries("chart-box-3", curr_neighbourhood_data);
+  postTimeSeries("chart-box-1", curr_neighbourhood_data);
 }
 
 function purgeNode(id) {
@@ -37,9 +37,13 @@ function purgeNode(id) {
   }
 }
 
-// TODO: not passing data to d3 rendering function calls
-function initializeDashData () {
-  // Consolidate all listings from api
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+// Usage!
+sleep(5000).then(() => {
+  // TODO: Consolidate all listings from api, does not iterate over dictionary
   var dataFromAllHoods = [];
   for (var hood in listingsDictionary) {
     if (listingsDictionary.hasOwnProperty(hood)) {
@@ -47,9 +51,7 @@ function initializeDashData () {
     }
   }
 
-  movingAverage("chart-box-1", dataFromAllHoods);
+  movingAverage("chart-box-3", dataFromAllHoods);
   bedroomDistribution("chart-box-2", dataFromAllHoods);
-  postTimeSeries("chart-box-3", dataFromAllHoods);
-}
-
-initializeDashData();
+  postTimeSeries("chart-box-1", dataFromAllHoods);
+})

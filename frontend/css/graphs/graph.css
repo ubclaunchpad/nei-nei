@@ -1,4 +1,4 @@
-.x-axis, .y-axis {
+.x-axis, .y-axis{
   font-size: 1em;
 }
 
@@ -6,6 +6,7 @@
   float: right;
   margin: auto;
   margin-top: 3vh;
+  margin-right: 0.5vw;
   padding: 0;
   width: inherit;
 }
@@ -18,7 +19,7 @@
   max-height: 225px;
 }
 
-.title {
+.title, .x-axis-title, .y-axis-title  {
   font-size: 1.25em;
   font-family: monospace;
 }

@@ -19,14 +19,15 @@ function movingAverage (id, curr_neighbourhood_data) {
       xScale = d3.scaleTime().range([0, width]),
       xMap = function (d) { return xScale(xValue(d)); },
       xAxis = d3.axisBottom()
-                .scale(xScale);
+                .scale(xScale)
+                .ticks(d3.timeWeek.every(2));
   // Initializate y value mapping functions and axis
   var yValue = function (d) { return d.price; },
       yScale = d3.scaleLinear().range([height, 0]),
       yMap = function (d) { return yScale(yValue(d)); },
       yAxis = d3.axisLeft()
                 .scale(yScale)
-                .ticks(4);
+                .ticks(6);
   // Create area object
   var area = d3.area()
       .x( xMap )
@@ -41,7 +42,7 @@ function movingAverage (id, curr_neighbourhood_data) {
               .attr("preserveAspectRatio", "xMinYMin meet")
               .attr("viewBox", "0 0 500 350")
            .append("g")
-             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+             .attr("transform", "translate(" +(margin.left + margin.bottom) + "," + margin.top + ")");
 
   function update(data) {
 
@@ -49,25 +50,16 @@ function movingAverage (id, curr_neighbourhood_data) {
     function sortMaxToMinCallback(a, b) { return b.date_listed - a.date_listed; }
 
     // Consolidate all listings from api
-    var allData = [];
+    var dataFromAllHoods = [];
     for (var hood in listingsDictionary) {
-      allData = allData.concat(listingsDictionary[hood]);
+      dataFromAllHoods = dataFromAllHoods.concat(listingsDictionary[hood]);
     }
-    allData = allData.sort(sortMinToMaxCallback);
 
-    // TODO: Bin by date
-    var formatDate = d3.timeFormat("%B %e %Y");
-
-    data.forEach(function (d) {
-      d.date_bin = formatDate(d.date_listed * 1000);
-    });
-
-    allData.forEach(function (d) {
-      d.date_bin = formatDate(d.date_listed * 1000);
-    });
+    dataFromAllHoods = dataFromAllHoods.sort(sortMinToMaxCallback);
+    data = data.sort(sortMinToMaxCallback);
 
     // Find earliest data point from each set to set domain
-    var maxMinArray = [allData[d3.scan(allData, sortMinToMaxCallback)], data[d3.scan(data, sortMinToMaxCallback)]];
+    var maxMinArray = [dataFromAllHoods[0], data[0]];
     // Find index of the largest time between the two
     var maxMinIndex = d3.scan(maxMinArray, sortMaxToMinCallback);
     var lowerCutoff = maxMinArray[maxMinIndex].date_listed;
@@ -77,9 +69,9 @@ function movingAverage (id, curr_neighbourhood_data) {
       return d.date_listed >= lowerCutoff;
     };
     data = data.filter(filterCallback);
-    allData = allData.filter(filterCallback);
+    dataFromAllHoods = dataFromAllHoods.filter(filterCallback);
     // Set first element's x of both arrays to lowerCutoff
-    allData[0].date_listed = lowerCutoff;
+    dataFromAllHoods[0].date_listed = lowerCutoff;
     data[0].date_listed = lowerCutoff;
 
     // Exponential moving average function
@@ -110,11 +102,28 @@ function movingAverage (id, curr_neighbourhood_data) {
     var movingAvgDataHood = [],
         movingAvgDataAll = [];
     emaOverRange(data, dayRange, movingAvgDataHood);
-    emaOverRange(allData, dayRange, movingAvgDataAll);
+    emaOverRange(dataFromAllHoods, dayRange, movingAvgDataAll);
 
     xScale.domain(d3.extent(movingAvgDataAll, xValue))
           .ticks(d3.timeMonth.every(1));
     yScale.domain([0, d3.max(movingAvgDataAll, yValue)]);
+
+    svg.append("text")
+      .attr('class', 'x-axis-title')
+      .attr("y", height)
+      .attr('x', width / 2)
+      .attr("dy", "3em")
+      .style("text-anchor", "middle")
+      .text("Date");
+
+    svg.append("text")
+      .attr('class', 'y-axis-title')
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left)
+      .attr('x', 0 - (height / 2))
+      .attr("dy", "-1em")
+      .style("text-anchor", "middle")
+      .text("Price ($ per bedroom)");
 
     svg.append('g')
        .attr('class', 'x-axis')
@@ -123,7 +132,7 @@ function movingAverage (id, curr_neighbourhood_data) {
 
     svg.append('g')
        .attr('class', 'y-axis')
-       .call(yAxis)
+       .call(yAxis);
 
     svg.append('g').append('path')
             .attr('class', 'area')
@@ -145,7 +154,7 @@ function movingAverage (id, curr_neighbourhood_data) {
            .attr('dx', '15px')
            .attr('dy', '-5px')
            .style('text-anchor', 'middle')
-           .text('Exp. Moving Average');
+           .text('25-Day Exponential Moving Average');
    }
 
    update(curr_neighbourhood_data);
