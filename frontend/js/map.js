@@ -188,11 +188,9 @@ function addMarkers(results, someMap) {
 
 		  				infowindow.open(someMap, m);
 
-		  		}.bind(null, results[x], marker));
-
-
+		  			}
+					}.bind(null, results[x], marker));
 		}
-
 	}
 }
 

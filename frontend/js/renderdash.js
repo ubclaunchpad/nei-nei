@@ -41,9 +41,8 @@ function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-// Usage!
+// TODO: waits until listingsDictionary is finished being populated to trigger, not sleep
 sleep(5000).then(() => {
-  // TODO: Consolidate all listings from api, does not iterate over dictionary
   var dataFromAllHoods = [];
   for (var hood in listingsDictionary) {
     if (listingsDictionary.hasOwnProperty(hood)) {

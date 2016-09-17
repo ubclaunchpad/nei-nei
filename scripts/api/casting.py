@@ -81,14 +81,17 @@ class RayCaster():
     # Outputs positions in JSON format (list of dicts) per polygon
     @staticmethod
     def place_pos_in_polygon(posting_list, poly_list, out_list):
+        # from pprint import pprint
         for poly in poly_list:
             poly_name = poly[0]
             postings_within_poly = []
             for posting in list(posting_list):
+                # pprint(float(posting['lng']))
                 pos = Pos(latitude=float(posting['lat']),
                           longitude=float(posting['lng']))
                 # Determine whether position is within a polygon
                 if RayCaster.pos_within_polygon(pos, poly):
+                    # print("Found!")
                     postings_within_poly.append(posting)
                     # Remove to account for placement
                     posting_list.remove(posting)
@@ -101,7 +104,7 @@ class RayCaster():
             out_list.append(poly_dict)
         # Create a special dict for all other positions, add to out_list
         out_list.append({
-            'name':      'Outside',
+            'name':      None,
             'positions': posting_list
         })
 
@@ -113,18 +116,18 @@ def organize_polygons(polygon_edge_coords, out_list):
         new_edges = ()
         # Note: lat an longitude are reversed in JSON file, so they are switched them here
         for i in range(0, len(new_poly) - 1):
-            pos_a = Pos(latitude=float(new_poly[i]['longitude']),
-                        longitude=float(new_poly[i]['latitude']))
-            pos_b = Pos(latitude=float(new_poly[i + 1]['longitude']),
-                        longitude=float(new_poly[i + 1]['latitude']))
+            pos_a = Pos(latitude=float(new_poly[i]['latitude']),
+                        longitude=float(new_poly[i]['longitude']))
+            pos_b = Pos(latitude=float(new_poly[i + 1]['latitude']),
+                        longitude=float(new_poly[i + 1]['longitude']))
             new_edges += (Edge(pos_a, pos_b),)
         # Join first pos to last to complete the polygon
         #   Note: first and last pos's may be the same point
         new_edges += (Edge(
-            Pos(latitude=float(new_poly[-1]['longitude']),
-                longitude=float(new_poly[-1]['latitude'])),
-            Pos(latitude=float(new_poly[0]['longitude']),
-                longitude=float(new_poly[0]['latitude']))),
+            Pos(latitude=float(new_poly[-1]['latitude']),
+                longitude=float(new_poly[-1]['longitude'])),
+            Pos(latitude=float(new_poly[0]['latitude']),
+                longitude=float(new_poly[0]['longitude']))),
             )
         out_list.append(Polygon(new_name, new_edges))
 

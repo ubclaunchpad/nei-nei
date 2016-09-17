@@ -1,5 +1,5 @@
 import grequests
-import requests.
+import requests
 import sys
 import json
 
@@ -37,14 +37,17 @@ listings_url = rest_api['base_url'] + rest_api['listings']
 neighbourhoods_url = rest_api['base_url'] +  rest_api['neighbourhoods']
 neighbourhoods = requests.get(neighbourhoods_url).json()
 
-# Casting the listings
+# Cast the listings into neighbourhoods
 from casting import RayCaster, organize_polygons
 
+print("Starting casting...")
 polygons = []
 cast_listings = []
 organize_polygons(neighbourhoods, polygons)
 RayCaster.place_pos_in_polygon(listings, polygons, cast_listings)
 del polygons
+
+print("Casting complete. Begin writing payload...")
 
 payloads = []
 for hood in cast_listings:
@@ -63,6 +66,8 @@ for hood in cast_listings:
     ), hood['positions']))
 del cast_listings
 
+print("Payload formatting complete. Sending...")
+
 headers = {
     'Authorization': 'Token {token}'.format(token=rest_api['credentials']['token']),
     'Content-Type': 'application/json'
@@ -70,3 +75,5 @@ headers = {
 
 rs = (grequests.post(listings_url, headers=headers, data=json.dumps(payload)) for payload in payloads)
 grequests.map(rs, size=10, exception_handler=lambda r, e: sys.stderr.write(str(e) + '\n'))
+
+print("Payload sent!")
