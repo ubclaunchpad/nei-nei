@@ -1,5 +1,5 @@
-# rent-my-rez
-The front-page of Vancouver housing!
+# Nei Nei
+Rental price analytics for neighbourhoods in Vancouver.
 
 ## Available APIs
 
@@ -27,6 +27,7 @@ Create a virtual environment in the root project folder by running
 
 ```bash
 > virtualenv venv
+> source venv/bin/activate
 ```
 
 Then install the dependencies with:
